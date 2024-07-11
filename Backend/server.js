@@ -6,6 +6,8 @@ const { exec } = require('child_process');
 // backend that uses express.js to make api requests
 const app = express();
 const PORT = process.env.PORT || 5000;
+//netstat -ano | findstr :5000
+//taskkill /PID 25008 /F
 
 // Allow all origins and methods
 app.use(cors());

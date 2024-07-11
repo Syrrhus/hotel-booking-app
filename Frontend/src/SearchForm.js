@@ -12,6 +12,10 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+
+
+
+
 //code for popper 
 const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -103,6 +107,11 @@ const SearchForm = ({ onSearch }) => {
   const [submit,setSubmit]=useState(false);
   const [show,setShow]=useState(true);
 
+  const uniqueDestinationsData = Array.from(new Set(destinationsData.map(a => a.uid)))
+  .map(uid => {
+    return destinationsData.find(a => a.uid === uid)
+  });
+
  // Function to fetch hotel data based on the search parameters and then make api call to backend by api/hotels endpoint
   const handleSearch = async (searchParams) => {
     try {
@@ -125,11 +134,11 @@ const SearchForm = ({ onSearch }) => {
 //sets the search parameters entered by user to send to the handlesearch func
   const handleSubmit = (event) => {
     event.preventDefault();
-    const selectedDestination = destinationsData.find(s => s.Term === destination);
+    const selectedDestination = destinationsData.find(s => s.term === destination);
     console.log(selectedDestination);
     if (selectedDestination && checkIn && checkOut) {
       const searchParams = {
-        destination_id: selectedDestination.UID,
+        destination_id: selectedDestination.uid,
         checkin: checkIn.toISOString().split('T')[0],
         checkout: checkOut.toISOString().split('T')[0],
         guests: adults + children,
@@ -138,7 +147,7 @@ const SearchForm = ({ onSearch }) => {
       console.log('Form Submitted', searchParams);
       handleSearch(searchParams);
       if (onSearch) {
-        onSearch(searchParams);
+        onSearch(searchParams); // Calls the handleSearch function passed as a prop from App.js 
       }
     } else {
       console.error('Please fill in all required fields.');
@@ -160,15 +169,28 @@ const SearchForm = ({ onSearch }) => {
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item xs={12} sm={6} md={3}>
-                    <Autocomplete
+                  <Autocomplete
                       options={destinationsData}
-                      getOptionLabel={(option) => option.Term}
+                      getOptionLabel={(option) => option.term || option.type || 'Unknown'}
+                      filterOptions={(options, state) => 
+                        options.filter(option => option.term && option.term.toLowerCase().includes(state.inputValue.toLowerCase()))
+                      }
+                      freeSolo
                       onChange={(event, newValue) => {
-                        setDestination(newValue ? newValue.Term : '');
-                        setDestinationId(newValue ? newValue.UID : '');
+                        setDestination(newValue ? newValue.term : '');
+                        setDestinationId(newValue ? newValue.uid : '');
                       }}
                       renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
+                      renderOption={(props, option) => {
+                        const uniqueKey = `${option.uid}-${option.term}`;
+                        return (
+                          <li {...props} key={uniqueKey}>
+                            {option.term}
+                          </li>
+                        );
+                      }}
                     />
+
                   </Grid>
                   <Grid item xs={12} sm={6} md={2}>
                     <DatePicker
