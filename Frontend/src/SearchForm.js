@@ -12,6 +12,8 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { debounce } from 'lodash';
 
+
+
 //code for popper 
 const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -93,6 +95,7 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
 
 const SearchForm = ({ onSearch }) => {
   const [destination, setDestination] = useState('');
+  const [ErrorMessage, setErrorMessage] = useState('');
   const [destinationId, setDestinationId] = useState('');
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
@@ -130,7 +133,13 @@ const SearchForm = ({ onSearch }) => {
   
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     const selectedDestination = uniqueDestinationsData.find(s => s.term === destination);
+    if (!selectedDestination) {
+      setErrorMessage('Please fill in all required fields.'); // Ensure this sets the error message
+      console.error('Please fill in all required fields.');
+      return;
+    }
     console.log(selectedDestination);
     if (selectedDestination && checkIn && checkOut) {
       const searchParams = {
@@ -173,24 +182,24 @@ const SearchForm = ({ onSearch }) => {
                 <form onSubmit={handleSubmit}>
                   <Grid container spacing={2} alignItems="center">
                     <Grid item xs={12} sm={6} md={3}>
-                      <Autocomplete
-                        options={uniqueDestinationsData}
-                        getOptionLabel={(option) => option.term || option.type || 'Unknown'}
-                        filterOptions={(options, state) =>
-                          options.filter(option => option.term && option.term.toLowerCase().startsWith(state.inputValue.toLowerCase()))
-                        }
-                        freeSolo
-                        onChange={debouncedHandleChange}
-                        renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
-                        renderOption={(props, option) => {
-                          const uniqueKey = `${option.uid}-${option.term}`;
-                          return (
-                            <li {...props} key={uniqueKey}>
-                              {option.term}
-                            </li>
-                          );
-                        }}
-                      />
+                    <Autocomplete
+      options={uniqueDestinationsData}
+      getOptionLabel={(option) => option.term || option.type || 'Unknown'}
+      filterOptions={(options, state) =>
+        options.filter(option => option.term && option.term.toLowerCase().startsWith(state.inputValue.toLowerCase()))
+      }
+      freeSolo
+      onChange={debouncedHandleChange}
+      renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
+      renderOption={(props, option) => {
+        const uniqueKey = `${option.uid}-${option.term}`;
+        return (
+          <li {...props} key={uniqueKey}>
+            {option.term}
+          </li>
+        );
+      }}
+    />
                     </Grid>
                     <Grid item xs={12} sm={6} md={2}>
                       <DatePicker
@@ -228,6 +237,11 @@ const SearchForm = ({ onSearch }) => {
                       </Button>
                     </Grid>
                   </Grid>
+                  {ErrorMessage && (
+                  <div style={{ color: "red", marginTop: "10px" }}>
+                    {ErrorMessage}
+                  </div>
+                )}
                 </form>
               </Card>
             </LocalizationProvider>

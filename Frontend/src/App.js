@@ -41,6 +41,7 @@ const App = () => {
 
   return (
     <div>
+      
       <SearchForm onSearch={handleSearch} destinations={destinations} />
       {loading ? (
         <p>Loading...</p>
