@@ -6,6 +6,12 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
+// src/icons.js
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faStar);
+
 
 const List = () => {
   const location = useLocation();
@@ -17,7 +23,7 @@ const List = () => {
   return (
     <div>
       <Navbar />
-      <Header type="list" />
+      {/* <Header type="list" /> */}
       <div className="listContainer">
         <div className="listWrapper">
           <div className="listSearch">
@@ -84,8 +90,21 @@ const List = () => {
                 </div>
               </div>
             </div>
+            <div className="lsItem">
+              <label>Star Rating</label>
+              <input
+                type="range"
+                min="1"
+                max="5"
+                // value={starRating}
+                // onChange={(e) => setStarRating(e.target.value)}
+                className="lsOptionSlider"
+              />
+              {/* <span>{starRating} stars</span> */}
+            </div>
             <button>Search</button>
           </div>
+          
           <div className="listResult">
             <SearchItem />
             <SearchItem />

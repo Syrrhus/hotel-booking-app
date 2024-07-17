@@ -32,6 +32,7 @@
   flex-direction: column;
   gap: 5px;
   margin-bottom: 10px;
+  
 }
 
 .lsItem>label{
@@ -70,7 +71,7 @@
 
 .listSearch>button{
   padding: 10px;
-  background-color: #0071c2;
+  background-color:#262e5d;
   color: white;
   border: none;
   width: 100%;
@@ -80,4 +81,10 @@
 
 .listResult {
   flex: 3;
+}
+
+.lsOptionSlider{
+  width: 250px;
+  /* background: #4CAF50; Thumb color */
+  border-radius: 0%; /* Rounded corners */
 }
