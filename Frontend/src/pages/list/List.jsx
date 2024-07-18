@@ -5,7 +5,7 @@ import { DateRange } from 'react-date-range';
 import Navbar from '../../components/navbar/Navbar';
 import SearchItem from '../../components/searchItem/SearchItem';
 import './list.css';
-
+//all  the hotels of one destination displayed here 
 const List = () => {
   const location = useLocation();
   const [data, setData] = useState(location.state.data || []);

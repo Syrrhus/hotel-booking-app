@@ -2,7 +2,7 @@ import "./searchItem.css";
 
 import "./searchItem.css";
 import { useNavigate } from 'react-router-dom';
-
+//each hotel card detail 
 
 const SearchItem = ({ hotel }) => {
 

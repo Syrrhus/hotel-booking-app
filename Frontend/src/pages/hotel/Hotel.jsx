@@ -11,12 +11,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
+//hotel detail page 
 const Hotel = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const hotel = location.state.hotel; // Extracting hotel data from state
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+
+  const handleNavigate = () => {
+    navigate(`/hotels/${hotel.id}/payment`, { state: { hotel } });
+  };
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
@@ -68,7 +74,7 @@ const Hotel = () => {
           </div>
         )}
         <div className="hotelWrapper">
-          <button className="bookNow">Reserve or Book Now!</button>
+          <button className="bookNow" onClick={handleNavigate}>Reserve or Book Now!</button>
           <h1 className="hotelTitle">{hotel.name}</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
@@ -107,7 +113,7 @@ const Hotel = () => {
               <h2>
                 <b>${hotel.price}</b> (9 nights)
               </h2>
-              <button>Reserve or Book Now!</button>
+              
             </div>
           </div>
         </div>
