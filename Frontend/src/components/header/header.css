@@ -50,18 +50,17 @@
 }
 
 .headerSearch {
-  height: 30px;
+  height: 50px; /* Increased height */
   background-color: white;
-  /* border: 2px solid #0071c2; */
   display: flex;
   align-items: left;
   justify-content: space-around;
-  padding: 10px 0px;
+  padding: 15px 0px; /* Adjusted padding */
   border-radius: 5px;
   position: absolute;
   bottom: 950px;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1200px; /* Increased width */
   z-index: 3;
   left: 5%;
 }
@@ -73,12 +72,14 @@
 .headerSearchItem {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px; /* Adjusted gap */
 }
 
 .headerSearchInput {
   border: none;
   outline: none;
+  font-size: 18px; /* Increased font size */
+  padding: 10px; /* Added padding */
 }
 
 .headerSearchText {
@@ -135,14 +136,14 @@
   position: relative;
   width: 100vw;
   min-width: 100%;
-  /* height: 80%; */
   object-fit: cover;
   z-index: 2;
   overflow: hidden;
 }
+
 .exploreBanner {
   position: absolute;
-  top: 50px; /* Adjust based on your design */
+  top: 50px;
   left: 80%;
   transform: translateX(-50%);
   text-align: right;

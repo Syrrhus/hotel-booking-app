@@ -1,8 +1,17 @@
 import "./searchItem.css";
 
 import "./searchItem.css";
+import { useNavigate } from 'react-router-dom';
+
 
 const SearchItem = ({ hotel }) => {
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/hotels/${hotel.id}`, { state: { hotel } });
+  };
+
   console.log(hotel);
   return (
     <div className="searchItem">
@@ -32,7 +41,7 @@ const SearchItem = ({ hotel }) => {
         <div className="siDetailTexts">
           <span className="siPrice">${hotel.price}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <button className="siCheckButton">See availability</button>
+          <button className="siCheckButton" onClick={handleNavigate}>See availability</button>
         </div>
       </div>
     </div>
