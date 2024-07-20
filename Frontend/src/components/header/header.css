@@ -8,9 +8,17 @@
 }
 
 .headerContainer {
-  width: 100%;
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
   max-width: 1750px;
-  margin: 20px 0px 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin: 20px 0px 0px 0px; */
+  display: wrap;
+  /* align-items: center; */
+  justify-content: space-between;
 }
 
 .headerContainer.listMode {
@@ -50,21 +58,23 @@
 }
 
 .headerSearch {
-  height: 30px;
+  /* height: 60px; */
   background-color: white;
-  /* border: 2px solid #0071c2; */
   display: flex;
   align-items: left;
   justify-content: space-around;
-  padding: 10px 0px;
+  padding: 10px 10px;
   border-radius: 5px;
   position: absolute;
-  bottom: 950px;
-  width: 100%;
-  max-width: 1024px;
+  width: 55vw;
+  height: wrap;
+  /* max-width: 1024px; */
   z-index: 3;
-  left: 5%;
+  left: 5vw;
+  top: 5vh;
+  font-size: 1.2vw;
 }
+
 
 .headerIcon {
   color: lightgray;
@@ -135,6 +145,7 @@
   position: relative;
   width: 100vw;
   min-width: 100%;
+  min-height: 100vh;
   /* height: 80%; */
   object-fit: cover;
   z-index: 2;
@@ -142,11 +153,14 @@
 }
 .exploreBanner {
   position: absolute;
-  top: 50px; /* Adjust based on your design */
+  align-items: right;
+  justify-content: space-around;
+  top: 5vh; /* Adjust based on your design */
   left: 80%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   text-align: right;
   z-index: 3;
-  font-size: xx-large;
+  font-size: 3vw;
   color: 0071c2;
+  width: 30vw;
 }

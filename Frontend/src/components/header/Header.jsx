@@ -1,215 +1,254 @@
-import {
-  faBed,
-  faCalendarDays,
-  faCar,
-  faPerson,
-  faPlane,
-  faTaxi,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useMemo, useCallback } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBed, faCalendarDays, faPerson } from "@fortawesome/free-solid-svg-icons";
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { Autocomplete, Button, TextField, Grid, Card, Popper, Paper, ClickAwayListener, IconButton, Box } from '@mui/material';
+import { debounce } from 'lodash';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./header.css";
-import { DateRange } from "react-date-range";
-import { useState } from "react";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import destinationsData from './destinations.json';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const Header = ({ type }) => {
-  const [destination, setDestination] = useState("");
-  const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-  const [openOptions, setOpenOptions] = useState(false);
-  const [options, setOptions] = useState({
-    adult: 1,
-    children: 0,
-    room: 1,
-  });
-
+  const [destination, setDestination] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [checkIn, setCheckIn] = useState(null);
+  const [checkOut, setCheckOut] = useState(null);
+  const [rooms, setRooms] = useState(1);
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
+  const [data, setData] = useState([]);
+  const [submit, setSubmit] = useState(false);
+  const [show, setShow] = useState(true);
   const navigate = useNavigate();
 
-  const handleOption = (name, operation) => {
-    setOptions((prev) => {
-      return {
-        ...prev,
-        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-      };
-    });
+  const uniqueDestinationsData = useMemo(() => {
+    return Array.from(new Set(destinationsData.map(a => a.uid)))
+      .map(uid => {
+        return destinationsData.find(a => a.uid === uid);
+      });
+  }, []);
+
+  const handleSearch = async (searchParams) => {
+    try {
+      setSubmit(true);
+      const response = await axios.get('http://localhost:5000/api/hotels', {
+        params: {
+          ...searchParams
+        }
+      });
+      setData(response.data.slice(0, 10));
+      setShow(false);
+      setSubmit(false);
+      navigate("/hotels", { state: { data: response.data.slice(0, 10), searchParams } });
+    } catch (error) {
+      console.error('Error fetching hotels:', error);
+      setSubmit(false);
+    }
   };
 
-  const handleSearch = () => {
-    navigate("/hotels", { state: { destination, date, options } });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+
+    const selectedDestination = uniqueDestinationsData.find(s => s.term === destination);
+    if (!selectedDestination) {
+      setErrorMessage('Please fill in all required fields.');
+      return;
+    }
+
+    if (selectedDestination && checkIn && checkOut) {
+      const searchParams = {
+        destination_id: selectedDestination.uid,
+        checkin: checkIn.toISOString().split('T')[0],
+        checkout: checkOut.toISOString().split('T')[0],
+        guests: adults + children,
+        rooms
+      };
+      handleSearch(searchParams);
+    } else {
+      setErrorMessage('Please fill in all required fields.');
+    }
   };
+
+  const debouncedHandleChange = useCallback(
+    debounce((event, newValue) => {
+      setDestination(newValue ? newValue.term : '');
+    }, 300),
+    []
+  );
+
+
 
   return (
     <div className="header">
-      <div
-        className={
-          type === "list" ? "headerContainer listMode" : "headerContainer"
-        }
-      >
-        {/* <div className="headerList">
-          <div className="headerListItem active">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car rentals</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Attractions</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
-          </div>
-        </div> */}
+      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         {type !== "list" && (
           <>
-            {/* <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
-            </h1>
-            <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
-            </p> */}
-            {/* <button className="headerBtn">Sign in / Register</button> */}
             <div className="headerSearch">
-              <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faBed} className="headerIcon" />
-                <input
-                  type="text"
-                  placeholder="Where are you going?"
-                  className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
-                />
-              </div>
-              <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-                <span
-                  onClick={() => setOpenDate(!openDate)}
-                  className="headerSearchText"
-                >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-                  date[0].endDate,
-                  "MM/dd/yyyy"
-                )}`}</span>
-                {openDate && (
-                  <DateRange
-                    editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
-                    moveRangeOnFirstSelection={false}
-                    ranges={date}
-                    className="date"
-                    minDate={new Date()}
+              <Grid container spacing={2} direction={'row'} alignItems="center">
+                <Grid item xs={12} sm={6} md={3} lg={2} style={{ fontSize: '1.2vw' }}>
+                  <Autocomplete
+                    options={uniqueDestinationsData}
+                    getOptionLabel={(option) => option.term || option.type || 'Unknown'}
+                    filterOptions={(options, state) =>
+                      options.filter(option => option.term && option.term.toLowerCase().startsWith(state.inputValue.toLowerCase()))
+                    }
+                    freeSolo
+                    onChange={debouncedHandleChange}
+                    renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
+                    renderOption={(props, option) => {
+                      const uniqueKey = `${option.uid}-${option.term}`;
+                      return (
+                        <li {...props} key={uniqueKey}>
+                          {option.term}
+                        </li>
+                      );
+                    }}
                   />
-                )}
-              </div>
-              <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-                <span
-                  onClick={() => setOpenOptions(!openOptions)}
-                  className="headerSearchText"
-                >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
-                {openOptions && (
-                  <div className="options">
-                    <div className="optionItem">
-                      <span className="optionText">Adult</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.adult <= 1}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("adult", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.adult}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("adult", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="optionItem">
-                      <span className="optionText">Children</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.children <= 0}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("children", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.children}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("children", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="optionItem">
-                      <span className="optionText">Room</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.room <= 1}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("room", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.room}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("room", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="headerSearchItem">
-                <button className="headerBtn" onClick={handleSearch}>
-                  Search
-                </button>
-              </div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={2}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="Check-in"
+                      value={checkIn}
+                      onChange={(newValue) => setCheckIn(newValue)}
+                      renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
+                    />
+                  </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={6} md={2}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="Check-out"
+                      value={checkOut}
+                      onChange={(newValue) => setCheckOut(newValue)}
+                      renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
+                    />
+                  </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <RoomsAndGuests
+                    rooms={rooms}
+                    setRooms={setRooms}
+                    adults={adults}
+                    setAdults={setAdults}
+                    children={children}
+                    setChildren={setChildren}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={2}>
+                  <Button variant="contained" style={{ backgroundColor: "white", color: "#264cc2", border: "2px solid #264cc2", height: "53px" }} fullWidth type="submit" onClick={handleSubmit}>
+                    {submit ? (
+                      <span>Fetching...</span>
+                    ) : (
+                      <span>Submit</span>
+                    )}
+                  </Button>
+                </Grid>
+              </Grid>
+              {errorMessage && (
+                <div style={{ color: "red", marginTop: "10px" }}>
+                  {errorMessage}
+                </div>
+              )}
+            </div>
+            <div className="exploreBanner">
+              <h1>Explore a new world with Ascenda</h1>
             </div>
           </>
         )}
-        
       </div>
       <img
-          src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg 2240w" // Use a URL of a beach resort as background
-          alt="Resort Background"
-          className="featuredImg"
-        />
-      <div className="exploreBanner">
-          <h1>Explore a new world with Ascenda</h1>
-        </div>
+        src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg"
+        alt="Resort Background"
+        className="featuredImg"
+      />
+
     </div>
-    
+  );
+};
+
+// RoomsAndGuests component
+const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
+  return (
+    <div>
+      <TextField
+        aria-describedby={id}
+        value={`${rooms} room, ${adults} adults, ${children} children`}
+        variant="outlined"
+        fullWidth
+        onClick={handleClick}
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px" }}>
+        <ClickAwayListener onClickAway={handleClose}>
+          <Paper sx={{ p: 2 }}>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={6}>
+                Rooms
+              </Grid>
+              <Grid item xs={6} container justifyContent="space-between">
+                <IconButton onClick={() => setRooms(rooms - 1)} disabled={rooms <= 1}>
+                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid blue" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                </IconButton>
+                <Box style={{ marginTop: "8px" }}>{rooms}</Box>
+                <IconButton onClick={() => setRooms(rooms + 1)}>
+                  <AddIcon style={{ border: "2px solid blue", borderRadius: "50%" }} />
+                </IconButton>
+              </Grid>
+              <Grid item xs={6}>
+                Adults
+              </Grid>
+              <Grid item xs={6} container justifyContent="space-between">
+                <IconButton onClick={() => setAdults(adults - 1)} disabled={adults <= 1}>
+                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid blue" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                </IconButton>
+                <Box style={{ marginTop: "8px" }}>{adults}</Box>
+                <IconButton onClick={() => setAdults(adults + 1)}>
+                  <AddIcon style={{ border: "2px solid blue", borderRadius: "50%" }} />
+                </IconButton>
+              </Grid>
+              <Grid item xs={6}>
+                Children
+              </Grid>
+              <Grid item xs={6} container justifyContent="space-between">
+                <IconButton onClick={() => setChildren(children - 1)} disabled={children <= 0}>
+                  <RemoveIcon style={{ border: children !== 1 ? "2px solid blue" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                </IconButton>
+                <Box style={{ marginTop: "8px" }}>{children}</Box>
+                <IconButton onClick={() => setChildren(children + 1)}>
+                  <AddIcon style={{ border: "2px solid blue", borderRadius: "50%" }} />
+                </IconButton>
+              </Grid>
+            </Grid>
+            <Box mt={2}>
+              <Button fullWidth variant="contained" style={{ backgroundColor: "white", color: "#264cc2", border: "2px solid #264cc2", height: "53px" }} onClick={handleClose}>Done</Button>
+            </Box>
+          </Paper>
+        </ClickAwayListener>
+      </Popper>
+    </div>
   );
 };
 
