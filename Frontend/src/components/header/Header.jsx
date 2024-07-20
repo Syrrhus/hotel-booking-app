@@ -92,7 +92,7 @@ const Header = ({ type }) => {
           <>
             <div className="headerSearch">
               <Grid container spacing={2} direction={'row'} alignItems="center">
-                <Grid item xs={12} sm={6} md={3} lg={2} style={{ fontSize: '1.2vw' }}>
+                <Grid item xs={12} sm={6} md={3} >
                   <Autocomplete
                     options={uniqueDestinationsData}
                     getOptionLabel={(option) => option.term || option.type || 'Unknown'}
