@@ -2,14 +2,22 @@ import "./hotel.css";
 import Navbar from "../../components/navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+// Custom icon for the map marker
+const redIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowSize: [41, 41]
+});
 
 const Hotel = () => {
   const navigate = useNavigate();
@@ -52,6 +60,18 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleMove("r");
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [slideNumber]);
+
+  const handleThumbnailClick = (index) => {
+    setSlideNumber(index);
+  };
+
   return (
     <div>
       <Navbar />
@@ -68,25 +88,35 @@ const Hotel = () => {
         )}
         <div className="hotelContent">
           <div className="hotelDetailsWrapper">
-            <button className="bookNow" onClick={handleNavigate}>
-              Reserve or Book Now!
-            </button>
-            <h1 className="hotelTitle">{hotel.name}</h1>
+            <h1 className="hotelTitle">{hotel.name} <button className="bookNow" onClick={handleNavigate}>Reserve or Book Now!</button></h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{hotel.address}</span>
             </div>
-            <span className="hotelRating">
-              <span>Rating: {hotel.rating}</span>
-            </span>
+            <span className="hotelRating">Rating: {hotel.rating}</span>
             <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
             <span className="hotelPriceHighlight">Book a stay over ${hotel.price} only!</span>
             <div className="hotelImages">
-              {photos.map((photo, i) => (
-                <div className="hotelImgWrapper" key={i}>
-                  <img onClick={() => handleOpen(i)} src={photo.src} alt="" className="hotelImg" />
+              <div className="carousel">
+                <FontAwesomeIcon icon={faChevronLeft} className="carouselArrow left" onClick={() => handleMove("l")} />
+                <div className="carouselWrapper">
+                  <img src={photos[slideNumber].src} alt="" className="carouselImg" />
                 </div>
-              ))}
+                <FontAwesomeIcon icon={faChevronRight} className="carouselArrow right" onClick={() => handleMove("r")} />
+              </div>
+              <div className="thumbnailCarousel">
+                <div className="thumbnailWrapper">
+                  {photos.map((photo, i) => (
+                    <img
+                      key={i}
+                      src={photo.src}
+                      alt=""
+                      className={`thumbnailImg ${i === slideNumber ? "active" : ""}`}
+                      onClick={() => handleThumbnailClick(i)}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
@@ -136,40 +166,19 @@ const Hotel = () => {
               </div>
             </div>
           </div>
-          <div className="hotelFilterWrapper">
-            <div className="filterSection">
-              <h2>Filters</h2>
-              <div className="filterGroup">
-                <label>Rating</label>
-                <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
-                <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
-              </div>
-              <div className="filterGroup">
-                <label>Price</label>
-                <Slider range min={50} max={500} defaultValue={priceRange} onChange={(value) => setPriceRange(value)} />
-                <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
-              </div>
-              <div className="filterGroup">
-                <label>Check-in Date</label>
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-              </div>
-              <div className="filterGroup">
-                <label>Check-out Date</label>
-                <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-              </div>
-              <div className="filterGroup">
-                <label>Adults</label>
-                <input type="number" min="1" value={adults} onChange={(e) => setAdults(e.target.value)} />
-              </div>
-              <div className="filterGroup">
-                <label>Children</label>
-                <input type="number" min="0" value={children} onChange={(e) => setChildren(e.target.value)} />
-              </div>
-              <div className="filterGroup">
-                <label>Rooms</label>
-                <input type="number" min="1" value={rooms} onChange={(e) => setRooms(e.target.value)} />
-              </div>
-              <button className="filterButton">Apply Filters</button>
+          <div className="hotelMapWrapper">
+            <div className="hotelMap">
+              <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%" }}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={[hotel.latitude, hotel.longitude]} icon={redIcon}>
+                  <Popup>
+                    {hotel.name} <br /> {hotel.address}
+                  </Popup>
+                </Marker>
+              </MapContainer>
             </div>
           </div>
         </div>
