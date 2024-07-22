@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 import "./featured.css";
+=======
+import React from 'react';
+import './featured.css';
+>>>>>>> main
 
 const Featured = () => {
   return (
     <div className="featured">
       <div className="featuredItem">
         <img
+<<<<<<< HEAD
           src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg 2240w" // Use a URL of a beach resort as background
           alt="Resort Background"
           className="featuredImg"
@@ -14,11 +20,18 @@ const Featured = () => {
           <div className="datePicker">15 Jul - 19 Jul</div>
           <div className="guestPicker">1 Room 2 Guests</div>
         </div> */}
+=======
+          src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg"
+          alt="Resort Background"
+          className="featuredImg"
+        />
+>>>>>>> main
         <div className="exploreBanner">
           <h1>Explore a new world with Ascenda</h1>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     // <div className="featured">
     //   <div className="featuredItem">
     //     <img
@@ -55,6 +68,8 @@ const Featured = () => {
     //     </div>
     //   </div>
     // </div>
+=======
+>>>>>>> main
   );
 };
 

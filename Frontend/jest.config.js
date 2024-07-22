@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   transform: {
@@ -10,4 +11,13 @@ module.exports = {
     '\\.(css|less)$': 'identity-obj-proxy',
   },
   testEnvironment: 'jsdom',
+=======
+// jest.config.js
+module.exports = {
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': '<rootDir>/__mocks__/styleMock.js'
+  },
+  testEnvironment: 'jsdom'
+>>>>>>> main
 };
