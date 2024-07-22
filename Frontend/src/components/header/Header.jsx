@@ -198,7 +198,7 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
           readOnly: true,
         }}
       />
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px" }}>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px", zIndex: 3 }}>
         <ClickAwayListener onClickAway={handleClose}>
           <Paper sx={{ p: 2 }}>
             <Grid container spacing={2} alignItems="center">
