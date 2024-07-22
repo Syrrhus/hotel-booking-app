@@ -1,32 +1,21 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-<<<<<<< HEAD
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "nodemon index.js"
-=======
-  "main": "index.cjs",
-  "type": "module",
-  "scripts": {
-    "start": "node index.cjs",
-    "dev": "nodemon index.cjs"
->>>>>>> main
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-<<<<<<< HEAD
-    "express": "^4.19.2",
-=======
-    "axios": "^1.7.2",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "node-cron": "^3.0.3",
->>>>>>> main
-    "nodemon": "^3.1.4"
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.cjs",
+    "type": "module",
+    "scripts": {
+      "start": "node index.cjs",
+      "dev": "nodemon index.cjs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "axios": "^1.7.2",
+      "cors": "^2.8.5",
+      "express": "^4.19.2",
+      "node-cron": "^3.0.3",
+      "nodemon": "^3.1.4"
+    }
   }
-}

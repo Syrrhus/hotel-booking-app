@@ -2,43 +2,29 @@
   "name": "booking",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-  "dependencies": {
-=======
   "proxy": "https://hotelapi.loyalty.dev/api/hotels",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@date-io/date-fns": "^3.0.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
->>>>>>> main
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-<<<<<<< HEAD
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
-    "@testing-library/user-event": "^13.5.0",
-    "date-fns": "^2.28.0",
-=======
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
     "@mui/x-date-pickers": "^7.10.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "date-fns": "^2.30.0",
->>>>>>> main
     "react": "^18.0.0",
     "react-date-range": "^1.4.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-<<<<<<< HEAD
-=======
     "regenerator-runtime": "^0.14.1",
->>>>>>> main
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -64,8 +50,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-=======
   },
   "devDependencies": {
     "@testing-library/dom": "^10.3.2",
@@ -74,6 +58,5 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
->>>>>>> main
   }
 }
