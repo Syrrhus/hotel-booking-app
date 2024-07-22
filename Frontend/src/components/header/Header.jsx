@@ -10,11 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./header.css";
-<<<<<<< HEAD
-import destinationsData from './destinations.json';
-=======
 import destinationsData from './destinations.json'; 
->>>>>>> main
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
@@ -58,11 +54,7 @@ const Header = ({ type }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
-
-=======
     
->>>>>>> main
 
     const selectedDestination = uniqueDestinationsData.find(s => s.term === destination);
     if (!selectedDestination) {
@@ -91,24 +83,14 @@ const Header = ({ type }) => {
     []
   );
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> main
   return (
     <div className="header">
       <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         {type !== "list" && (
           <>
             <div className="headerSearch">
-<<<<<<< HEAD
-              <Grid container spacing={2} direction={'row'} alignItems="center">
-                <Grid item xs={12} sm={6} md={3} >
-=======
               <Grid container spacing={2} alignItems="center">
                 <Grid item xs={12} sm={6} md={3}>
->>>>>>> main
                   <Autocomplete
                     options={uniqueDestinationsData}
                     getOptionLabel={(option) => option.term || option.type || 'Unknown'}
@@ -174,23 +156,10 @@ const Header = ({ type }) => {
                 </div>
               )}
             </div>
-<<<<<<< HEAD
-            <div className="exploreBanner">
-              <h1>Explore a new world with Ascenda</h1>
-            </div>
-=======
->>>>>>> main
           </>
         )}
       </div>
       <img
-<<<<<<< HEAD
-        src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg"
-        alt="Resort Background"
-        className="featuredImg"
-      />
-
-=======
         src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg" // Use a URL of a beach resort as background
         alt="Resort Background"
         className="featuredImg"
@@ -198,7 +167,6 @@ const Header = ({ type }) => {
       <div className="exploreBanner">
         <h1>Explore a new world with Ascenda</h1>
       </div>
->>>>>>> main
     </div>
   );
 };
@@ -281,8 +249,4 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
   );
 };
 
-<<<<<<< HEAD
 export default Header;
-=======
-export default Header;
->>>>>>> main
