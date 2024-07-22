@@ -3,6 +3,7 @@
   background-color: white;
   display: flex;
   justify-content: center;
+  position: sticky;
 }
 
 .navContainer{
@@ -11,6 +12,7 @@
   color: white;
   display: flex;
   align-items: center;
+  position: sticky;
   justify-content: space-between;
 }
 

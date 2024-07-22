@@ -21,7 +21,7 @@ const List = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar style={{position:"sticky"}} />
       <div className="listContainer">
         <div className="listWrapper">
           <div className="listSearch">

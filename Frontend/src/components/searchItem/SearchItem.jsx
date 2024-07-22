@@ -1,8 +1,6 @@
 import "./searchItem.css";
 import { useNavigate } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
-
 const SearchItem = ({ hotel }) => {
 
   const navigate = useNavigate();
