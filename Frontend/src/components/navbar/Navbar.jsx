@@ -1,9 +1,5 @@
 import "./navbar.css"
-<<<<<<< HEAD
-
-=======
 import React from 'react';
->>>>>>> main
 const Navbar = () => {
   return (
     <div className="navbar">
