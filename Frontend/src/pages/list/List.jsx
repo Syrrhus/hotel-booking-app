@@ -5,9 +5,20 @@ import { DateRange } from 'react-date-range';
 import Navbar from '../../components/navbar/Navbar';
 import SearchItem from '../../components/searchItem/SearchItem';
 import './list.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
 //all  the hotels of one destination displayed here 
 const List = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const [data, setData] = useState(location.state.data || []);
   const [destination, setDestination] = useState(location.state.searchParams.destination || '');
   const [checkIn, setCheckIn] = useState(location.state.searchParams.checkin || new Date());
@@ -18,68 +29,56 @@ const List = () => {
     children: location.state.searchParams.children || 0,
     room: location.state.searchParams.rooms || 1,
   });
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [priceRange, setPriceRange] = useState([50, 500]);
+  const [rating, setRating] = useState([0, 5]);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [rooms, setRooms] = useState(1);
 
   return (
     <div>
       <Navbar style={{position:"sticky"}} />
       <div className="listContainer">
         <div className="listWrapper">
-          <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
-            <div className="lsItem">
-              <label>Destination</label>
-              <input placeholder={destination} type="text" />
-            </div>
-            <div className="lsItem">
-              <label>Check-in Date</label>
-              <span onClick={() => setOpenDate(!openDate)}>{`${format(new Date(checkIn), "MM/dd/yyyy")} to ${format(new Date(checkOut), "MM/dd/yyyy")}`}</span>
-              {openDate && (
-                <DateRange
-                  onChange={(item) => {
-                    setCheckIn(item.selection.startDate);
-                    setCheckOut(item.selection.endDate);
-                  }}
-                  minDate={new Date()}
-                  ranges={[{ startDate: new Date(checkIn), endDate: new Date(checkOut), key: 'selection' }]}
-                />
-              )}
-            </div>
-            <div className="lsItem">
-              <label>Options</label>
-              <div className="lsOptions">
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Adult</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    value={options.adult}
-                    onChange={(e) => setOptions({ ...options, adult: e.target.value })}
-                  />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Children</span>
-                  <input
-                    type="number"
-                    min={0}
-                    className="lsOptionInput"
-                    value={options.children}
-                    onChange={(e) => setOptions({ ...options, children: e.target.value })}
-                  />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Room</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    value={options.room}
-                    onChange={(e) => setOptions({ ...options, room: e.target.value })}
-                  />
-                </div>
+        <div className="hotelFilterWrapper">
+            <div className="filterSection">
+              <h2>Filters</h2>
+              <div className="filterGroup">
+                <label>Rating</label>
+                <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
+                <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
               </div>
+              <div className="filterGroup">
+                <label>Price</label>
+                <Slider range min={50} max={500} defaultValue={priceRange} onChange={(value) => setPriceRange(value)} />
+                <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
+              </div>
+              <div className="filterGroup">
+                <label>Check-in Date</label>
+                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+              </div>
+              <div className="filterGroup">
+                <label>Check-out Date</label>
+                <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+              </div>
+              <div className="filterGroup">
+                <label>Adults</label>
+                <input type="number" min="1" value={adults} onChange={(e) => setAdults(e.target.value)} />
+              </div>
+              <div className="filterGroup">
+                <label>Children</label>
+                <input type="number" min="0" value={children} onChange={(e) => setChildren(e.target.value)} />
+              </div>
+              <div className="filterGroup">
+                <label>Rooms</label>
+                <input type="number" min="1" value={rooms} onChange={(e) => setRooms(e.target.value)} />
+              </div>
+              <button className="filterButton">Apply Filters</button>
             </div>
-            <button>Search</button>
           </div>
           <div className="listResult">
             {data.map((hotel, index) => (
@@ -88,6 +87,7 @@ const List = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

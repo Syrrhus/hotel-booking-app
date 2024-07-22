@@ -13,6 +13,63 @@ import "./header.css";
 import destinationsData from './destinations.json'; 
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#262e5d',
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&.MuiButton-containedPrimary': {
+            backgroundColor: '#262e5d',
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#1f264b',
+            },
+          },
+          '&.MuiButton-outlinedPrimary': {
+            borderColor: '#262e5d',
+            color: '#262e5d',
+            '&:hover': {
+              borderColor: '#1f264b',
+              color: '#1f264b',
+            },
+          },
+          '&.MuiButton-contained': {
+            backgroundColor: '#262e5d',
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#1f264b',
+            },
+          },
+          '&.MuiButton-outlined': {
+            borderColor: '#262e5d',
+            color: '#262e5d',
+            '&:hover': {
+              borderColor: '#1f264b',
+              color: '#1f264b',
+            },
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&:disabled': {
+            borderColor: '#d6d6d6',
+          },
+        },
+      },
+    },
+  },
+});
+
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState('');
@@ -84,6 +141,7 @@ const Header = ({ type }) => {
   );
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="header">
       <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         {type !== "list" && (
@@ -141,7 +199,7 @@ const Header = ({ type }) => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} md={2}>
-                  <Button variant="contained" style={{ backgroundColor: "white", color: "#264cc2", border: "2px solid #264cc2", height: "53px" }} fullWidth type="submit" onClick={handleSubmit}>
+                  <Button variant="contained" style={{ backgroundColor: "white", color: "#262e5d", border: "2px solid #262e5d", height: "53px", fontWeight: "650" }} fullWidth type="submit" onClick={handleSubmit}>
                     {submit ? (
                       <span>Fetching...</span>
                     ) : (
@@ -168,6 +226,7 @@ const Header = ({ type }) => {
         <h1>Explore a new world with Ascenda</h1>
       </div>
     </div>
+    </ThemeProvider>
   );
 };
 
@@ -198,7 +257,7 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
           readOnly: true,
         }}
       />
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px" }}>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px", zIndex: 3 }}>
         <ClickAwayListener onClickAway={handleClose}>
           <Paper sx={{ p: 2 }}>
             <Grid container spacing={2} alignItems="center">
@@ -207,11 +266,11 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
                 <IconButton onClick={() => setRooms(rooms - 1)} disabled={rooms <= 1}>
-                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid blue" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{rooms}</Box>
                 <IconButton onClick={() => setRooms(rooms + 1)}>
-                  <AddIcon style={{ border: "2px solid blue", borderRadius: "50%" }} />
+                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
                 </IconButton>
               </Grid>
               <Grid item xs={6}>
@@ -219,11 +278,11 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
                 <IconButton onClick={() => setAdults(adults - 1)} disabled={adults <= 1}>
-                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid blue" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{adults}</Box>
                 <IconButton onClick={() => setAdults(adults + 1)}>
-                  <AddIcon style={{ border: "2px solid blue", borderRadius: "50%" }} />
+                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
                 </IconButton>
               </Grid>
               <Grid item xs={6}>
@@ -231,16 +290,16 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
                 <IconButton onClick={() => setChildren(children - 1)} disabled={children <= 0}>
-                  <RemoveIcon style={{ border: children !== 1 ? "2px solid blue" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                  <RemoveIcon style={{ border: children !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{children}</Box>
                 <IconButton onClick={() => setChildren(children + 1)}>
-                  <AddIcon style={{ border: "2px solid blue", borderRadius: "50%" }} />
+                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
                 </IconButton>
               </Grid>
             </Grid>
             <Box mt={2}>
-              <Button fullWidth variant="contained" style={{ backgroundColor: "white", color: "#264cc2", border: "2px solid #264cc2", height: "53px" }} onClick={handleClose}>Done</Button>
+              <Button fullWidth variant="contained" style={{ backgroundColor: "white", color: "#262e5d", border: "2px solid #262e5d", height: "53px", fontWeight: "650" }} onClick={handleClose}>Done</Button>
             </Box>
           </Paper>
         </ClickAwayListener>

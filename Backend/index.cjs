@@ -48,9 +48,9 @@ app.get('/api/hotels/:id', async (req, res) => {
 
 
 // Cron job to restart the server after 10 seconds
-// cron.schedule('*/10 * * * * *', () => {
-//     console.log('Restarting server...');
-// });
+cron.schedule('*/10 * * * * *', () => {
+    console.log('Restarting server...');
+});
 
 // Start server
 app.listen(PORT, () => {

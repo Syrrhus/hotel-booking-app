@@ -72,7 +72,7 @@
   z-index: 3;
   /* left: 5vw; */
   right: -12vw;
-  top: 9vh;
+  top: 8vh;
   font-size: 1.2vw;
 }
 
@@ -132,8 +132,8 @@
 .optionCounterButton {
   width: 30px;
   height: 30px;
-  border: 1px solid #0071c2;
-  color: #0071c2;
+  border: 1px solid #262e5d;
+  color: #262e5d;
   cursor: pointer;
   background-color: white;
 }

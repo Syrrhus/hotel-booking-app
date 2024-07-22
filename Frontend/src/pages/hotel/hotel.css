@@ -1,3 +1,5 @@
+@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -18,17 +20,19 @@ body {
   margin-top: 20px;
 }
 
-.hotelWrapper {
+.hotelContent {
+  display: flex;
   width: 100%;
   max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
+}
+
+.hotelDetailsWrapper {
+  flex: 3;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
 }
 
 .bookNow {
@@ -212,4 +216,64 @@ body {
   margin: 5px 0;
   padding: 10px;
   border-radius: 4px;
+}
+
+.hotelFilterWrapper {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filterSection h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterGroup label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.filterGroup span {
+  font-size: 14px;
+}
+
+.filterGroup input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.filterButton {
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.hotelMap {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
