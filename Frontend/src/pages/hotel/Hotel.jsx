@@ -1,48 +1,22 @@
-import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
-import MailList from "../../components/mailList/MailList";
-import Footer from "../../components/footer/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
-  faCircleXmark,
-  faLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
-import { useLocation, useParams,useNavigate } from "react-router-dom";
-import axios from 'axios';
+import "./hotel.css"
+import Navbar from "../../components/navbar/Navbar"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Hotel = () => {
-  const { id } = useParams();
-  console.log('Hotel ID:', id); // Debugging log
-  const [hotel, setHotel] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const hotel = location.state.hotel; // Extracting hotel data from state
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchHotelDetails = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/api/hotels/${id}`);
-        setHotel(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching hotel details:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchHotelDetails();
-  }, [id]);
-  const navigate = useNavigate();
-
   const handleNavigate = () => {
-    navigate(`/hotels/${id}/payment`, { state: { hotel } });
+    navigate(`/hotels/${hotel.id}/payment`, { state: { hotel } });
   };
-
-  if (loading) return <div>Loading...</div>;
-  if (!hotel) return <div>Error loading hotel details</div>;
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
@@ -74,12 +48,12 @@ const Hotel = () => {
         {open && (
           <div className="slider">
             <FontAwesomeIcon
-              icon={faCircleXmark}
+              icon={faTimes}
               className="close"
               onClick={() => setOpen(false)}
             />
             <FontAwesomeIcon
-              icon={faCircleArrowLeft}
+              icon={faChevronLeft}
               className="arrow"
               onClick={() => handleMove("l")}
             />
@@ -87,25 +61,26 @@ const Hotel = () => {
               <img src={photos[slideNumber].src} alt="" className="sliderImg" />
             </div>
             <FontAwesomeIcon
-              icon={faCircleArrowRight}
+              icon={faChevronRight}
               className="arrow"
               onClick={() => handleMove("r")}
             />
           </div>
         )}
         <div className="hotelWrapper">
-          <button className="bookNow" onClick={handleNavigate}>Reserve or Book Now!</button>
+          <button className="bookNow" onClick={handleNavigate}>
+            Reserve or Book Now!
+          </button>
           <h1 className="hotelTitle">{hotel.name}</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
             <span>{hotel.address}</span>
           </div>
-          <span className="hotelDistance">
-            Excellent location – {hotel.address}
+          <span className="hotelRating">
+            <span>Rating: {hotel.rating}</span>
           </span>
-          <span className="hotelPriceHighlight">
-            Book a stay over ${hotel.price} at this property and get a free airport taxi
-          </span>
+          <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
+          <span className="hotelPriceHighlight">Book a stay over ${hotel.price} only!</span>
           <div className="hotelImages">
             {photos.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
@@ -120,27 +95,55 @@ const Hotel = () => {
           </div>
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">
-              <h1 className="hotelTitle">Stay in the heart of City</h1>
-              <p className="hotelDesc">
-                {hotel.description}
-              </p>
+              <h1 className="hotelTitle">Stay in the heart of {hotel.original_metadata.city}</h1>
+              <p className="hotelDesc" dangerouslySetInnerHTML={{ __html: hotel.description }}></p>
+              <div className="hotelTrustYouScores">
+                <h2>TrustYou Scores</h2>
+                <p>Overall: {hotel.trustyou.score.overall}</p>
+                <p>Kaligo Overall: {hotel.trustyou.score.kaligo_overall}</p>
+                <p>Solo: {hotel.trustyou.score.solo || "N/A"}</p>
+                <p>Couple: {hotel.trustyou.score.couple || "N/A"}</p>
+                <p>Family: {hotel.trustyou.score.family || "N/A"}</p>
+                <p>Business: {hotel.trustyou.score.business || "N/A"}</p>
+              </div>
+              <div className="hotelCategories">
+                <h2>Categories</h2>
+                {Object.keys(hotel.categories).map((key) => (
+                  <div key={key}>
+                    <p>{hotel.categories[key].name}: {hotel.categories[key].score}</p>
+                    <p>Popularity: {hotel.categories[key].popularity}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="hotelAmenitiesRatings">
+                <h2>Amenities Ratings</h2>
+                {hotel.amenities_ratings.map((amenity, index) => (
+                  <div key={index}>
+                    <p>{amenity.name}: {amenity.score}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="hotelAmenities">
+                <h2>Amenities</h2>
+                <ul>
+                  {Object.keys(hotel.amenities).map((key) => (
+                    <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className="hotelDetailsPrice">
-              <h1>Perfect for a 9-night stay!</h1>
-              <span>
-                Located in the real heart of {hotel.name}, this property has an excellent location score of {hotel.name}!
-              </span>
+              <h1>Perfect for a {hotel.categories.family_hotel ? "Family" : "Business"} stay!</h1>
               <h2>
-                <b>${hotel.price}</b> (9 nights)
+                <b>${hotel.price || "N/A"}</b> (9 nights)
               </h2>
+              <button onClick={handleNavigate}>Reserve or Book Now!</button>
             </div>
           </div>
         </div>
-        <MailList />
-        <Footer />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hotel;
+export default Hotel
