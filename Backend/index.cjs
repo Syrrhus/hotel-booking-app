@@ -32,6 +32,21 @@ app.get('/api/hotels', async (req, res) => {
     }
 });
 
+app.get('/api/hotels/:id', async (req, res) => {
+    const hotelId = req.params.id;
+    const apiUrl = `https://hotelapi.loyalty.dev/api/hotels/${hotelId}`;
+  
+    try {
+      const response = await axios.get(apiUrl);
+      res.json(response.data);
+    } catch (error) {
+      console.error(`Error fetching hotel details: ${error.message}`);
+      res.status(500).json({ message: 'Error fetching hotel details' });
+    }
+  });
+
+
+
 // Cron job to restart the server after 10 seconds
 // cron.schedule('*/10 * * * * *', () => {
 //     console.log('Restarting server...');

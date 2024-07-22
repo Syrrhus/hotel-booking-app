@@ -1,18 +1,14 @@
 import "./searchItem.css";
-
-import "./searchItem.css";
 import { useNavigate } from 'react-router-dom';
-//each hotel card detail 
 
+// Each hotel card detail
 const SearchItem = ({ hotel }) => {
-
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/hotels/${hotel.id}`, { state: { hotel } });
+    navigate(`/hotels/${hotel.id}`);
   };
 
-  console.log(hotel);
   return (
     <div className="searchItem">
       <img

@@ -46,3 +46,4 @@ describe('Header Component', () => {
     expect(screen.getByText(/Please fill in all required fields/i)).toBeInTheDocument();
   });
 });
+

@@ -9,20 +9,40 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-//hotel detail page 
+import { useState, useEffect } from "react";
+import { useLocation, useParams,useNavigate } from "react-router-dom";
+import axios from 'axios';
+
 const Hotel = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const hotel = location.state.hotel; // Extracting hotel data from state
+  const { id } = useParams();
+  console.log('Hotel ID:', id); // Debugging log
+  const [hotel, setHotel] = useState(null);
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchHotelDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/hotels/${id}`);
+        setHotel(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching hotel details:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchHotelDetails();
+  }, [id]);
+  const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/hotels/${hotel.id}/payment`, { state: { hotel } });
+    navigate(`/hotels/${id}/payment`, { state: { hotel } });
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (!hotel) return <div>Error loading hotel details</div>;
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
@@ -113,7 +133,6 @@ const Hotel = () => {
               <h2>
                 <b>${hotel.price}</b> (9 nights)
               </h2>
-              
             </div>
           </div>
         </div>
