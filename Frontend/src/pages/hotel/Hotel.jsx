@@ -25,13 +25,6 @@ const Hotel = () => {
   const hotel = location.state.hotel; // Extracting hotel data from state
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
-  const [priceRange, setPriceRange] = useState([50, 500]);
-  const [rating, setRating] = useState([0, 5]);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
-  const [rooms, setRooms] = useState(1);
 
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}/payment`, { state: { hotel } });
@@ -181,19 +174,6 @@ const Hotel = () => {
               </MapContainer>
             </div>
           </div>
-        </div>
-        <div className="hotelMap">
-          <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%" }}>
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            <Marker position={[hotel.latitude, hotel.longitude]}>
-              <Popup>
-                {hotel.name} <br /> {hotel.address}
-              </Popup>
-            </Marker>
-          </MapContainer>
         </div>
       </div>
     </div>

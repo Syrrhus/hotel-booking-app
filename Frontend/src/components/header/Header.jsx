@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBed, faCalendarDays, faPerson } from "@fortawesome/free-solid-svg-icons";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { Autocomplete, Button, TextField, Grid, Card, Popper, Paper, ClickAwayListener, IconButton, Box } from '@mui/material';
+import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper } from '@mui/material';
 import { debounce } from 'lodash';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./header.css";
-import destinationsData from './destinations.json'; 
+import destinationsData from './destinations.json';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -70,7 +70,6 @@ const theme = createTheme({
   },
 });
 
-
 const Header = ({ type }) => {
   const [destination, setDestination] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -111,7 +110,6 @@ const Header = ({ type }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
 
     const selectedDestination = uniqueDestinationsData.find(s => s.term === destination);
     if (!selectedDestination) {
@@ -142,95 +140,90 @@ const Header = ({ type }) => {
 
   return (
     <ThemeProvider theme={theme}>
-    <div className="header">
-      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
-        {type !== "list" && (
-          <>
-            <div className="headerSearch">
-              <Grid container spacing={2} alignItems="center">
-                <Grid item xs={12} sm={6} md={3}>
-                  <Autocomplete
-                    options={uniqueDestinationsData}
-                    getOptionLabel={(option) => option.term || option.type || 'Unknown'}
-                    filterOptions={(options, state) =>
-                      options.filter(option => option.term && option.term.toLowerCase().startsWith(state.inputValue.toLowerCase()))
-                    }
-                    freeSolo
-                    onChange={debouncedHandleChange}
-                    renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
-                    renderOption={(props, option) => {
-                      const uniqueKey = `${option.uid}-${option.term}`;
-                      return (
-                        <li {...props} key={uniqueKey}>
-                          {option.term}
-                        </li>
-                      );
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={2}>
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DatePicker
-                      label="Check-in"
-                      value={checkIn}
-                      onChange={(newValue) => setCheckIn(newValue)}
-                      renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
+      <div className="header">
+        <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
+          {type !== "list" && (
+            <>
+              <div className="exploreBanner">
+                <h1>Explore a new world with Ascenda</h1>
+              </div>
+              <div className="headerSearch">
+                <Grid container spacing={2} alignItems="center">
+                  <Grid item xs={12} sm={6} md={3}>
+                    <Autocomplete
+                      options={uniqueDestinationsData}
+                      getOptionLabel={(option) => option.term || option.type || 'Unknown'}
+                      filterOptions={(options, state) =>
+                        options.filter(option => option.term && option.term.toLowerCase().startsWith(state.inputValue.toLowerCase()))
+                      }
+                      freeSolo
+                      onChange={debouncedHandleChange}
+                      renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
+                      renderOption={(props, option) => {
+                        const uniqueKey = `${option.uid}-${option.term}`;
+                        return (
+                          <li {...props} key={uniqueKey}>
+                            {option.term}
+                          </li>
+                        );
+                      }}
                     />
-                  </LocalizationProvider>
-                </Grid>
-                <Grid item xs={12} sm={6} md={2}>
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DatePicker
-                      label="Check-out"
-                      value={checkOut}
-                      onChange={(newValue) => setCheckOut(newValue)}
-                      renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={2}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DatePicker
+                        label="Check-in"
+                        value={checkIn}
+                        onChange={(newValue) => setCheckIn(newValue)}
+                        renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
+                      />
+                    </LocalizationProvider>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={2}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DatePicker
+                        label="Check-out"
+                        value={checkOut}
+                        onChange={(newValue) => setCheckOut(newValue)}
+                        renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
+                      />
+                    </LocalizationProvider>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <RoomsAndGuests
+                      rooms={rooms}
+                      setRooms={setRooms}
+                      adults={adults}
+                      setAdults={setAdults}
+                      children={children}
+                      setChildren={setChildren}
                     />
-                  </LocalizationProvider>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={2}>
+                    <Button variant="contained" color="primary" fullWidth onClick={handleSubmit} disabled={submit}>
+                      {submit ? "Searching..." : "Search"}
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <RoomsAndGuests
-                    rooms={rooms}
-                    setRooms={setRooms}
-                    adults={adults}
-                    setAdults={setAdults}
-                    children={children}
-                    setChildren={setChildren}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={2}>
-                  <Button variant="contained" style={{ backgroundColor: "white", color: "#262e5d", border: "2px solid #262e5d", height: "53px", fontWeight: "650" }} fullWidth type="submit" onClick={handleSubmit}>
-                    {submit ? (
-                      <span>Fetching...</span>
-                    ) : (
-                      <span>Submit</span>
-                    )}
-                  </Button>
-                </Grid>
-              </Grid>
-              {errorMessage && (
-                <div style={{ color: "red", marginTop: "10px" }}>
-                  {errorMessage}
-                </div>
-              )}
-            </div>
-          </>
-        )}
+                {errorMessage && (
+                  <div className="error-message">{errorMessage}</div>
+                )}
+              </div>
+            </>
+          )}
+        </div>
+        <div className="background-slider">
+          <img src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg" alt="Resort Background" className="slider-img" />
+          <img src="https://img.freepik.com/free-photo/view-luxurious-hotel-pool_23-2150683399.jpg?t=st=1721753459~exp=1721757059~hmac=1446cdcf5efaeda2796fb3d76211606fd60daaf5427b3095bbc0244d28861f8a&w=1380" alt="Resort Background" className="slider-img" />
+          <img src="https://img.freepik.com/free-photo/sun-loungers-near-palms-swimming-pool-sunny-day_23-2148107921.jpg?t=st=1721753352~exp=1721756952~hmac=9adb975b0dba352c17e3bd19d9c036442736137dd2cece1627f39e4e28904db7&w=1380" alt="Resort Background" className="slider-img" />
+          <img src="https://img.freepik.com/free-photo/beautiful-natural-view-pool_23-2149046686.jpg?t=st=1721751303~exp=1721754903~hmac=2452ef7c3e1ec822544f906168bce23d164b256785a085853182d75045f18811&w=1380" alt="Resort Background" className="slider-img" />
+          <img src="https://img.freepik.com/free-photo/view-luxurious-hotel-pool_23-2150683509.jpg?t=st=1721751266~exp=1721754866~hmac=03011b476b328c9975e3df1422a276f485d457b807fc9f0234134af61144ca13&w=1380" alt="Resort Background" className="slider-img" />
+        </div>
       </div>
-      <img
-        src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg" // Use a URL of a beach resort as background
-        alt="Resort Background"
-        className="featuredImg"
-      />
-      <div className="exploreBanner">
-        <h1>Explore a new world with Ascenda</h1>
-      </div>
-    </div>
     </ThemeProvider>
   );
 };
 
-// RoomsAndGuests component
 const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -290,7 +283,7 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
                 <IconButton onClick={() => setChildren(children - 1)} disabled={children <= 0}>
-                  <RemoveIcon style={{ border: children !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+                  <RemoveIcon style={{ border: children !== 0 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{children}</Box>
                 <IconButton onClick={() => setChildren(children + 1)}>

@@ -1,172 +1,95 @@
 .header {
-  position: absolute;
+  position: relative;
   background-color: white;
-  color: white;
+  color: red;
   display: flex;
   justify-content: center;
-  position: relative;
+  align-items: center;
+  height: 100vh;
 }
 
 .headerContainer {
   position: absolute;
-  min-height: 100vh;
-  /* width: 100vw;
-  min-width: 100vw; */
-  /* max-width: 1750px; */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  /* margin: 20px 0px 0px 0px; */
+  top: 30%; /* Adjusted value to move the search bar more up */
+  transform: translateY(-50%);
   display: flex;
-  /* align-items: center; */
-  justify-content: space-between;
-}
-
-.headerContainer.listMode {
-  margin: 20px 0px 0px 0px;
-}
-
-.headerList {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 50px;
-}
-
-.headerListItem {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-}
-
-.headerListItem.active {
-  border: 1px solid white;
-  padding: 10px;
-  border-radius: 20px;
-}
-
-.headerDesc {
-  margin: 20px 0px;
-}
-
-.headerBtn {
-  background-color: #0d1d63;
-  color: white;
-  font-weight: 500;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
+  width: 100%;
+  z-index: 2;
 }
 
 .headerSearch {
-  /* height: 60px; */
-  /* height: 60px; */
   background-color: white;
   display: flex;
-  align-items: left;
+  align-items: center;
   justify-content: space-around;
-  padding: 10px 10px;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 5px;
-  position: absolute;
-  width: 55vw;
-  height: wrap;
-  /* max-width: 1024px; */
-  width: 55vw;
-  height: wrap;
-  /* max-width: 1024px; */
   z-index: 3;
-  /* left: 5vw; */
-  right: -12vw;
-  top: 8vh;
-  font-size: 1.2vw;
+  margin-top: 10px; /* Adjust this value to move the search bar up */
 }
 
-
-.headerIcon {
-  color: lightgray;
-}
-
-.headerSearchItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.headerSearchInput {
-  border: none;
-  outline: none;
-}
-
-.headerSearchText {
-  color: lightgray;
-  cursor: pointer;
-}
-
-.date {
+.featuredImg {
   position: absolute;
-  top: 50px;
-  z-index: 2;
-}
-
-.options {
-  z-index: 2;
-  position: absolute;
-  top: 50px;
-  background-color: white;
-  color: gray;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
-}
-
-.optionItem {
-  width: 200px;
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-}
-
-.optionCounter {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: black;
-}
-
-.optionCounterButton {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #262e5d;
-  color: #262e5d;
-  cursor: pointer;
-  background-color: white;
-}
-
-.optionCounterButton:disabled {
-  cursor: not-allowed;
-}
-
-.featuredImg{
-  position: relative;
   width: 100vw;
   min-width: 100%;
   min-height: 100vh;
-  /* height: 80%; */
   object-fit: cover;
-  z-index: 2;
-  overflow: hidden;
+  z-index: 1;
 }
+
 .exploreBanner {
   position: absolute;
-  align-items: right;
-  justify-content: space-around;
-  top: 5vh; /* Adjust based on your design */
-  left: 80%;
-  /* transform: translateX(-50%); */
-  text-align: right;
-  z-index: 3;
-  font-size: 2.5vw;
-  color: 0071c2;
-  width: 30vw;
+  top: 20vh;
+  text-align: center;
+  z-index: 2;
+  font-size: 2vw;
+  color: white; /* Changed text color to white */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Added shadow behind text */
+}
+
+.background-slider {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slider-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+@keyframes slide {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.background-slider img:nth-child(1) {
+  animation: slide 50s infinite;
+}
+
+.background-slider img:nth-child(2) {
+  animation: slide 50s 10s infinite;
+}
+
+.background-slider img:nth-child(3) {
+  animation: slide 50s 20s infinite;
+}
+
+.background-slider img:nth-child(4) {
+  animation: slide 50s 30s infinite;
+}
+
+.background-slider img:nth-child(5) {
+  animation: slide 50s 40s infinite;
 }
