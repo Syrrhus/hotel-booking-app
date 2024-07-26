@@ -13,8 +13,9 @@ import "rc-slider/assets/index.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+//step 1: import {hoteldata} from {wherever json data/hotel list is stored}
 
-//all  the hotels of one destination displayed here 
+//all the hotels of one destination displayed here 
 const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const List = () => {
   });
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
-  const [priceRange, setPriceRange] = useState([50, 500]);
+  const [price, setPriceRange] = useState([50, 500]);
   const [rating, setRating] = useState([0, 5]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -46,10 +47,10 @@ const List = () => {
   const filterHotels = () => {
     const filteredHotels = data.filter(hotel => {
       return (
-        hotel.rating >= rating[0] &&
-        hotel.rating <= rating[1] &&
-        hotel.price >= priceRange[0] &&
-        hotel.price <= priceRange[1]
+        rating >= rating[0] &&
+        rating <= rating[1] &&
+        price >= priceRange[0] &&
+        price <= priceRange[1]
       );
     });
     setData(filteredHotels);
