@@ -39,6 +39,22 @@ const List = () => {
   const [children, setChildren] = useState(0);
   const [rooms, setRooms] = useState(1);
 
+  useEffect(() => {
+    setData(data); // Set initial data from the JSON file
+  }, []);
+
+  const filterHotels = () => {
+    const filteredHotels = data.filter(hotel => {
+      return (
+        hotel.rating >= rating[0] &&
+        hotel.rating <= rating[1] &&
+        hotel.price >= priceRange[0] &&
+        hotel.price <= priceRange[1]
+      );
+    });
+    setData(filteredHotels);
+  };
+
   return (
     <div>
       <Navbar style={{position:"sticky"}} />
@@ -77,7 +93,7 @@ const List = () => {
                 <label>Rooms</label>
                 <input type="number" min="1" value={rooms} onChange={(e) => setRooms(e.target.value)} />
               </div>
-              <button className="filterButton">Apply Filters</button>
+              <button className="filterButton" onClick={filterHotels}>Apply Filters</button>
             </div>
           </div>
           <div className="listResult">
