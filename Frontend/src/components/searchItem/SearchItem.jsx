@@ -32,7 +32,7 @@ const SearchItem = ({ hotel }) => {
       <div className="siDetails">
         <div className="siRating">
           <span>{hotel.ratingText || "Excellent"}</span>
-          <button>{hotel.rating || "8.9"}</button>
+          <button>{hotel.rating}</button>
         </div>
         <div className="siDetailTexts">
           <span className="siPrice">${hotel.price}</span>

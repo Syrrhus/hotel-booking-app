@@ -214,10 +214,15 @@ const Header = ({ type }) => {
         </div>
         <div className="background-slider">
           <img src="https://media.cntraveller.com/photos/620a483417b9c49e6e797962/16:9/w_2240,c_limit/Exterior%2001.jpg" alt="Resort Background" className="slider-img" />
-          <img src="https://img.freepik.com/free-photo/view-luxurious-hotel-pool_23-2150683399.jpg?t=st=1721753459~exp=1721757059~hmac=1446cdcf5efaeda2796fb3d76211606fd60daaf5427b3095bbc0244d28861f8a&w=1380" alt="Resort Background" className="slider-img" />
-          <img src="https://img.freepik.com/free-photo/sun-loungers-near-palms-swimming-pool-sunny-day_23-2148107921.jpg?t=st=1721753352~exp=1721756952~hmac=9adb975b0dba352c17e3bd19d9c036442736137dd2cece1627f39e4e28904db7&w=1380" alt="Resort Background" className="slider-img" />
-          <img src="https://img.freepik.com/free-photo/beautiful-natural-view-pool_23-2149046686.jpg?t=st=1721751303~exp=1721754903~hmac=2452ef7c3e1ec822544f906168bce23d164b256785a085853182d75045f18811&w=1380" alt="Resort Background" className="slider-img" />
-          <img src="https://img.freepik.com/free-photo/view-luxurious-hotel-pool_23-2150683509.jpg?t=st=1721751266~exp=1721754866~hmac=03011b476b328c9975e3df1422a276f485d457b807fc9f0234134af61144ca13&w=1380" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/8158121/pexels-photo-8158121.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/4070509/pexels-photo-4070509.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/2474063/pexels-photo-2474063.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/944463/pexels-photo-944463.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/1998439/pexels-photo-1998439.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/895555/pexels-photo-895555.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/1797161/pexels-photo-1797161.jpeg" alt="Resort Background" className="slider-img" />
+          <img src="https://images.pexels.com/photos/161853/eiffel-tower-paris-france-tower-161853.jpeg" alt="Resort Background" className="slider-img" />
         </div>
       </div>
     </ThemeProvider>
@@ -237,6 +242,19 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
+
+  const handleOption = (field, action) => {
+    if (field === "rooms") {
+      if (action === "i") setRooms(rooms + 1);
+      else if (action === "d" && rooms > 1) setRooms(rooms - 1);
+    } else if (field === "adults") {
+      if (action === "i") setAdults(adults + 1);
+      else if (action === "d" && adults > 1) setAdults(adults - 1);
+    } else if (field === "children") {
+      if (action === "i") setChildren(children + 1);
+      else if (action === "d" && children > 0) setChildren(children - 1);
+    }
+  };
 
   return (
     <div>
@@ -258,11 +276,11 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
                 Rooms
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => setRooms(rooms - 1)} disabled={rooms <= 1}>
+                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1}>
                   <RemoveIcon style={{ border: rooms !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{rooms}</Box>
-                <IconButton onClick={() => setRooms(rooms + 1)}>
+                <IconButton onClick={() => handleOption("rooms", "i")}>
                   <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
                 </IconButton>
               </Grid>
@@ -270,11 +288,11 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
                 Adults
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => setAdults(adults - 1)} disabled={adults <= 1}>
+                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1}>
                   <RemoveIcon style={{ border: adults !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{adults}</Box>
-                <IconButton onClick={() => setAdults(adults + 1)}>
+                <IconButton onClick={() => handleOption("adults", "i")}>
                   <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
                 </IconButton>
               </Grid>
@@ -282,11 +300,11 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
                 Children
               </Grid>
               <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => setChildren(children - 1)} disabled={children <= 0}>
+                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0}>
                   <RemoveIcon style={{ border: children !== 0 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
                 </IconButton>
                 <Box style={{ marginTop: "8px" }}>{children}</Box>
-                <IconButton onClick={() => setChildren(children + 1)}>
+                <IconButton onClick={() => handleOption("children", "i")}>
                   <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
                 </IconButton>
               </Grid>
