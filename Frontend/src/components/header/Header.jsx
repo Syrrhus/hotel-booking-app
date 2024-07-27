@@ -120,11 +120,14 @@ const Header = ({ type }) => {
     if (selectedDestination && checkIn && checkOut) {
       const searchParams = {
         destination_id: selectedDestination.uid,
-        checkin: checkIn.toISOString().split('T')[0],
-        checkout: checkOut.toISOString().split('T')[0],
+        checkin: checkIn,
+        checkout: checkOut,
+        // checkin: checkIn.toISOString().split('T')[0],
+        // checkout: checkOut.toISOString().split('T')[0],
         guests: adults + children,
         rooms
       };
+      console.log(checkIn);
       handleSearch(searchParams);
     } else {
       setErrorMessage('Please fill in all required fields.');
