@@ -26,6 +26,24 @@ const theme = createTheme({
   },
 });
 
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper } from '@mui/material';
+import { debounce } from 'lodash';
+import axios from 'axios';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import destinationsData from '../../components/header/destinations.json';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#262e5d',
+    },
+  },
+});
+
 const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,12 +59,8 @@ const List = () => {
   const [submit, setSubmit] = useState(false);
   const [priceRange, setPriceRange] = useState([50, 1000]);
   const [rating, setRating] = useState([0, 5]);
-  const [filter,setFilters] = useState({destination:{destination},
-    checkIn:{checkIn},checkOut:{checkOut},
-    adults:{adults},children:{children},
-    priceRange:{priceRange},rating:{rating}})
 
-  useEffect(() => { //for destination, checkin, checkout
+  useEffect(() => {
     if (location.state && location.state.searchParams) {
       const { destination_id, checkin, checkout } = location.state.searchParams;
       setDestination(destination_id);
@@ -54,15 +68,15 @@ const List = () => {
       setCheckOut(new Date(checkout));
     }
   }, [location.state]);
-  
-  const uniqueDestinationsData = useMemo(() => { //pulling destination from the api
+
+  const uniqueDestinationsData = useMemo(() => {
     return Array.from(new Set(destinationsData.map(a => a.uid)))
       .map(uid => {
         return destinationsData.find(a => a.uid === uid);
       });
   }, []);
-  
-  const handleSearch = async (searchParams) => {//to get search data for hotels
+
+  const handleSearch = async (searchParams) => {
     try {
       setSubmit(true);
       const response = await axios.get('http://localhost:5000/api/hotels', {
@@ -78,16 +92,16 @@ const List = () => {
       setSubmit(false);
     }
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     const selectedDestination = uniqueDestinationsData.find(s => s.uid === destination);
     if (!selectedDestination) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-  
+
     if (selectedDestination && checkIn && checkOut) {
       const searchParams = {
         destination_id: selectedDestination.uid,
@@ -101,7 +115,7 @@ const List = () => {
       setErrorMessage('Please fill in all required fields.');
     }
   };
-  
+
   const debouncedHandleChange = useCallback(
     debounce((event, newValue) => {
       setDestination(newValue ? newValue.uid : '');
@@ -111,7 +125,7 @@ const List = () => {
     }, 300),
     [errorMessage]
   );
-  
+
   const handleApplyFilters = () => {
     const filteredData = data.filter(hotel => {
       return (
@@ -122,7 +136,7 @@ const List = () => {
       );
     });
     setData(filteredData);
-  };  
+  };
 
   return (
     <ThemeProvider theme={theme}>
