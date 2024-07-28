@@ -16,7 +16,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 //step 1: import {hoteldata} from {wherever json data/hotel list is stored}
 
 //all the hotels of one destination displayed here 
-const List = () => {
+const List = ({hotel}) => { //what does hotel do here?
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -32,28 +32,36 @@ const List = () => {
   });
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
-  const [price, setPriceRange] = useState([50, 500]);
+  const [priceRange, setPriceRange] = useState([50, 500]);
   const [rating, setRating] = useState([0, 5]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [rooms, setRooms] = useState(1);
+  const [filter,setFilters] = useState({destination:{destination},
+    checkIn:{checkIn},checkOut:{checkOut},openDate:{openDate},
+    startDate: {startDate}, endDate:{endDate},
+    adults:{adults},children:{children},
+    priceRange:{priceRange},rating:{rating}})
 
-  useEffect(() => {
-    setData(data); // Set initial data from the JSON file
-  }, []);
+  // Apply filters based on the current applied filter values
+  const filterHotels = hotel.filter(
+    hotel => hotel.rating > filter.rating[0] && hotel.rating < filter.rating[1] 
+    && hotel.price > filter.priceRange[0] && hotel.price < filter.priceRange[1] ///WHAT is hotel exactly?
+  );
 
-  const filterHotels = () => {
-    const filteredHotels = data.filter(hotel => {
-      return (
-        rating >= rating[0] &&
-        rating <= rating[1] &&
-        price >= priceRange[0] &&
-        price <= priceRange[1]
-      );
+  // Update applied filters when the button is clicked
+  const applyFilter = () => {
+    setFilters({
+      rating: rating,
+      price: priceRange,
+      checkIn: startDate,
+      checkOut: endDate,
+      adults: adults,
+      children: children,
+      rooms: rooms,
     });
-    setData(filteredHotels);
   };
 
   return (
@@ -97,10 +105,12 @@ const List = () => {
               <button className="filterButton" onClick={filterHotels}>Apply Filters</button>
             </div>
           </div>
-          <div className="listResult">
-            {data.map((hotel, index) => (
-              <SearchItem key={index} hotel={hotel} />
+          <button onClick={applyFilter}>Apply Filters</button>
+          <ul>
+          {filterHotels.map(user => (
+            <li key={user.id}>{user.name}</li> //?
             ))}
+          </ul>
           </div>
         </div>
       </div>
