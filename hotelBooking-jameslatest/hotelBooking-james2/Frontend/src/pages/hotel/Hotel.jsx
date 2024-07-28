@@ -27,8 +27,9 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
 
   const handleNavigate = () => {
-    navigate(`/hotels/${hotel.id}/payment`, { state: { hotel } });
+    navigate(`/hotels/${hotel.id}/book`, { state: { hotel } });
   };
+  
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
