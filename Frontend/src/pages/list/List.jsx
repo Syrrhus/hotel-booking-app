@@ -27,8 +27,8 @@ const theme = createTheme({
 const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
   const [data, setData] = useState(location.state.data || []);
+  const [filteredData, setFilteredData] = useState(data);
   const [destination, setDestination] = useState('');
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
@@ -107,8 +107,13 @@ const List = () => {
     [errorMessage]
   );
 
-  const applyFilters = useCallback(() => {
-    data.filter(hotel => {
+  useEffect(() => {
+    applyFilters();
+  }, [priceRange, ratingRange]);
+
+  //TODO: update
+  const applyFilters = () => {
+    const filtered = destinationsData.filter((hotel) => {
       return (
         hotel.price >= priceRange[0] &&
         hotel.price <= priceRange[1] &&
@@ -116,10 +121,10 @@ const List = () => {
         hotel.rating <= rating[1]
       );
     });
-  });
-
-  const handleApplyFilters = () => {
-    applyFilters();
+  // Extract hotel IDs from filtered hotels
+  const hotelIds = filtered.map(hotel => destinationsData.id);
+  // Update the state with the filtered hotel IDs
+  setFilteredHotelIds(hotelIds);
   };
 
   return (
