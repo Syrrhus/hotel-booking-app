@@ -65,7 +65,6 @@ const List = () => {
         }
       });
       setData(response.data.slice(0, 10));
-      setFilteredData(response.data.slice(0, 10)); // Update filtered data as well
       setSubmit(false);
       navigate("/hotels", { state: { data: response.data.slice(0, 10), searchParams } });
     } catch (error) {
@@ -109,10 +108,10 @@ const List = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [priceRange, ratingRange]);
+  }, [priceRange, rating]);
 
   //TODO: update
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     const filtered = destinationsData.filter((hotel) => {
       return (
         hotel.price >= priceRange[0] &&
@@ -121,10 +120,17 @@ const List = () => {
         hotel.rating <= rating[1]
       );
     });
-  // Extract hotel IDs from filtered hotels
-  const hotelIds = filtered.map(hotel => destinationsData.id);
-  // Update the state with the filtered hotel IDs
-  setFilteredData(hotelIds);
+  setFilteredData(filtered);
+  },[data,priceRange,rating]);
+
+  const handlePriceChange = (value) => {
+    setPriceRange(value);
+    applyFilters();
+  };
+
+  const handleRatingChange = (value) => {
+    setRating(value);
+    applyFilters();
   };
 
   return (
@@ -219,7 +225,7 @@ const List = () => {
                     min={0} 
                     max={5} 
                     defaultValue={rating} 
-                    onChange={(value) => setRating(value)} 
+                    onChange={handleRatingChange} 
                     step={0.5} 
                   />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
@@ -231,13 +237,12 @@ const List = () => {
                     min={50} 
                     max={1000} 
                     defaultValue={priceRange} 
-                    onChange={(value) => setPriceRange(value)} 
+                    onChange={handlePriceChange} 
                     step={50}
                   />
                   <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
                 </div>
-                <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
-              </div>
+               </div>
             </div>
             <div className="listResult">
               {filteredData.length > 0 ? (
