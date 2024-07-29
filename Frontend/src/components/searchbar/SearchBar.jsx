@@ -65,8 +65,8 @@ const SearchBar = ({type}) => {
     if (selectedDestination && checkIn && checkOut) {
       const searchParams = {
         destination_id: selectedDestination.uid,
-        checkin: checkIn.toISOString().split('T')[0],
-        checkout: checkOut.toISOString().split('T')[0],
+        checkin: checkIn,
+        checkout: checkOut,
         guests: adults + children,
         rooms
       };

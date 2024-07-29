@@ -178,7 +178,7 @@ const Header = ({ type }) => {
                         label="Check-in"
                         value={checkIn}
                         onChange={(newValue) => setCheckIn(newValue)}
-                        inputFormat="DD.MM.YYYY"
+                        format="dd/MM/yyyy"
                         renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                       />
                     </LocalizationProvider>
@@ -189,6 +189,7 @@ const Header = ({ type }) => {
                         label="Check-out"
                         value={checkOut}
                         onChange={(newValue) => setCheckOut(newValue)}
+                        format="dd/MM/yyyy" 
                         renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                       />
                     </LocalizationProvider>
