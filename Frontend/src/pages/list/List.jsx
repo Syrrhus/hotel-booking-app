@@ -65,6 +65,7 @@ const List = () => {
         }
       });
       setData(response.data.slice(0, 10));
+      setFilteredData(response.data.slice(0, 10)); // Update filtered data as well
       setSubmit(false);
       navigate("/hotels", { state: { data: response.data.slice(0, 10), searchParams } });
     } catch (error) {
@@ -106,8 +107,8 @@ const List = () => {
     [errorMessage]
   );
 
-  const applyFilters = () => {
-    const filteredData = data.filter(hotel => {
+  const applyFilters = useCallback(() => {
+    data.filter(hotel => {
       return (
         hotel.price >= priceRange[0] &&
         hotel.price <= priceRange[1] &&
@@ -115,11 +116,10 @@ const List = () => {
         hotel.rating <= rating[1]
       );
     });
-  };
+  });
 
   const handleApplyFilters = () => {
-    const filteredData = applyFilters(data);
-    setData(filteredData);
+    applyFilters();
   };
 
   return (
@@ -235,8 +235,8 @@ const List = () => {
               </div>
             </div>
             <div className="listResult">
-              {data.length > 0 ? (
-                data.map((hotel, index) => (
+              {filteredData.length > 0 ? (
+                filteredData.map((hotel, index) => (
                   <SearchItem key={index} hotel={hotel} />
                 ))
               ) : (
