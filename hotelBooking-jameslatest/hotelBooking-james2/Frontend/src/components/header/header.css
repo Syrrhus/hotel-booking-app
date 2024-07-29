@@ -1,0 +1,95 @@
+.header {
+  position: relative;
+  background-color: white;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.headerContainer {
+  position: absolute;
+  top: 30%; /* Adjusted value to move the search bar more up */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.headerSearch {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 3;
+  margin-top: 10px; /* Adjust this value to move the search bar up */
+}
+
+.featuredImg {
+  position: absolute;
+  width: 100vw;
+  min-width: 100%;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.exploreBanner {
+  position: absolute;
+  top: 20vh;
+  text-align: center;
+  z-index: 2;
+  font-size: 2vw;
+  color: white; /* Changed text color to white */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Added shadow behind text */
+}
+
+.background-slider {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slider-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+@keyframes slide {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.background-slider img:nth-child(1) {
+  animation: slide 50s infinite;
+}
+
+.background-slider img:nth-child(2) {
+  animation: slide 50s 10s infinite;
+}
+
+.background-slider img:nth-child(3) {
+  animation: slide 50s 20s infinite;
+}
+
+.background-slider img:nth-child(4) {
+  animation: slide 50s 30s infinite;
+}
+
+.background-slider img:nth-child(5) {
+  animation: slide 50s 40s infinite;
+}
