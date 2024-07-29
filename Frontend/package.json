@@ -27,6 +27,7 @@
     "react-date-range": "^1.4.0",
     "react-datepicker": "^7.3.0",
     "react-dom": "^18.0.0",
+    "react-hook-mask": "^1.1.18",
     "react-leaflet": "^4.2.1",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",

@@ -1,0 +1,76 @@
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  h1, h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .form-row label {
+    flex: 1 1 100%;
+  }
+  
+  .form-row input, 
+  .form-row textarea, 
+  .form-row select {
+    flex: 1 1 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input-short {
+    flex: 1 1 calc(33.33% - 10px);
+  }
+  
+  .email-input {
+    width: calc(100% - 10px);
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
+  button:disabled:hover {
+    cursor: not-allowed;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .return-button {
+    background-color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .return-button:hover {
+    background-color: #0056b3;
+  }
