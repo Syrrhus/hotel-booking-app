@@ -124,7 +124,7 @@ const List = () => {
   // Extract hotel IDs from filtered hotels
   const hotelIds = filtered.map(hotel => destinationsData.id);
   // Update the state with the filtered hotel IDs
-  setFilteredHotelIds(hotelIds);
+  setFilteredData(hotelIds);
   };
 
   return (
