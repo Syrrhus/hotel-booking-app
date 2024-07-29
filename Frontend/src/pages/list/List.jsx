@@ -15,26 +15,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import destinationsData from '../../components/header/destinations.json';
-//step 1: import {hoteldata} from {wherever json data/hotel list is stored}
-
-//all the hotels of one destination displayed here 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#262e5d',
-    },
-  },
-});
-
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper } from '@mui/material';
-import { debounce } from 'lodash';
-import axios from 'axios';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import destinationsData from '../../components/header/destinations.json';
 
 const theme = createTheme({
   palette: {
@@ -126,7 +106,7 @@ const List = () => {
     [errorMessage]
   );
 
-  const handleApplyFilters = () => {
+  const applyFilters = () => {
     const filteredData = data.filter(hotel => {
       return (
         hotel.price >= priceRange[0] &&
@@ -135,6 +115,10 @@ const List = () => {
         hotel.rating <= rating[1]
       );
     });
+  };
+
+  const handleApplyFilters = () => {
+    const filteredData = applyFilters(data);
     setData(filteredData);
   };
 
@@ -225,21 +209,39 @@ const List = () => {
                 <h2>Filters</h2>
                 <div className="filterGroup">
                   <label>Rating</label>
-                  <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
+                  <Slider 
+                    range 
+                    min={0} 
+                    max={5} 
+                    defaultValue={rating} 
+                    onChange={(value) => setRating(value)} 
+                    step={0.5} 
+                  />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
                 <div className="filterGroup">
                   <label>Price</label>
-                  <Slider range min={50} max={1000} defaultValue={priceRange} onChange={(value) => setPriceRange(value)} />
+                  <Slider 
+                    range 
+                    min={50} 
+                    max={1000} 
+                    defaultValue={priceRange} 
+                    onChange={(value) => setPriceRange(value)} 
+                    step={50}
+                  />
                   <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
                 </div>
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
               </div>
             </div>
             <div className="listResult">
-              {data.map((hotel, index) => (
-                <SearchItem key={index} hotel={hotel} />
-              ))}
+              {data.length > 0 ? (
+                data.map((hotel, index) => (
+                  <SearchItem key={index} hotel={hotel} />
+                ))
+              ) : (
+                <div>No hotels found with the selected filters.</div>
+              )}
             </div>
           </div>
         </div>
