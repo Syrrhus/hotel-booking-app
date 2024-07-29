@@ -8,6 +8,22 @@ const SearchItem = ({ hotel }) => {
     navigate(`/hotels/${hotel.id}`, { state: { hotel } });
   };
 
+  function getRatingText(rating) {
+    if (rating >= 4) {
+      return "Excellent";
+    } else if (rating >= 3.5) {
+      return "Very Good";
+    } else if (rating >= 3) {
+      return "Good";
+    } else if (rating >= 2.5) {
+      return "Average";
+    } else if (rating >= 1.5) {
+      return "Below Average";
+    } else {
+      return "Poor";
+    }
+  }
+
   console.log(hotel);
   return (
     <div className="searchItem">
@@ -31,7 +47,8 @@ const SearchItem = ({ hotel }) => {
       </div>
       <div className="siDetails">
         <div className="siRating">
-          <span>{hotel.ratingText || "Excellent"}</span>
+          <span>{getRatingText(hotel.rating)}</span>
+          {/* <span>{hotel.ratingText || "Excellent"}</span> */}
           <button>{hotel.rating}</button>
         </div>
         <div className="siDetailTexts">

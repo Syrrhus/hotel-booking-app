@@ -69,7 +69,7 @@
 
 .siRating {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
 }
 
 .siRating > span {
@@ -82,6 +82,8 @@
   padding: 5px;
   font-weight: bold;
   border: none;
+  height: 30px;
+  width: 30px;
 }
 
 .siDetailTexts {

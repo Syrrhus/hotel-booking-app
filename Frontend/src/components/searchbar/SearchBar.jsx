@@ -116,6 +116,7 @@ const SearchBar = ({type}) => {
                       label="Check-in"
                       value={checkIn}
                       onChange={(newValue) => setCheckIn(newValue)}
+                      format="dd/MM/yyyy"
                       renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                     />
                   </LocalizationProvider>
@@ -126,6 +127,7 @@ const SearchBar = ({type}) => {
                       label="Check-out"
                       value={checkOut}
                       onChange={(newValue) => setCheckOut(newValue)}
+                      format="dd/MM/yyyy"
                       renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                     />
                   </LocalizationProvider>
