@@ -114,9 +114,13 @@ app.get('/api/hotel-prices', async (req, res) => {
             });
             res.json(response.data.json);
             console.log(res.json(response.data.json),"hotel code");
+            res.status(200).json(response.data);
+            
         } catch (error) {
-            console.error(`Error fetching hotel prices: ${error.message}`);
-            res.status(500).json({ message: 'Failed to fetch hotel prices', error: error.message });
+            console.error(`Error fetching hotel prices: ${error.message}`); 
+            
+            res.status(500).json({ error: 'An error occurred while fetching hotel price', details: error.response ? error.response.data : null });
+            //res.status(500).json({ message: 'Failed to fetch hotel prices', error: error.message });
         }
     });
 
