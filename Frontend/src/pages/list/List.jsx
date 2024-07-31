@@ -15,6 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import destinationsData from '../../components/header/destinations.json';
+import hotelPriceData from './hoteldata.json';
 
 const theme = createTheme({
   palette: {
@@ -27,18 +28,38 @@ const theme = createTheme({
 const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [data, setData] = useState(location.state.data || []);
-  const [filteredData, setFilteredData] = useState(data);
+
+  const [data, setData] = useState(location.state?.data || []);
   const [destination, setDestination] = useState('');
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
-  const [adults, setAdults] = useState(2); // Default to 2 adults
-  const [children, setChildren] = useState(0); // Default to 0 children
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
   const [rooms, setRooms] = useState(1);
   const [errorMessage, setErrorMessage] = useState('');
   const [submit, setSubmit] = useState(false);
   const [priceRange, setPriceRange] = useState([50, 1000]);
   const [rating, setRating] = useState([0, 5]);
+
+  const mergeHotelData = (apiData, priceData) => {
+    console.log('Merging hotel data...');
+    console.log('API Data:', JSON.stringify(apiData, null, 2));
+    console.log('Price Data:', JSON.stringify(priceData, null, 2));
+  
+    return apiData.map(hotel => {
+      const priceInfo = priceData.hotels.find(h => h.id === hotel.id);
+      if (!priceInfo) {
+        console.log(`No price info found for hotel with ID: ${hotel.id}`);
+      } else {
+        console.log(`Found price info for hotel with ID: ${hotel.id}`);
+      }
+      return {
+        ...hotel,
+        priceInfo: priceInfo || {}
+      };
+    });
+  };
+
 
   useEffect(() => {
     if (location.state && location.state.searchParams) {
@@ -57,6 +78,7 @@ const List = () => {
   }, []);
 
   const handleSearch = async (searchParams) => {
+    console.log('s')
     try {
       setSubmit(true);
       const response = await axios.get('http://localhost:5000/api/hotels', {
@@ -64,9 +86,20 @@ const List = () => {
           ...searchParams
         }
       });
-      setData(response.data.slice(0, 10));
+      console.log('API Response:', JSON.stringify(response.data, null, 2));
+      console.log('Hotel Price Data:', JSON.stringify(hotelPriceData, null, 2));
+  
+      // Check if response.data is an array
+      if (Array.isArray(response.data)) {
+        const mergedData = mergeHotelData(response.data, hotelPriceData);
+        console.log('Merged Data:', JSON.stringify(mergedData, null, 2));
+        setData(mergedData);
+        navigate("/hotels", { state: { data: mergedData, searchParams } });
+      } else {
+        console.error('API response is not an array:', response.data);
+        setData([]);
+      }
       setSubmit(false);
-      navigate("/hotels", { state: { data: response.data.slice(0, 10), searchParams } });
     } catch (error) {
       console.error('Error fetching hotels:', error);
       setSubmit(false);
@@ -106,13 +139,8 @@ const List = () => {
     [errorMessage]
   );
 
-  useEffect(() => {
-    applyFilters();
-  }, [priceRange, rating]);
-
-  //TODO: update
-  const applyFilters = useCallback(() => {
-    const filtered = destinationsData.filter((hotel) => {
+  const handleApplyFilters = () => {
+    const filteredData = data.filter(hotel => {
       return (
         hotel.price >= priceRange[0] &&
         hotel.price <= priceRange[1] &&
@@ -120,17 +148,7 @@ const List = () => {
         hotel.rating <= rating[1]
       );
     });
-  setFilteredData(filtered);
-  },[data,priceRange,rating]);
-
-  const handlePriceChange = (value) => {
-    setPriceRange(value);
-    applyFilters();
-  };
-
-  const handleRatingChange = (value) => {
-    setRating(value);
-    applyFilters();
+    setData(filteredData);
   };
 
   return (
@@ -220,34 +238,21 @@ const List = () => {
                 <h2>Filters</h2>
                 <div className="filterGroup">
                   <label>Rating</label>
-                  <Slider 
-                    range 
-                    min={0} 
-                    max={5} 
-                    defaultValue={rating} 
-                    onChange={handleRatingChange} 
-                    step={0.5} 
-                  />
+                  <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
                 <div className="filterGroup">
                   <label>Price</label>
-                  <Slider 
-                    range 
-                    min={50} 
-                    max={1000} 
-                    defaultValue={priceRange} 
-                    onChange={handlePriceChange} 
-                    step={50}
-                  />
+                  <Slider range min={50} max={1000} defaultValue={priceRange} onChange={(value) => setPriceRange(value)} />
                   <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
                 </div>
-               </div>
+                <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
+              </div>
             </div>
             <div className="listResult">
-              {filteredData.length > 0 ? (
-                filteredData.map((hotel, index) => (
-                  <SearchItem key={index} hotel={hotel} />
+              {data.length > 0 ? (
+                data.map((hotel, index) => (
+                  <SearchItem key={hotel.id || index} hotel={hotel} />
                 ))
               ) : (
                 <div>No hotels found with the selected filters.</div>

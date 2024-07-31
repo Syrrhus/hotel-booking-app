@@ -1,0 +1,6412 @@
+{
+    "searchCompleted": null,
+    "completed": true,
+    "status": null,
+    "currency": "SGD",
+    "hotels": [
+      {
+        "id": "obxM",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 954.35,
+        "coverted_max_cash_payment": 1307.83,
+        "points": 32675,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 954.35,
+        "converted_price": 1307.83,
+        "lowest_converted_price": 1307.83,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1123.907799942
+          }
+        ]
+      },
+      {
+        "id": "T9cE",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 462.52,
+        "coverted_max_cash_payment": 633.83,
+        "points": 15825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 462.52,
+        "price": 633.83,
+        "converted_price": 633.83,
+        "lowest_converted_price": 633.83,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 613.494091104
+          }
+        ]
+      },
+      {
+        "id": "tYGr",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1603.27,
+        "coverted_max_cash_payment": 2197.1,
+        "points": 54925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1603.27,
+        "price": 2197.1,
+        "converted_price": 2197.1,
+        "lowest_converted_price": 2197.1,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1895.626577784
+          }
+        ]
+      },
+      {
+        "id": "QRuH",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1444.32,
+        "coverted_max_cash_payment": 1979.27,
+        "points": 49475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1444.32,
+        "price": 1979.27,
+        "converted_price": 1979.27,
+        "lowest_converted_price": 1979.27,
+        "market_rates": []
+      },
+      {
+        "id": "bwQX",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 347.17,
+        "coverted_max_cash_payment": 475.76,
+        "points": 11875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 347.17,
+        "price": 475.76,
+        "converted_price": 475.76,
+        "lowest_converted_price": 475.76,
+        "market_rates": []
+      },
+      {
+        "id": "lA7u",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1022.95,
+        "coverted_max_cash_payment": 1401.84,
+        "points": 35025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1022.95,
+        "price": 1401.84,
+        "converted_price": 1401.84,
+        "lowest_converted_price": 1401.84,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1231.56526911
+          }
+        ]
+      },
+      {
+        "id": "RcLc",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 3138.37,
+        "coverted_max_cash_payment": 4300.78,
+        "points": 107500,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3138.37,
+        "price": 4300.78,
+        "converted_price": 4300.78,
+        "lowest_converted_price": 4300.78,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3744.934132428
+          }
+        ]
+      },
+      {
+        "id": "xU8z",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 887.16,
+        "coverted_max_cash_payment": 1215.75,
+        "points": 30375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 887.16,
+        "price": 1215.75,
+        "converted_price": 1215.75,
+        "lowest_converted_price": 1215.75,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1058.581532691
+          }
+        ]
+      },
+      {
+        "id": "wcfx",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 2883.8,
+        "coverted_max_cash_payment": 3951.92,
+        "points": 98775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2883.8,
+        "price": 3951.92,
+        "converted_price": 3951.92,
+        "lowest_converted_price": 3951.92,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3578.459726184
+          }
+        ]
+      },
+      {
+        "id": "HL87",
+        "searchRank": 0.78,
+        "price_type": "multi",
+        "max_cash_payment": 640.46,
+        "coverted_max_cash_payment": 877.68,
+        "points": 21925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 640.46,
+        "price": 877.68,
+        "converted_price": 877.68,
+        "lowest_converted_price": 877.68,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 877.676969238
+          }
+        ]
+      },
+      {
+        "id": "nPbT",
+        "searchRank": 0.79,
+        "price_type": "multi",
+        "max_cash_payment": 1795.08,
+        "coverted_max_cash_payment": 2459.95,
+        "points": 61475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1795.08,
+        "price": 2459.95,
+        "converted_price": 2459.95,
+        "lowest_converted_price": 2459.95,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2459.951244324
+          }
+        ]
+      },
+      {
+        "id": "uQiy",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 761.16,
+        "coverted_max_cash_payment": 1043.08,
+        "points": 26075,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 761.16,
+        "price": 1043.08,
+        "converted_price": 1043.08,
+        "lowest_converted_price": 1043.08,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 902.302793079
+          }
+        ]
+      },
+      {
+        "id": "diH7",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2576.89,
+        "coverted_max_cash_payment": 3531.33,
+        "points": 88275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2576.89,
+        "price": 3531.33,
+        "converted_price": 3531.33,
+        "lowest_converted_price": 3531.33,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3102.41528067
+          }
+        ]
+      },
+      {
+        "id": "fggB",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1596.76,
+        "coverted_max_cash_payment": 2188.18,
+        "points": 54700,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1596.76,
+        "price": 2188.18,
+        "converted_price": 2188.18,
+        "lowest_converted_price": 2188.18,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1896.969555378
+          }
+        ]
+      },
+      {
+        "id": "wS6H",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1051.55,
+        "coverted_max_cash_payment": 1441.03,
+        "points": 36025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1051.55,
+        "price": 1441.03,
+        "converted_price": 1441.03,
+        "lowest_converted_price": 1441.03,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1277.418361248
+          }
+        ]
+      },
+      {
+        "id": "C22y",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 566.43,
+        "coverted_max_cash_payment": 776.23,
+        "points": 19400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 566.43,
+        "price": 776.23,
+        "converted_price": 776.23,
+        "lowest_converted_price": 776.23,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 675.901437666
+          }
+        ]
+      },
+      {
+        "id": "6jmD",
+        "searchRank": 0.74,
+        "price_type": "multi",
+        "max_cash_payment": 956.52,
+        "coverted_max_cash_payment": 1310.8,
+        "points": 32750,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 956.52,
+        "price": 1310.8,
+        "converted_price": 1310.8,
+        "lowest_converted_price": 1310.8,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1310.800947156
+          }
+        ]
+      },
+      {
+        "id": "9OnG",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1815.59,
+        "coverted_max_cash_payment": 2488.06,
+        "points": 62200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1815.59,
+        "price": 2488.06,
+        "converted_price": 2488.06,
+        "lowest_converted_price": 2488.06,
+        "market_rates": []
+      },
+      {
+        "id": "uKn5",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 631.26,
+        "coverted_max_cash_payment": 865.07,
+        "points": 21625,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 631.26,
+        "price": 865.07,
+        "converted_price": 865.07,
+        "lowest_converted_price": 865.07,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 747.81925821
+          }
+        ]
+      },
+      {
+        "id": "6Bn6",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 267.07,
+        "coverted_max_cash_payment": 365.99,
+        "points": 9125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 267.07,
+        "price": 365.99,
+        "converted_price": 365.99,
+        "lowest_converted_price": 365.99,
+        "market_rates": []
+      },
+      {
+        "id": "kCm1",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 966.1,
+        "coverted_max_cash_payment": 1323.93,
+        "points": 33075,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 966.1,
+        "price": 1323.93,
+        "converted_price": 1323.93,
+        "lowest_converted_price": 1323.93,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1163.087115669
+          }
+        ]
+      },
+      {
+        "id": "5CCH",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 550.91,
+        "coverted_max_cash_payment": 754.96,
+        "points": 18850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 550.91,
+        "price": 754.96,
+        "converted_price": 754.96,
+        "lowest_converted_price": 754.96,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 640.435866102
+          }
+        ]
+      },
+      {
+        "id": "FMaW",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 889.84,
+        "coverted_max_cash_payment": 1219.42,
+        "points": 30475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 889.84,
+        "price": 1219.42,
+        "converted_price": 1219.42,
+        "lowest_converted_price": 1219.42,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1071.326115981
+          }
+        ]
+      },
+      {
+        "id": "rrtp",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1196.63,
+        "coverted_max_cash_payment": 1639.84,
+        "points": 40975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1196.63,
+        "price": 1639.84,
+        "converted_price": 1639.84,
+        "lowest_converted_price": 1639.84,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1408.605346017
+          }
+        ]
+      },
+      {
+        "id": "fPfV",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 3282.04,
+        "coverted_max_cash_payment": 4497.66,
+        "points": 112425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3282.04,
+        "price": 4497.66,
+        "converted_price": 4497.66,
+        "lowest_converted_price": 4497.66,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3899.102478678
+          }
+        ]
+      },
+      {
+        "id": "mU2X",
+        "searchRank": 0.49,
+        "price_type": "multi",
+        "max_cash_payment": 1184.28,
+        "coverted_max_cash_payment": 1622.92,
+        "points": 40550,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1184.28,
+        "price": 1622.92,
+        "converted_price": 1622.92,
+        "lowest_converted_price": 1622.92,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1622.919903084
+          }
+        ]
+      },
+      {
+        "id": "79Ql",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 693.02,
+        "coverted_max_cash_payment": 949.7,
+        "points": 23725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 693.02,
+        "price": 949.7,
+        "converted_price": 949.7,
+        "lowest_converted_price": 949.7,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 805.731740988
+          }
+        ]
+      },
+      {
+        "id": "KDao",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 550.91,
+        "coverted_max_cash_payment": 754.96,
+        "points": 18850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 550.91,
+        "price": 754.96,
+        "converted_price": 754.96,
+        "lowest_converted_price": 754.96,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 640.435866102
+          }
+        ]
+      },
+      {
+        "id": "oiaR",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1873.61,
+        "coverted_max_cash_payment": 2567.57,
+        "points": 64175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1873.61,
+        "price": 2567.57,
+        "converted_price": 2567.57,
+        "lowest_converted_price": 2567.57,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2255.667907653
+          }
+        ]
+      },
+      {
+        "id": "p3WC",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 500.22,
+        "coverted_max_cash_payment": 685.49,
+        "points": 17125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 500.22,
+        "price": 685.49,
+        "converted_price": 685.49,
+        "lowest_converted_price": 685.49,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 596.885021268
+          }
+        ]
+      },
+      {
+        "id": "FSmO",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2008.45,
+        "coverted_max_cash_payment": 2752.35,
+        "points": 68800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2008.45,
+        "price": 2752.35,
+        "converted_price": 2752.35,
+        "lowest_converted_price": 2752.35,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2439.806580414
+          }
+        ]
+      },
+      {
+        "id": "uHLH",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1555.26,
+        "coverted_max_cash_payment": 2131.31,
+        "points": 53275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1555.26,
+        "price": 2131.31,
+        "converted_price": 2131.31,
+        "lowest_converted_price": 2131.31,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1872.425954655
+          }
+        ]
+      },
+      {
+        "id": "MyKs",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 481.4,
+        "coverted_max_cash_payment": 659.7,
+        "points": 16475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 481.4,
+        "price": 659.7,
+        "converted_price": 659.7,
+        "lowest_converted_price": 659.7,
+        "market_rates": []
+      },
+      {
+        "id": "NEWj",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2114.32,
+        "coverted_max_cash_payment": 2897.43,
+        "points": 72425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2114.32,
+        "price": 2897.43,
+        "converted_price": 2897.43,
+        "lowest_converted_price": 2897.43,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2545.49069475
+          }
+        ]
+      },
+      {
+        "id": "EISK",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 3125.96,
+        "coverted_max_cash_payment": 4283.77,
+        "points": 107075,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3125.96,
+        "price": 4283.77,
+        "converted_price": 4283.77,
+        "lowest_converted_price": 4283.77,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3681.211215978
+          }
+        ]
+      },
+      {
+        "id": "e7IL",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1066.66,
+        "coverted_max_cash_payment": 1461.74,
+        "points": 36525,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1066.66,
+        "price": 1461.74,
+        "converted_price": 1461.74,
+        "lowest_converted_price": 1461.74,
+        "market_rates": []
+      },
+      {
+        "id": "GHAt",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1173.63,
+        "coverted_max_cash_payment": 1608.33,
+        "points": 40200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1173.63,
+        "price": 1608.33,
+        "converted_price": 1608.33,
+        "lowest_converted_price": 1608.33,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1456.363273722
+          }
+        ]
+      },
+      {
+        "id": "NBUd",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 992.68,
+        "coverted_max_cash_payment": 1360.35,
+        "points": 34000,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 992.68,
+        "price": 1360.35,
+        "converted_price": 1360.35,
+        "lowest_converted_price": 1360.35,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1169.048291724
+          }
+        ]
+      },
+      {
+        "id": "0vcz",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1238.34,
+        "coverted_max_cash_payment": 1697,
+        "points": 42425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1238.34,
+        "price": 1697,
+        "converted_price": 1697,
+        "lowest_converted_price": 1697,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1507.711610913
+          }
+        ]
+      },
+      {
+        "id": "XAje",
+        "searchRank": 0.77,
+        "price_type": "multi",
+        "max_cash_payment": 931.84,
+        "coverted_max_cash_payment": 1276.98,
+        "points": 31900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 931.84,
+        "price": 1276.98,
+        "converted_price": 1276.98,
+        "lowest_converted_price": 1276.98,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1276.979837952
+          }
+        ]
+      },
+      {
+        "id": "QDaO",
+        "searchRank": 0.67,
+        "price_type": "multi",
+        "max_cash_payment": 2346.9,
+        "coverted_max_cash_payment": 3216.16,
+        "points": 80400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2346.9,
+        "price": 3216.16,
+        "converted_price": 3216.16,
+        "lowest_converted_price": 3216.16,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3216.15726057
+          }
+        ]
+      },
+      {
+        "id": "G2N3",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 648.12,
+        "coverted_max_cash_payment": 888.17,
+        "points": 22200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 648.12,
+        "price": 888.17,
+        "converted_price": 888.17,
+        "lowest_converted_price": 888.17,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 753.410430234
+          }
+        ]
+      },
+      {
+        "id": "8DTR",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 759.8,
+        "coverted_max_cash_payment": 1041.22,
+        "points": 26025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 759.8,
+        "price": 1041.22,
+        "converted_price": 1041.22,
+        "lowest_converted_price": 1041.22,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 998.681991228
+          }
+        ]
+      },
+      {
+        "id": "YTqN",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1029.71,
+        "coverted_max_cash_payment": 1411.1,
+        "points": 35275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1029.71,
+        "price": 1411.1,
+        "converted_price": 1411.1,
+        "lowest_converted_price": 1411.1,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1212.626544264
+          }
+        ]
+      },
+      {
+        "id": "WUEo",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 518.39,
+        "coverted_max_cash_payment": 710.39,
+        "points": 17750,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 518.39,
+        "price": 710.39,
+        "converted_price": 710.39,
+        "lowest_converted_price": 710.39,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 624.07346562
+          }
+        ]
+      },
+      {
+        "id": "NkC8",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 4225.29,
+        "coverted_max_cash_payment": 5790.28,
+        "points": 144750,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 4225.29,
+        "price": 5790.28,
+        "converted_price": 5790.28,
+        "lowest_converted_price": 5790.28,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 5017.624664391
+          }
+        ]
+      },
+      {
+        "id": "eqUd",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1424.29,
+        "coverted_max_cash_payment": 1951.83,
+        "points": 48775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1424.29,
+        "price": 1951.83,
+        "converted_price": 1951.83,
+        "lowest_converted_price": 1951.83,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1734.099262473
+          }
+        ]
+      },
+      {
+        "id": "hTu2",
+        "searchRank": 0.79,
+        "price_type": "multi",
+        "max_cash_payment": 1043.09,
+        "coverted_max_cash_payment": 1429.44,
+        "points": 35725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1043.09,
+        "price": 1429.44,
+        "converted_price": 1429.44,
+        "lowest_converted_price": 1429.44,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1429.435202577
+          }
+        ]
+      },
+      {
+        "id": "1TOY",
+        "searchRank": 0.88,
+        "price_type": "multi",
+        "max_cash_payment": 1896.95,
+        "coverted_max_cash_payment": 2599.55,
+        "points": 64975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1896.95,
+        "price": 2599.55,
+        "converted_price": 2599.55,
+        "lowest_converted_price": 2599.55,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2418.305235057
+          }
+        ]
+      },
+      {
+        "id": "UcCS",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1001.24,
+        "coverted_max_cash_payment": 1372.08,
+        "points": 34300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1001.24,
+        "price": 1372.08,
+        "converted_price": 1372.08,
+        "lowest_converted_price": 1372.08,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1179.106919826
+          }
+        ]
+      },
+      {
+        "id": "tA2C",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1951.7,
+        "coverted_max_cash_payment": 2674.58,
+        "points": 66850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1951.7,
+        "price": 2674.58,
+        "converted_price": 2674.58,
+        "lowest_converted_price": 2674.58,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2349.703746939
+          }
+        ]
+      },
+      {
+        "id": "b3rI",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1499.26,
+        "coverted_max_cash_payment": 2054.56,
+        "points": 51350,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1499.26,
+        "price": 2054.56,
+        "converted_price": 2054.56,
+        "lowest_converted_price": 2054.56,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1765.988128404
+          }
+        ]
+      },
+      {
+        "id": "WoMd",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 462.52,
+        "coverted_max_cash_payment": 633.83,
+        "points": 15825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 462.52,
+        "price": 633.83,
+        "converted_price": 633.83,
+        "lowest_converted_price": 633.83,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 613.494091104
+          }
+        ]
+      },
+      {
+        "id": "cqqh",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1496.51,
+        "coverted_max_cash_payment": 2050.8,
+        "points": 51250,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1496.51,
+        "price": 2050.8,
+        "converted_price": 2050.8,
+        "lowest_converted_price": 2050.8,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1762.370311212
+          }
+        ]
+      },
+      {
+        "id": "K6ew",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 726.79,
+        "coverted_max_cash_payment": 995.98,
+        "points": 24875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 726.79,
+        "price": 995.98,
+        "converted_price": 995.98,
+        "lowest_converted_price": 995.98,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 992.076734082
+          }
+        ]
+      },
+      {
+        "id": "I7nd",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1576.93,
+        "coverted_max_cash_payment": 2161,
+        "points": 54025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1576.93,
+        "price": 2161,
+        "converted_price": 2161,
+        "lowest_converted_price": 2161,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1898.449571502
+          }
+        ]
+      },
+      {
+        "id": "dFcw",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 665.77,
+        "coverted_max_cash_payment": 912.36,
+        "points": 22800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 665.77,
+        "price": 912.36,
+        "converted_price": 912.36,
+        "lowest_converted_price": 912.36,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 794.453469969
+          }
+        ]
+      },
+      {
+        "id": "jEQ2",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1278.02,
+        "coverted_max_cash_payment": 1751.38,
+        "points": 43775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1278.02,
+        "price": 1751.38,
+        "converted_price": 1751.38,
+        "lowest_converted_price": 1751.38,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1573.791590079
+          }
+        ]
+      },
+      {
+        "id": "1xUw",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2109.73,
+        "coverted_max_cash_payment": 2891.14,
+        "points": 72275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2109.73,
+        "price": 2891.14,
+        "converted_price": 2891.14,
+        "lowest_converted_price": 2891.14,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2506.407305994
+          }
+        ]
+      },
+      {
+        "id": "yNDH",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1237.4,
+        "coverted_max_cash_payment": 1695.71,
+        "points": 42375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1237.4,
+        "price": 1695.71,
+        "converted_price": 1695.71,
+        "lowest_converted_price": 1695.71,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1457.158097196
+          }
+        ]
+      },
+      {
+        "id": "n6qH",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 6554.85,
+        "coverted_max_cash_payment": 8982.67,
+        "points": 224550,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 6554.85,
+        "price": 8982.67,
+        "converted_price": 8982.67,
+        "lowest_converted_price": 8982.67,
+        "market_rates": []
+      },
+      {
+        "id": "BlKz",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1434.33,
+        "coverted_max_cash_payment": 1965.58,
+        "points": 49125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1434.33,
+        "price": 1965.58,
+        "converted_price": 1965.58,
+        "lowest_converted_price": 1965.58,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1746.350507055
+          }
+        ]
+      },
+      {
+        "id": "jguU",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 141.88,
+        "coverted_max_cash_payment": 194.43,
+        "points": 4850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 141.88,
+        "price": 194.43,
+        "converted_price": 194.43,
+        "lowest_converted_price": 194.43,
+        "market_rates": []
+      },
+      {
+        "id": "XRpW",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1892.46,
+        "coverted_max_cash_payment": 2593.4,
+        "points": 64825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1892.46,
+        "price": 2593.4,
+        "converted_price": 2593.4,
+        "lowest_converted_price": 2593.4,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2309.318492148
+          }
+        ]
+      },
+      {
+        "id": "Fo1h",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1515.73,
+        "coverted_max_cash_payment": 2077.13,
+        "points": 51925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1515.73,
+        "price": 2077.13,
+        "converted_price": 2077.13,
+        "lowest_converted_price": 2077.13,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1869.095918376
+          }
+        ]
+      },
+      {
+        "id": "kzXL",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1779.16,
+        "coverted_max_cash_payment": 2438.13,
+        "points": 60950,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1779.16,
+        "price": 2438.13,
+        "converted_price": 2438.13,
+        "lowest_converted_price": 2438.13,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2151.313067058
+          }
+        ]
+      },
+      {
+        "id": "NMBb",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 972.71,
+        "coverted_max_cash_payment": 1332.99,
+        "points": 33300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 972.71,
+        "price": 1332.99,
+        "converted_price": 1332.99,
+        "lowest_converted_price": 1332.99,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1191.947430087
+          }
+        ]
+      },
+      {
+        "id": "ISEX",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 2431.13,
+        "coverted_max_cash_payment": 3331.58,
+        "points": 83275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2431.13,
+        "price": 3331.58,
+        "converted_price": 3331.58,
+        "lowest_converted_price": 3331.58,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2829.544159734
+          }
+        ]
+      },
+      {
+        "id": "MMOd",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 781.28,
+        "coverted_max_cash_payment": 1070.65,
+        "points": 26750,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 781.28,
+        "price": 1070.65,
+        "converted_price": 1070.65,
+        "lowest_converted_price": 1070.65,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 928.134555984
+          }
+        ]
+      },
+      {
+        "id": "wA7A",
+        "searchRank": 0.74,
+        "price_type": "multi",
+        "max_cash_payment": 1675.68,
+        "coverted_max_cash_payment": 2296.33,
+        "points": 57400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1675.68,
+        "price": 2296.33,
+        "converted_price": 2296.33,
+        "lowest_converted_price": 2296.33,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2296.327239504
+          }
+        ]
+      },
+      {
+        "id": "i4Ud",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 522.41,
+        "coverted_max_cash_payment": 715.9,
+        "points": 17875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 522.41,
+        "price": 715.9,
+        "converted_price": 715.9,
+        "lowest_converted_price": 715.9,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 638.161026504
+          }
+        ]
+      },
+      {
+        "id": "bQLE",
+        "searchRank": 0.66,
+        "price_type": "multi",
+        "max_cash_payment": 964.5,
+        "coverted_max_cash_payment": 1321.74,
+        "points": 33025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 964.5,
+        "price": 1321.74,
+        "converted_price": 1321.74,
+        "lowest_converted_price": 1321.74,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1321.73662185
+          }
+        ]
+      },
+      {
+        "id": "jrzP",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1753.1,
+        "coverted_max_cash_payment": 2402.42,
+        "points": 60050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1753.1,
+        "price": 2402.42,
+        "converted_price": 2402.42,
+        "lowest_converted_price": 2402.42,
+        "market_rates": []
+      },
+      {
+        "id": "1E6W",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1576.91,
+        "coverted_max_cash_payment": 2160.97,
+        "points": 54000,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1576.91,
+        "price": 2160.97,
+        "converted_price": 2160.97,
+        "lowest_converted_price": 2160.97,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1898.490683061
+          }
+        ]
+      },
+      {
+        "id": "Js8O",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 534.83,
+        "coverted_max_cash_payment": 732.92,
+        "points": 18300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 534.83,
+        "price": 732.92,
+        "converted_price": 732.92,
+        "lowest_converted_price": 732.92,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 638.161026504
+          }
+        ]
+      },
+      {
+        "id": "UeG9",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1907.41,
+        "coverted_max_cash_payment": 2613.89,
+        "points": 65325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1907.41,
+        "price": 2613.89,
+        "converted_price": 2613.89,
+        "lowest_converted_price": 2613.89,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2366.847267042
+          }
+        ]
+      },
+      {
+        "id": "rpIj",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 540.12,
+        "coverted_max_cash_payment": 740.17,
+        "points": 18500,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 540.12,
+        "price": 740.17,
+        "converted_price": 740.17,
+        "lowest_converted_price": 740.17,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 627.77350593
+          }
+        ]
+      },
+      {
+        "id": "yncA",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 418.83,
+        "coverted_max_cash_payment": 573.96,
+        "points": 14325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 418.83,
+        "price": 573.96,
+        "converted_price": 573.96,
+        "lowest_converted_price": 573.96,
+        "market_rates": []
+      },
+      {
+        "id": "yhO0",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 550.91,
+        "coverted_max_cash_payment": 754.96,
+        "points": 18850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 550.91,
+        "price": 754.96,
+        "converted_price": 754.96,
+        "lowest_converted_price": 754.96,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 640.435866102
+          }
+        ]
+      },
+      {
+        "id": "Cgei",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1214.79,
+        "coverted_max_cash_payment": 1664.73,
+        "points": 41600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1214.79,
+        "price": 1664.73,
+        "converted_price": 1664.73,
+        "lowest_converted_price": 1664.73,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1430.558918523
+          }
+        ]
+      },
+      {
+        "id": "KFTC",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1203.44,
+        "coverted_max_cash_payment": 1649.18,
+        "points": 41225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1203.44,
+        "price": 1649.18,
+        "converted_price": 1649.18,
+        "lowest_converted_price": 1649.18,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1461.92703804
+          }
+        ]
+      },
+      {
+        "id": "m2Vz",
+        "searchRank": 0.76,
+        "price_type": "multi",
+        "max_cash_payment": 1371.72,
+        "coverted_max_cash_payment": 1879.78,
+        "points": 46975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1371.72,
+        "price": 1879.78,
+        "converted_price": 1879.78,
+        "lowest_converted_price": 1879.78,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1879.784923716
+          }
+        ]
+      },
+      {
+        "id": "Ulqm",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1485.12,
+        "coverted_max_cash_payment": 2035.19,
+        "points": 50875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1485.12,
+        "price": 2035.19,
+        "converted_price": 2035.19,
+        "lowest_converted_price": 2035.19,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1754.874303621
+          }
+        ]
+      },
+      {
+        "id": "pmzA",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 739.09,
+        "coverted_max_cash_payment": 1012.84,
+        "points": 25300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 739.09,
+        "price": 1012.84,
+        "converted_price": 1012.84,
+        "lowest_converted_price": 1012.84,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 881.84294055
+          }
+        ]
+      },
+      {
+        "id": "X36o",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1489.73,
+        "coverted_max_cash_payment": 2041.5,
+        "points": 51025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1489.73,
+        "price": 2041.5,
+        "converted_price": 2041.5,
+        "lowest_converted_price": 2041.5,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1834.548504963
+          }
+        ]
+      },
+      {
+        "id": "ct99",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1457.27,
+        "coverted_max_cash_payment": 1997.02,
+        "points": 49925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1457.27,
+        "price": 1997.02,
+        "converted_price": 1997.02,
+        "lowest_converted_price": 1997.02,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1754.476891884
+          }
+        ]
+      },
+      {
+        "id": "UPOd",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 666.44,
+        "coverted_max_cash_payment": 913.28,
+        "points": 22825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 666.44,
+        "price": 913.28,
+        "converted_price": 913.28,
+        "lowest_converted_price": 913.28,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 795.23458959
+          }
+        ]
+      },
+      {
+        "id": "SewF",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1190.94,
+        "coverted_max_cash_payment": 1632.05,
+        "points": 40800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1190.94,
+        "price": 1632.05,
+        "converted_price": 1632.05,
+        "lowest_converted_price": 1632.05,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1402.507131432
+          }
+        ]
+      },
+      {
+        "id": "uNR8",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2583.07,
+        "coverted_max_cash_payment": 3539.8,
+        "points": 88475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2583.07,
+        "price": 3539.8,
+        "converted_price": 3539.8,
+        "lowest_converted_price": 3539.8,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3044.831690364
+          }
+        ]
+      },
+      {
+        "id": "oyOm",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1344.32,
+        "coverted_max_cash_payment": 1842.24,
+        "points": 46050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1344.32,
+        "price": 1842.24,
+        "converted_price": 1842.24,
+        "lowest_converted_price": 1842.24,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1583.082802413
+          }
+        ]
+      },
+      {
+        "id": "Sjym",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1770.95,
+        "coverted_max_cash_payment": 2426.88,
+        "points": 60650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1770.95,
+        "price": 2426.88,
+        "converted_price": 2426.88,
+        "lowest_converted_price": 2426.88,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2180.844870273
+          }
+        ]
+      },
+      {
+        "id": "D5sk",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 507.35,
+        "coverted_max_cash_payment": 695.26,
+        "points": 17375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 507.35,
+        "price": 695.26,
+        "converted_price": 695.26,
+        "lowest_converted_price": 695.26,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 597.460583094
+          }
+        ]
+      },
+      {
+        "id": "Y0Jj",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 230.12,
+        "coverted_max_cash_payment": 315.35,
+        "points": 7875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 230.12,
+        "price": 315.35,
+        "converted_price": 315.35,
+        "lowest_converted_price": 315.35,
+        "market_rates": []
+      },
+      {
+        "id": "RPSx",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 2925.61,
+        "coverted_max_cash_payment": 4009.21,
+        "points": 100225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2925.61,
+        "price": 4009.21,
+        "converted_price": 4009.21,
+        "lowest_converted_price": 4009.21,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3570.045560442
+          }
+        ]
+      },
+      {
+        "id": "gkOT",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 940.84,
+        "coverted_max_cash_payment": 1289.31,
+        "points": 32225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 940.84,
+        "price": 1289.31,
+        "converted_price": 1289.31,
+        "lowest_converted_price": 1289.31,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1145.532479976
+          }
+        ]
+      },
+      {
+        "id": "C7Ke",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1019.93,
+        "coverted_max_cash_payment": 1397.7,
+        "points": 34925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1019.93,
+        "price": 1397.7,
+        "converted_price": 1397.7,
+        "lowest_converted_price": 1397.7,
+        "market_rates": []
+      },
+      {
+        "id": "xc99",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 491.49,
+        "coverted_max_cash_payment": 673.53,
+        "points": 16825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 491.49,
+        "price": 673.53,
+        "converted_price": 673.53,
+        "lowest_converted_price": 673.53,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 586.483796841
+          }
+        ]
+      },
+      {
+        "id": "xPN2",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1578.01,
+        "coverted_max_cash_payment": 2162.48,
+        "points": 54050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1578.01,
+        "price": 2162.48,
+        "converted_price": 2162.48,
+        "lowest_converted_price": 2162.48,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1958.14355517
+          }
+        ]
+      },
+      {
+        "id": "iqUx",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 820.33,
+        "coverted_max_cash_payment": 1124.17,
+        "points": 28100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 820.33,
+        "price": 1124.17,
+        "converted_price": 1124.17,
+        "lowest_converted_price": 1124.17,
+        "market_rates": []
+      },
+      {
+        "id": "mLcW",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 963.1,
+        "coverted_max_cash_payment": 1319.82,
+        "points": 32975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 963.1,
+        "price": 1319.82,
+        "converted_price": 1319.82,
+        "lowest_converted_price": 1319.82,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1159.510410036
+          }
+        ]
+      },
+      {
+        "id": "Kl9l",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 784.22,
+        "coverted_max_cash_payment": 1074.68,
+        "points": 26850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 784.22,
+        "price": 1074.68,
+        "converted_price": 1074.68,
+        "lowest_converted_price": 1074.68,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 923.530061376
+          }
+        ]
+      },
+      {
+        "id": "QvTu",
+        "searchRank": 0.86,
+        "price_type": "multi",
+        "max_cash_payment": 846,
+        "coverted_max_cash_payment": 1159.35,
+        "points": 28975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 846,
+        "price": 1159.35,
+        "converted_price": 1159.35,
+        "lowest_converted_price": 1159.35,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1101.460888728
+          }
+        ]
+      },
+      {
+        "id": "euna",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2659.59,
+        "coverted_max_cash_payment": 3644.66,
+        "points": 91100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2659.59,
+        "price": 3644.66,
+        "converted_price": 3644.66,
+        "lowest_converted_price": 3644.66,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3230.792975574
+          }
+        ]
+      },
+      {
+        "id": "W3kr",
+        "searchRank": 0.83,
+        "price_type": "multi",
+        "max_cash_payment": 578.67,
+        "coverted_max_cash_payment": 793,
+        "points": 19825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 578.67,
+        "price": 793,
+        "converted_price": 793,
+        "lowest_converted_price": 793,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 784.093357101
+          }
+        ]
+      },
+      {
+        "id": "EqjK",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1862.78,
+        "coverted_max_cash_payment": 2552.73,
+        "points": 63800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1862.78,
+        "price": 2552.73,
+        "converted_price": 2552.73,
+        "lowest_converted_price": 2552.73,
+        "market_rates": []
+      },
+      {
+        "id": "6KSS",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 2486.7,
+        "coverted_max_cash_payment": 3407.74,
+        "points": 85175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2486.7,
+        "price": 3407.74,
+        "converted_price": 3407.74,
+        "lowest_converted_price": 3407.74,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2973.845731824
+          }
+        ]
+      },
+      {
+        "id": "JkrZ",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1158.83,
+        "coverted_max_cash_payment": 1588.04,
+        "points": 39700,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1158.83,
+        "price": 1588.04,
+        "converted_price": 1588.04,
+        "lowest_converted_price": 1588.04,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1395.161866224
+          }
+        ]
+      },
+      {
+        "id": "VZ69",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 698.66,
+        "coverted_max_cash_payment": 957.43,
+        "points": 23925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 698.66,
+        "price": 957.43,
+        "converted_price": 957.43,
+        "lowest_converted_price": 957.43,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 856.35377397
+          }
+        ]
+      },
+      {
+        "id": "kW9E",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1451.93,
+        "coverted_max_cash_payment": 1989.7,
+        "points": 49725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1451.93,
+        "price": 1989.7,
+        "converted_price": 1989.7,
+        "lowest_converted_price": 1989.7,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1763.768104218
+          }
+        ]
+      },
+      {
+        "id": "kLxE",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1669.27,
+        "coverted_max_cash_payment": 2287.54,
+        "points": 57175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1669.27,
+        "price": 2287.54,
+        "converted_price": 2287.54,
+        "lowest_converted_price": 2287.54,
+        "market_rates": []
+      },
+      {
+        "id": "nZLF",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 1978.78,
+        "coverted_max_cash_payment": 2711.69,
+        "points": 67775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1978.78,
+        "price": 2711.69,
+        "converted_price": 2711.69,
+        "lowest_converted_price": 2711.69,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2303.06953518
+          }
+        ]
+      },
+      {
+        "id": "Jt8Q",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1148.37,
+        "coverted_max_cash_payment": 1573.71,
+        "points": 39325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1148.37,
+        "price": 1573.71,
+        "converted_price": 1573.71,
+        "lowest_converted_price": 1573.71,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1352.351029452
+          }
+        ]
+      },
+      {
+        "id": "le9w",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 514.34,
+        "coverted_max_cash_payment": 704.84,
+        "points": 17600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 514.34,
+        "price": 704.84,
+        "converted_price": 704.84,
+        "lowest_converted_price": 704.84,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 701.061711774
+          }
+        ]
+      },
+      {
+        "id": "o1oS",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 529.98,
+        "coverted_max_cash_payment": 726.28,
+        "points": 18150,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 529.98,
+        "price": 726.28,
+        "converted_price": 726.28,
+        "lowest_converted_price": 726.28,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 624.114577179
+          }
+        ]
+      },
+      {
+        "id": "r5cT",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 2810.2,
+        "coverted_max_cash_payment": 3851.06,
+        "points": 96275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2810.2,
+        "price": 3851.06,
+        "converted_price": 3851.06,
+        "lowest_converted_price": 3851.06,
+        "market_rates": []
+      },
+      {
+        "id": "kky2",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 916.71,
+        "coverted_max_cash_payment": 1256.25,
+        "points": 31400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 916.71,
+        "price": 1256.25,
+        "converted_price": 1256.25,
+        "lowest_converted_price": 1256.25,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1116.096603732
+          }
+        ]
+      },
+      {
+        "id": "4KUW",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 594.72,
+        "coverted_max_cash_payment": 815,
+        "points": 20350,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 594.72,
+        "price": 815,
+        "converted_price": 815,
+        "lowest_converted_price": 815,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 700.376519124
+          }
+        ]
+      },
+      {
+        "id": "S7uU",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 622.22,
+        "coverted_max_cash_payment": 852.68,
+        "points": 21300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 622.22,
+        "price": 852.68,
+        "converted_price": 852.68,
+        "lowest_converted_price": 852.68,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 742.47475554
+          }
+        ]
+      },
+      {
+        "id": "JzsM",
+        "searchRank": 0.86,
+        "price_type": "multi",
+        "max_cash_payment": 1366.1,
+        "coverted_max_cash_payment": 1872.08,
+        "points": 46800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1366.1,
+        "price": 1872.08,
+        "converted_price": 1872.08,
+        "lowest_converted_price": 1872.08,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1778.568265458
+          }
+        ]
+      },
+      {
+        "id": "PJ5F",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 875.18,
+        "coverted_max_cash_payment": 1199.33,
+        "points": 29975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 875.18,
+        "price": 1199.33,
+        "converted_price": 1199.33,
+        "lowest_converted_price": 1199.33,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1037.409079806
+          }
+        ]
+      },
+      {
+        "id": "QjeQ",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 123.18,
+        "coverted_max_cash_payment": 168.8,
+        "points": 4200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 123.18,
+        "price": 168.8,
+        "converted_price": 168.8,
+        "lowest_converted_price": 168.8,
+        "market_rates": []
+      },
+      {
+        "id": "ANCI",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 785.29,
+        "coverted_max_cash_payment": 1076.15,
+        "points": 26900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 785.29,
+        "price": 1076.15,
+        "converted_price": 1076.15,
+        "lowest_converted_price": 1076.15,
+        "market_rates": []
+      },
+      {
+        "id": "72dC",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 6552.66,
+        "coverted_max_cash_payment": 8979.67,
+        "points": 224475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 6552.66,
+        "price": 8979.67,
+        "converted_price": 8979.67,
+        "lowest_converted_price": 8979.67,
+        "market_rates": []
+      },
+      {
+        "id": "7Dhu",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1137.24,
+        "coverted_max_cash_payment": 1558.46,
+        "points": 38950,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1137.24,
+        "price": 1558.46,
+        "converted_price": 1558.46,
+        "lowest_converted_price": 1558.46,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1351.008051858
+          }
+        ]
+      },
+      {
+        "id": "peRz",
+        "searchRank": 0.83,
+        "price_type": "multi",
+        "max_cash_payment": 535.52,
+        "coverted_max_cash_payment": 733.87,
+        "points": 18325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 535.52,
+        "price": 733.87,
+        "converted_price": 733.87,
+        "lowest_converted_price": 733.87,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 721.672306686
+          }
+        ]
+      },
+      {
+        "id": "dANg",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1251.88,
+        "coverted_max_cash_payment": 1715.56,
+        "points": 42875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1251.88,
+        "price": 1715.56,
+        "converted_price": 1715.56,
+        "lowest_converted_price": 1715.56,
+        "market_rates": []
+      },
+      {
+        "id": "DmVf",
+        "searchRank": 0.83,
+        "price_type": "multi",
+        "max_cash_payment": 2142.73,
+        "coverted_max_cash_payment": 2936.37,
+        "points": 73400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2142.73,
+        "price": 2936.37,
+        "converted_price": 2936.37,
+        "lowest_converted_price": 2936.37,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2909.05391484
+          }
+        ]
+      },
+      {
+        "id": "dnj0",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 788.38,
+        "coverted_max_cash_payment": 1080.38,
+        "points": 27000,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 788.38,
+        "price": 1080.38,
+        "converted_price": 1080.38,
+        "lowest_converted_price": 1080.38,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 934.547959188
+          }
+        ]
+      },
+      {
+        "id": "VIDV",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 2568.06,
+        "coverted_max_cash_payment": 3519.23,
+        "points": 87975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2568.06,
+        "price": 3519.23,
+        "converted_price": 3519.23,
+        "lowest_converted_price": 3519.23,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3064.359680889
+          }
+        ]
+      },
+      {
+        "id": "4PXS",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1114.63,
+        "coverted_max_cash_payment": 1527.47,
+        "points": 38175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1114.63,
+        "price": 1527.47,
+        "converted_price": 1527.47,
+        "lowest_converted_price": 1527.47,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1341.963508878
+          }
+        ]
+      },
+      {
+        "id": "ehKj",
+        "searchRank": 0.9,
+        "price_type": "multi",
+        "max_cash_payment": 530.16,
+        "coverted_max_cash_payment": 726.52,
+        "points": 18150,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 530.16,
+        "price": 726.52,
+        "converted_price": 726.52,
+        "lowest_converted_price": 726.52,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 659.264960124
+          }
+        ]
+      },
+      {
+        "id": "gkKj",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 801.9,
+        "coverted_max_cash_payment": 1098.91,
+        "points": 27450,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 801.9,
+        "price": 1098.91,
+        "converted_price": 1098.91,
+        "lowest_converted_price": 1098.91,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 959.13267147
+          }
+        ]
+      },
+      {
+        "id": "MEHW",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1317.4,
+        "coverted_max_cash_payment": 1805.35,
+        "points": 45125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1317.4,
+        "price": 1805.35,
+        "converted_price": 1805.35,
+        "lowest_converted_price": 1805.35,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1586.08394622
+          }
+        ]
+      },
+      {
+        "id": "IdW7",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1455.17,
+        "coverted_max_cash_payment": 1994.14,
+        "points": 49850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1455.17,
+        "price": 1994.14,
+        "converted_price": 1994.14,
+        "lowest_converted_price": 1994.14,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1783.638691068
+          }
+        ]
+      },
+      {
+        "id": "48Pm",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 722,
+        "coverted_max_cash_payment": 989.42,
+        "points": 24725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 722,
+        "price": 989.42,
+        "converted_price": 989.42,
+        "lowest_converted_price": 989.42,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 839.251365426
+          }
+        ]
+      },
+      {
+        "id": "iRm9",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 2150.01,
+        "coverted_max_cash_payment": 2946.34,
+        "points": 73650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2150.01,
+        "price": 2946.34,
+        "converted_price": 2946.34,
+        "lowest_converted_price": 2946.34,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2667.920917452
+          }
+        ]
+      },
+      {
+        "id": "dwHs",
+        "searchRank": 0.81,
+        "price_type": "multi",
+        "max_cash_payment": 655.46,
+        "coverted_max_cash_payment": 898.23,
+        "points": 22450,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 655.46,
+        "price": 898.23,
+        "converted_price": 898.23,
+        "lowest_converted_price": 898.23,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 898.232748738
+          }
+        ]
+      },
+      {
+        "id": "aimp",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 105.23,
+        "coverted_max_cash_payment": 144.21,
+        "points": 3600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 105.23,
+        "price": 144.21,
+        "converted_price": 144.21,
+        "lowest_converted_price": 144.21,
+        "market_rates": []
+      },
+      {
+        "id": "spPd",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 940.04,
+        "coverted_max_cash_payment": 1288.22,
+        "points": 32200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 940.04,
+        "price": 1288.22,
+        "converted_price": 1288.22,
+        "lowest_converted_price": 1288.22,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1131.787515417
+          }
+        ]
+      },
+      {
+        "id": "ez0u",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1038.1,
+        "coverted_max_cash_payment": 1422.6,
+        "points": 35550,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1038.1,
+        "price": 1422.6,
+        "converted_price": 1422.6,
+        "lowest_converted_price": 1422.6,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1249.7913936
+          }
+        ]
+      },
+      {
+        "id": "m6iS",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 419.93,
+        "coverted_max_cash_payment": 575.47,
+        "points": 14375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 419.93,
+        "price": 575.47,
+        "converted_price": 575.47,
+        "lowest_converted_price": 575.47,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 497.4498639
+          }
+        ]
+      },
+      {
+        "id": "Bh48",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1174.72,
+        "coverted_max_cash_payment": 1609.82,
+        "points": 40225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1174.72,
+        "price": 1609.82,
+        "converted_price": 1609.82,
+        "lowest_converted_price": 1609.82,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1395.545574108
+          }
+        ]
+      },
+      {
+        "id": "XNVf",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 481.4,
+        "coverted_max_cash_payment": 659.7,
+        "points": 16475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 481.4,
+        "price": 659.7,
+        "converted_price": 659.7,
+        "lowest_converted_price": 659.7,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 659.29236783
+          }
+        ]
+      },
+      {
+        "id": "TbRp",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 1161.91,
+        "coverted_max_cash_payment": 1592.26,
+        "points": 39800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1161.91,
+        "price": 1592.26,
+        "converted_price": 1592.26,
+        "lowest_converted_price": 1592.26,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1352.323621746
+          }
+        ]
+      },
+      {
+        "id": "tbqg",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 694.79,
+        "coverted_max_cash_payment": 952.13,
+        "points": 23800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 694.79,
+        "price": 952.13,
+        "converted_price": 952.13,
+        "lowest_converted_price": 952.13,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 807.773615085
+          }
+        ]
+      },
+      {
+        "id": "LBIA",
+        "searchRank": 0.58,
+        "price_type": "multi",
+        "max_cash_payment": 1224.48,
+        "coverted_max_cash_payment": 1678.01,
+        "points": 41950,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1224.48,
+        "price": 1678.01,
+        "converted_price": 1678.01,
+        "lowest_converted_price": 1678.01,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1678.009392144
+          }
+        ]
+      },
+      {
+        "id": "xnJX",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 680.44,
+        "coverted_max_cash_payment": 932.46,
+        "points": 23300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 680.44,
+        "price": 932.46,
+        "converted_price": 932.46,
+        "lowest_converted_price": 932.46,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 811.925882544
+          }
+        ]
+      },
+      {
+        "id": "CKsF",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 974.84,
+        "coverted_max_cash_payment": 1335.91,
+        "points": 33375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 974.84,
+        "price": 1335.91,
+        "converted_price": 1335.91,
+        "lowest_converted_price": 1335.91,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1189.604071224
+          }
+        ]
+      },
+      {
+        "id": "cxJh",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1156.88,
+        "coverted_max_cash_payment": 1585.37,
+        "points": 39625,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1156.88,
+        "price": 1585.37,
+        "converted_price": 1585.37,
+        "lowest_converted_price": 1585.37,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1435.533417162
+          }
+        ]
+      },
+      {
+        "id": "rqhB",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 558.15,
+        "coverted_max_cash_payment": 764.88,
+        "points": 19100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 558.15,
+        "price": 764.88,
+        "converted_price": 764.88,
+        "lowest_converted_price": 764.88,
+        "market_rates": []
+      },
+      {
+        "id": "W4HH",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 972.5,
+        "coverted_max_cash_payment": 1332.7,
+        "points": 33300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 972.5,
+        "price": 1332.7,
+        "converted_price": 1332.7,
+        "lowest_converted_price": 1332.7,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1145.258402916
+          }
+        ]
+      },
+      {
+        "id": "dQtv",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 3057.1,
+        "coverted_max_cash_payment": 4189.4,
+        "points": 104725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3057.1,
+        "price": 4189.4,
+        "converted_price": 4189.4,
+        "lowest_converted_price": 4189.4,
+        "market_rates": []
+      },
+      {
+        "id": "WaXd",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2417.4,
+        "coverted_max_cash_payment": 3312.77,
+        "points": 82800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2417.4,
+        "price": 3312.77,
+        "converted_price": 3312.77,
+        "lowest_converted_price": 3312.77,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2861.282283282
+          }
+        ]
+      },
+      {
+        "id": "O86N",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 585.44,
+        "coverted_max_cash_payment": 802.28,
+        "points": 20050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 585.44,
+        "price": 802.28,
+        "converted_price": 802.28,
+        "lowest_converted_price": 802.28,
+        "market_rates": []
+      },
+      {
+        "id": "BU1o",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 126.39,
+        "coverted_max_cash_payment": 173.2,
+        "points": 4325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 126.39,
+        "price": 173.2,
+        "converted_price": 173.2,
+        "lowest_converted_price": 173.2,
+        "market_rates": []
+      },
+      {
+        "id": "tmNc",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1471.21,
+        "coverted_max_cash_payment": 2016.12,
+        "points": 50400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1471.21,
+        "price": 2016.12,
+        "converted_price": 2016.12,
+        "lowest_converted_price": 2016.12,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1787.174285142
+          }
+        ]
+      },
+      {
+        "id": "18j8",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2252.4,
+        "coverted_max_cash_payment": 3086.66,
+        "points": 77150,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2252.4,
+        "price": 3086.66,
+        "converted_price": 3086.66,
+        "lowest_converted_price": 3086.66,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2711.800654758
+          }
+        ]
+      },
+      {
+        "id": "jOZC",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1018.83,
+        "coverted_max_cash_payment": 1396.19,
+        "points": 34900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1018.83,
+        "price": 1396.19,
+        "converted_price": 1396.19,
+        "lowest_converted_price": 1396.19,
+        "market_rates": []
+      },
+      {
+        "id": "0Tki",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1083.16,
+        "coverted_max_cash_payment": 1484.35,
+        "points": 37100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1083.16,
+        "price": 1484.35,
+        "converted_price": 1484.35,
+        "lowest_converted_price": 1484.35,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1321.818844968
+          }
+        ]
+      },
+      {
+        "id": "JTcI",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 1327.91,
+        "coverted_max_cash_payment": 1819.75,
+        "points": 45475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1327.91,
+        "price": 1819.75,
+        "converted_price": 1819.75,
+        "lowest_converted_price": 1819.75,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1584.453187713
+          }
+        ]
+      },
+      {
+        "id": "Hwwg",
+        "searchRank": 0.69,
+        "price_type": "multi",
+        "max_cash_payment": 546.37,
+        "coverted_max_cash_payment": 748.74,
+        "points": 18700,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 546.37,
+        "price": 748.74,
+        "converted_price": 748.74,
+        "lowest_converted_price": 748.74,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 748.737416361
+          }
+        ]
+      },
+      {
+        "id": "fPRn",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 333.43,
+        "coverted_max_cash_payment": 456.93,
+        "points": 11400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 333.43,
+        "price": 456.93,
+        "converted_price": 456.93,
+        "lowest_converted_price": 456.93,
+        "market_rates": []
+      },
+      {
+        "id": "fmcG",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 102.18,
+        "coverted_max_cash_payment": 140.03,
+        "points": 3500,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 102.18,
+        "price": 140.03,
+        "converted_price": 140.03,
+        "lowest_converted_price": 140.03,
+        "market_rates": []
+      },
+      {
+        "id": "bmX6",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 717.9,
+        "coverted_max_cash_payment": 983.8,
+        "points": 24575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 717.9,
+        "price": 983.8,
+        "converted_price": 983.8,
+        "lowest_converted_price": 983.8,
+        "market_rates": []
+      },
+      {
+        "id": "DsYc",
+        "searchRank": 0.89,
+        "price_type": "multi",
+        "max_cash_payment": 1656.34,
+        "coverted_max_cash_payment": 2269.82,
+        "points": 56725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1656.34,
+        "price": 2269.82,
+        "converted_price": 2269.82,
+        "lowest_converted_price": 2269.82,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2087.151627312
+          }
+        ]
+      },
+      {
+        "id": "7lWD",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 259.1,
+        "coverted_max_cash_payment": 355.07,
+        "points": 8875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 259.1,
+        "price": 355.07,
+        "converted_price": 355.07,
+        "lowest_converted_price": 355.07,
+        "market_rates": []
+      },
+      {
+        "id": "8NvP",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1581.79,
+        "coverted_max_cash_payment": 2167.66,
+        "points": 54175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1581.79,
+        "price": 2167.66,
+        "converted_price": 2167.66,
+        "lowest_converted_price": 2167.66,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1904.369635998
+          }
+        ]
+      },
+      {
+        "id": "W3Ji",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 544.06,
+        "coverted_max_cash_payment": 745.57,
+        "points": 18625,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 544.06,
+        "price": 745.57,
+        "converted_price": 745.57,
+        "lowest_converted_price": 745.57,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 721.672306686
+          }
+        ]
+      },
+      {
+        "id": "MQ17",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 236.78,
+        "coverted_max_cash_payment": 324.48,
+        "points": 8100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 236.78,
+        "price": 324.48,
+        "converted_price": 324.48,
+        "lowest_converted_price": 324.48,
+        "market_rates": []
+      },
+      {
+        "id": "4iO3",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 550.91,
+        "coverted_max_cash_payment": 754.96,
+        "points": 18850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 550.91,
+        "price": 754.96,
+        "converted_price": 754.96,
+        "lowest_converted_price": 754.96,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 640.435866102
+          }
+        ]
+      },
+      {
+        "id": "Q3Yd",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 873.59,
+        "coverted_max_cash_payment": 1197.15,
+        "points": 29925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 873.59,
+        "price": 1197.15,
+        "converted_price": 1197.15,
+        "lowest_converted_price": 1197.15,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1051.743310044
+          }
+        ]
+      },
+      {
+        "id": "8BCr",
+        "searchRank": 0.74,
+        "price_type": "multi",
+        "max_cash_payment": 1115.88,
+        "coverted_max_cash_payment": 1529.19,
+        "points": 38225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1115.88,
+        "price": 1529.19,
+        "converted_price": 1529.19,
+        "lowest_converted_price": 1529.19,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1529.185548564
+          }
+        ]
+      },
+      {
+        "id": "PfU9",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1788.55,
+        "coverted_max_cash_payment": 2451,
+        "points": 61275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1788.55,
+        "price": 2451,
+        "converted_price": 2451,
+        "lowest_converted_price": 2451,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2153.259014184
+          }
+        ]
+      },
+      {
+        "id": "RTkl",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1589.85,
+        "coverted_max_cash_payment": 2178.71,
+        "points": 54450,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1589.85,
+        "price": 2178.71,
+        "converted_price": 2178.71,
+        "lowest_converted_price": 2178.71,
+        "market_rates": []
+      },
+      {
+        "id": "S6k7",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1088.72,
+        "coverted_max_cash_payment": 1491.97,
+        "points": 37275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1088.72,
+        "price": 1491.97,
+        "converted_price": 1491.97,
+        "lowest_converted_price": 1491.97,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1310.746131744
+          }
+        ]
+      },
+      {
+        "id": "QSDU",
+        "searchRank": 0.79,
+        "price_type": "multi",
+        "max_cash_payment": 1275.3,
+        "coverted_max_cash_payment": 1747.65,
+        "points": 43675,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1275.3,
+        "price": 1747.65,
+        "converted_price": 1747.65,
+        "lowest_converted_price": 1747.65,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1747.65237309
+          }
+        ]
+      },
+      {
+        "id": "yQql",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 3229.89,
+        "coverted_max_cash_payment": 4426.19,
+        "points": 110650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3229.89,
+        "price": 4426.19,
+        "converted_price": 4426.19,
+        "lowest_converted_price": 4426.19,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3803.600327121
+          }
+        ]
+      },
+      {
+        "id": "0pdB",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2075.51,
+        "coverted_max_cash_payment": 2844.25,
+        "points": 71100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2075.51,
+        "price": 2844.25,
+        "converted_price": 2844.25,
+        "lowest_converted_price": 2844.25,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2496.540531834
+          }
+        ]
+      },
+      {
+        "id": "atH8",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1635.8,
+        "coverted_max_cash_payment": 2241.68,
+        "points": 56025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1635.8,
+        "price": 2241.68,
+        "converted_price": 2241.68,
+        "lowest_converted_price": 2241.68,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2014.397871735
+          }
+        ]
+      },
+      {
+        "id": "K5Rm",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 558.1,
+        "coverted_max_cash_payment": 764.81,
+        "points": 19100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 558.1,
+        "price": 764.81,
+        "converted_price": 764.81,
+        "lowest_converted_price": 764.81,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 648.795216432
+          }
+        ]
+      },
+      {
+        "id": "qRUF",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 266.34,
+        "coverted_max_cash_payment": 364.99,
+        "points": 9100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 266.34,
+        "price": 364.99,
+        "converted_price": 364.99,
+        "lowest_converted_price": 364.99,
+        "market_rates": []
+      },
+      {
+        "id": "Nn9R",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1408.88,
+        "coverted_max_cash_payment": 1930.71,
+        "points": 48250,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1408.88,
+        "price": 1930.71,
+        "converted_price": 1930.71,
+        "lowest_converted_price": 1930.71,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1696.180701222
+          }
+        ]
+      },
+      {
+        "id": "kWge",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1797.33,
+        "coverted_max_cash_payment": 2463.03,
+        "points": 61575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1797.33,
+        "price": 2463.03,
+        "converted_price": 2463.03,
+        "lowest_converted_price": 2463.03,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2230.274668044
+          }
+        ]
+      },
+      {
+        "id": "l2RN",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1140.52,
+        "coverted_max_cash_payment": 1562.95,
+        "points": 39050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1140.52,
+        "price": 1562.95,
+        "converted_price": 1562.95,
+        "lowest_converted_price": 1562.95,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1373.1260706
+          }
+        ]
+      },
+      {
+        "id": "yjpp",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 534.83,
+        "coverted_max_cash_payment": 732.92,
+        "points": 18300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 534.83,
+        "price": 732.92,
+        "converted_price": 732.92,
+        "lowest_converted_price": 732.92,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 638.161026504
+          }
+        ]
+      },
+      {
+        "id": "qfau",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1739.29,
+        "coverted_max_cash_payment": 2383.5,
+        "points": 59575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1739.29,
+        "price": 2383.5,
+        "converted_price": 2383.5,
+        "lowest_converted_price": 2383.5,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2112.887463246
+          }
+        ]
+      },
+      {
+        "id": "Ykfj",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 608.3,
+        "coverted_max_cash_payment": 833.61,
+        "points": 20825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 608.3,
+        "price": 833.61,
+        "converted_price": 833.61,
+        "lowest_converted_price": 833.61,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 725.865685704
+          }
+        ]
+      },
+      {
+        "id": "ykri",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2055.13,
+        "coverted_max_cash_payment": 2816.32,
+        "points": 70400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2055.13,
+        "price": 2816.32,
+        "converted_price": 2816.32,
+        "lowest_converted_price": 2816.32,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2496.540531834
+          }
+        ]
+      },
+      {
+        "id": "DGvm",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 710.27,
+        "coverted_max_cash_payment": 973.34,
+        "points": 24325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 710.27,
+        "price": 973.34,
+        "converted_price": 973.34,
+        "lowest_converted_price": 973.34,
+        "market_rates": []
+      },
+      {
+        "id": "KkJ8",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 892.9,
+        "coverted_max_cash_payment": 1223.62,
+        "points": 30575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 892.9,
+        "price": 1223.62,
+        "converted_price": 1223.62,
+        "lowest_converted_price": 1223.62,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1037.984641632
+          }
+        ]
+      },
+      {
+        "id": "JIa4",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1501.29,
+        "coverted_max_cash_payment": 2057.35,
+        "points": 51425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1501.29,
+        "price": 2057.35,
+        "converted_price": 2057.35,
+        "lowest_converted_price": 2057.35,
+        "market_rates": []
+      },
+      {
+        "id": "gUar",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 127.17,
+        "coverted_max_cash_payment": 174.27,
+        "points": 4350,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 127.17,
+        "price": 174.27,
+        "converted_price": 174.27,
+        "lowest_converted_price": 174.27,
+        "market_rates": []
+      },
+      {
+        "id": "6VaD",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2190.74,
+        "coverted_max_cash_payment": 3002.16,
+        "points": 75050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2190.74,
+        "price": 3002.16,
+        "converted_price": 3002.16,
+        "lowest_converted_price": 3002.16,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2643.391020582
+          }
+        ]
+      },
+      {
+        "id": "Spqv",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 4863.01,
+        "coverted_max_cash_payment": 6664.2,
+        "points": 166600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 4863.01,
+        "price": 6664.2,
+        "converted_price": 6664.2,
+        "lowest_converted_price": 6664.2,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 5751.931923543
+          }
+        ]
+      },
+      {
+        "id": "TsDI",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 972.83,
+        "coverted_max_cash_payment": 1333.15,
+        "points": 33325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 972.83,
+        "price": 1333.15,
+        "converted_price": 1333.15,
+        "lowest_converted_price": 1333.15,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1171.186092792
+          }
+        ]
+      },
+      {
+        "id": "j5IN",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 910.09,
+        "coverted_max_cash_payment": 1247.17,
+        "points": 31175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 910.09,
+        "price": 1247.17,
+        "converted_price": 1247.17,
+        "lowest_converted_price": 1247.17,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1071.723527718
+          }
+        ]
+      },
+      {
+        "id": "q22h",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1060.78,
+        "coverted_max_cash_payment": 1453.68,
+        "points": 36325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1060.78,
+        "price": 1453.68,
+        "converted_price": 1453.68,
+        "lowest_converted_price": 1453.68,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1277.089468776
+          }
+        ]
+      },
+      {
+        "id": "VneJ",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 99.87,
+        "coverted_max_cash_payment": 136.86,
+        "points": 3400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 99.87,
+        "price": 136.86,
+        "converted_price": 136.86,
+        "lowest_converted_price": 136.86,
+        "market_rates": []
+      },
+      {
+        "id": "S57Q",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1780.32,
+        "coverted_max_cash_payment": 2439.72,
+        "points": 60975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1780.32,
+        "price": 2439.72,
+        "converted_price": 2439.72,
+        "lowest_converted_price": 2439.72,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2143.351128465
+          }
+        ]
+      },
+      {
+        "id": "ds0Q",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 862.39,
+        "coverted_max_cash_payment": 1181.81,
+        "points": 29525,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 862.39,
+        "price": 1181.81,
+        "converted_price": 1181.81,
+        "lowest_converted_price": 1181.81,
+        "market_rates": []
+      },
+      {
+        "id": "RPGl",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 3349.79,
+        "coverted_max_cash_payment": 4590.5,
+        "points": 114750,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3349.79,
+        "price": 4590.5,
+        "converted_price": 4590.5,
+        "lowest_converted_price": 4590.5,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3977.913337281
+          }
+        ]
+      },
+      {
+        "id": "f7E1",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 6609.62,
+        "coverted_max_cash_payment": 9057.73,
+        "points": 226425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 6609.62,
+        "price": 9057.73,
+        "converted_price": 9057.73,
+        "lowest_converted_price": 9057.73,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 7785.186297006
+          }
+        ]
+      },
+      {
+        "id": "8aaC",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 266.2,
+        "coverted_max_cash_payment": 364.8,
+        "points": 9100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 266.2,
+        "price": 364.8,
+        "converted_price": 364.8,
+        "lowest_converted_price": 364.8,
+        "market_rates": []
+      },
+      {
+        "id": "xAd4",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1705.22,
+        "coverted_max_cash_payment": 2336.81,
+        "points": 58400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1705.22,
+        "price": 2336.81,
+        "converted_price": 2336.81,
+        "lowest_converted_price": 2336.81,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2102.774019732
+          }
+        ]
+      },
+      {
+        "id": "NMoy",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1088.98,
+        "coverted_max_cash_payment": 1492.32,
+        "points": 37300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1088.98,
+        "price": 1492.32,
+        "converted_price": 1492.32,
+        "lowest_converted_price": 1492.32,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1311.04761651
+          }
+        ]
+      },
+      {
+        "id": "IvpU",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 1275.21,
+        "coverted_max_cash_payment": 1747.53,
+        "points": 43675,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1275.21,
+        "price": 1747.53,
+        "converted_price": 1747.53,
+        "lowest_converted_price": 1747.53,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1747.529038413
+          }
+        ]
+      },
+      {
+        "id": "DyBD",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 1129.17,
+        "coverted_max_cash_payment": 1547.4,
+        "points": 38675,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1129.17,
+        "price": 1547.4,
+        "converted_price": 1547.4,
+        "lowest_converted_price": 1547.4,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1347.308011548
+          }
+        ]
+      },
+      {
+        "id": "cKGT",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2465.2,
+        "coverted_max_cash_payment": 3378.27,
+        "points": 84450,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2465.2,
+        "price": 3378.27,
+        "converted_price": 3378.27,
+        "lowest_converted_price": 3378.27,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2902.229396046
+          }
+        ]
+      },
+      {
+        "id": "ipxk",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1418.54,
+        "coverted_max_cash_payment": 1943.95,
+        "points": 48575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1418.54,
+        "price": 1943.95,
+        "converted_price": 1943.95,
+        "lowest_converted_price": 1943.95,
+        "market_rates": []
+      },
+      {
+        "id": "mEDA",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 1333.15,
+        "coverted_max_cash_payment": 1826.93,
+        "points": 45650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1333.15,
+        "price": 1826.93,
+        "converted_price": 1826.93,
+        "lowest_converted_price": 1826.93,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1590.702144681
+          }
+        ]
+      },
+      {
+        "id": "lw5p",
+        "searchRank": 0.86,
+        "price_type": "multi",
+        "max_cash_payment": 1453.9,
+        "coverted_max_cash_payment": 1992.4,
+        "points": 49800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1453.9,
+        "price": 1992.4,
+        "converted_price": 1992.4,
+        "lowest_converted_price": 1992.4,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1890.748006116
+          }
+        ]
+      },
+      {
+        "id": "CY57",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2376.72,
+        "coverted_max_cash_payment": 3257.02,
+        "points": 81425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2376.72,
+        "price": 3257.02,
+        "converted_price": 3257.02,
+        "lowest_converted_price": 3257.02,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2798.87493672
+          }
+        ]
+      },
+      {
+        "id": "ukdc",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 1678.98,
+        "coverted_max_cash_payment": 2300.85,
+        "points": 57500,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1678.98,
+        "price": 2300.85,
+        "converted_price": 2300.85,
+        "lowest_converted_price": 2300.85,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2296.327239504
+          }
+        ]
+      },
+      {
+        "id": "165u",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1725.44,
+        "coverted_max_cash_payment": 2364.52,
+        "points": 59100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1725.44,
+        "price": 2364.52,
+        "converted_price": 2364.52,
+        "lowest_converted_price": 2364.52,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2077.339668564
+          }
+        ]
+      },
+      {
+        "id": "Bt3V",
+        "searchRank": 0.7,
+        "price_type": "multi",
+        "max_cash_payment": 1308.24,
+        "coverted_max_cash_payment": 1792.79,
+        "points": 44800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1308.24,
+        "price": 1792.79,
+        "converted_price": 1792.79,
+        "lowest_converted_price": 1792.79,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1792.792864872
+          }
+        ]
+      },
+      {
+        "id": "ksuX",
+        "searchRank": 0.84,
+        "price_type": "multi",
+        "max_cash_payment": 897.46,
+        "coverted_max_cash_payment": 1229.87,
+        "points": 30725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 897.46,
+        "price": 1229.87,
+        "converted_price": 1229.87,
+        "lowest_converted_price": 1229.87,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1199.36121456
+          }
+        ]
+      },
+      {
+        "id": "nHIr",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 661.79,
+        "coverted_max_cash_payment": 906.91,
+        "points": 22650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 661.79,
+        "price": 906.91,
+        "converted_price": 906.91,
+        "lowest_converted_price": 906.91,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 815.24221497
+          }
+        ]
+      },
+      {
+        "id": "6NVl",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 107.63,
+        "coverted_max_cash_payment": 147.49,
+        "points": 3675,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 107.63,
+        "price": 147.49,
+        "converted_price": 147.49,
+        "lowest_converted_price": 147.49,
+        "market_rates": []
+      },
+      {
+        "id": "3D7c",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2918.15,
+        "coverted_max_cash_payment": 3998.99,
+        "points": 99950,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2918.15,
+        "price": 3998.99,
+        "converted_price": 3998.99,
+        "lowest_converted_price": 3998.99,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3436.51521681
+          }
+        ]
+      },
+      {
+        "id": "7HMr",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 909.2,
+        "coverted_max_cash_payment": 1245.95,
+        "points": 31125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 909.2,
+        "price": 1245.95,
+        "converted_price": 1245.95,
+        "lowest_converted_price": 1245.95,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1056.84114336
+          }
+        ]
+      },
+      {
+        "id": "3Lpw",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1434.44,
+        "coverted_max_cash_payment": 1965.74,
+        "points": 49125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1434.44,
+        "price": 1965.74,
+        "converted_price": 1965.74,
+        "lowest_converted_price": 1965.74,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1766.399243994
+          }
+        ]
+      },
+      {
+        "id": "HIjF",
+        "searchRank": 0.86,
+        "price_type": "multi",
+        "max_cash_payment": 1527.99,
+        "coverted_max_cash_payment": 2093.94,
+        "points": 52325,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1527.99,
+        "price": 2093.94,
+        "converted_price": 2093.94,
+        "lowest_converted_price": 2093.94,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1997.19953622
+          }
+        ]
+      },
+      {
+        "id": "5BTd",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 1015.68,
+        "coverted_max_cash_payment": 1391.87,
+        "points": 34775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1015.68,
+        "price": 1391.87,
+        "converted_price": 1391.87,
+        "lowest_converted_price": 1391.87,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1210.310593107
+          }
+        ]
+      },
+      {
+        "id": "jAC0",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1457.9,
+        "coverted_max_cash_payment": 1997.88,
+        "points": 49925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1457.9,
+        "price": 1997.88,
+        "converted_price": 1997.88,
+        "lowest_converted_price": 1997.88,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1762.288088094
+          }
+        ]
+      },
+      {
+        "id": "dtqO",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1058.9,
+        "coverted_max_cash_payment": 1451.1,
+        "points": 36275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1058.9,
+        "price": 1451.1,
+        "converted_price": 1451.1,
+        "lowest_converted_price": 1451.1,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1295.575966473
+          }
+        ]
+      },
+      {
+        "id": "MU74",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1488.17,
+        "coverted_max_cash_payment": 2039.37,
+        "points": 50975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1488.17,
+        "price": 2039.37,
+        "converted_price": 2039.37,
+        "lowest_converted_price": 2039.37,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1791.669148926
+          }
+        ]
+      },
+      {
+        "id": "7bJJ",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 590.85,
+        "coverted_max_cash_payment": 809.69,
+        "points": 20225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 590.85,
+        "price": 809.69,
+        "converted_price": 809.69,
+        "lowest_converted_price": 809.69,
+        "market_rates": []
+      },
+      {
+        "id": "S7zW",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 550.91,
+        "coverted_max_cash_payment": 754.96,
+        "points": 18850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 550.91,
+        "price": 754.96,
+        "converted_price": 754.96,
+        "lowest_converted_price": 754.96,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 640.435866102
+          }
+        ]
+      },
+      {
+        "id": "x3ra",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 282.37,
+        "coverted_max_cash_payment": 386.96,
+        "points": 9650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 282.37,
+        "price": 386.96,
+        "converted_price": 386.96,
+        "lowest_converted_price": 386.96,
+        "market_rates": []
+      },
+      {
+        "id": "8PoV",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 658.94,
+        "coverted_max_cash_payment": 903,
+        "points": 22575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 658.94,
+        "price": 903,
+        "converted_price": 903,
+        "lowest_converted_price": 903,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 765.90834417
+          }
+        ]
+      },
+      {
+        "id": "9eiV",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 85.17,
+        "coverted_max_cash_payment": 116.72,
+        "points": 2900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 85.17,
+        "price": 116.72,
+        "converted_price": 116.72,
+        "lowest_converted_price": 116.72,
+        "market_rates": []
+      },
+      {
+        "id": "Hi83",
+        "searchRank": 0.9,
+        "price_type": "multi",
+        "max_cash_payment": 647.78,
+        "coverted_max_cash_payment": 887.71,
+        "points": 22175,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 647.78,
+        "price": 887.71,
+        "converted_price": 887.71,
+        "lowest_converted_price": 887.71,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 811.95329025
+          }
+        ]
+      },
+      {
+        "id": "QijC",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1363.94,
+        "coverted_max_cash_payment": 1869.12,
+        "points": 46725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1363.94,
+        "price": 1869.12,
+        "converted_price": 1869.12,
+        "lowest_converted_price": 1869.12,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1664.387762262
+          }
+        ]
+      },
+      {
+        "id": "hCec",
+        "searchRank": 0.86,
+        "price_type": "multi",
+        "max_cash_payment": 455.05,
+        "coverted_max_cash_payment": 623.59,
+        "points": 15575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 455.05,
+        "price": 623.59,
+        "converted_price": 623.59,
+        "lowest_converted_price": 623.59,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 596.898725121
+          }
+        ]
+      },
+      {
+        "id": "Tseb",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1833.4,
+        "coverted_max_cash_payment": 2512.46,
+        "points": 62800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1833.4,
+        "price": 2512.46,
+        "converted_price": 2512.46,
+        "lowest_converted_price": 2512.46,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2177.158533816
+          }
+        ]
+      },
+      {
+        "id": "PGnp",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 759.88,
+        "coverted_max_cash_payment": 1041.33,
+        "points": 26025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 759.88,
+        "price": 1041.33,
+        "converted_price": 1041.33,
+        "lowest_converted_price": 1041.33,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 906.674322186
+          }
+        ]
+      },
+      {
+        "id": "Cxxl",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 2352.78,
+        "coverted_max_cash_payment": 3224.22,
+        "points": 80600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2352.78,
+        "price": 3224.22,
+        "converted_price": 3224.22,
+        "lowest_converted_price": 3224.22,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2871.066834324
+          }
+        ]
+      },
+      {
+        "id": "EWki",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 525.49,
+        "coverted_max_cash_payment": 720.12,
+        "points": 18000,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 525.49,
+        "price": 720.12,
+        "converted_price": 720.12,
+        "lowest_converted_price": 720.12,
+        "market_rates": []
+      },
+      {
+        "id": "XFQ9",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1243.41,
+        "coverted_max_cash_payment": 1703.95,
+        "points": 42575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1243.41,
+        "price": 1703.95,
+        "converted_price": 1703.95,
+        "lowest_converted_price": 1703.95,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1497.00890172
+          }
+        ]
+      },
+      {
+        "id": "HjD1",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 3513.05,
+        "coverted_max_cash_payment": 4814.23,
+        "points": 120350,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3513.05,
+        "price": 4814.23,
+        "converted_price": 4814.23,
+        "lowest_converted_price": 4814.23,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 4229.474966802
+          }
+        ]
+      },
+      {
+        "id": "Y0oq",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 103.17,
+        "coverted_max_cash_payment": 141.38,
+        "points": 3525,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 103.17,
+        "price": 141.38,
+        "converted_price": 141.38,
+        "lowest_converted_price": 141.38,
+        "market_rates": []
+      },
+      {
+        "id": "XVBJ",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 1309.73,
+        "coverted_max_cash_payment": 1794.83,
+        "points": 44850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1309.73,
+        "price": 1794.83,
+        "converted_price": 1794.83,
+        "lowest_converted_price": 1794.83,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1596.622209177
+          }
+        ]
+      },
+      {
+        "id": "4HGU",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 957.72,
+        "coverted_max_cash_payment": 1312.45,
+        "points": 32800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 957.72,
+        "price": 1312.45,
+        "converted_price": 1312.45,
+        "lowest_converted_price": 1312.45,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1127.799694194
+          }
+        ]
+      },
+      {
+        "id": "tlBM",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 3461.72,
+        "coverted_max_cash_payment": 4743.89,
+        "points": 118575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3461.72,
+        "price": 4743.89,
+        "converted_price": 4743.89,
+        "lowest_converted_price": 4743.89,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 4295.582353674
+          }
+        ]
+      },
+      {
+        "id": "TN8v",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 723.78,
+        "coverted_max_cash_payment": 991.86,
+        "points": 24775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 723.78,
+        "price": 991.86,
+        "converted_price": 991.86,
+        "lowest_converted_price": 991.86,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 857.395266798
+          }
+        ]
+      },
+      {
+        "id": "1PMc",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1062.29,
+        "coverted_max_cash_payment": 1455.75,
+        "points": 36375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1062.29,
+        "price": 1455.75,
+        "converted_price": 1455.75,
+        "lowest_converted_price": 1455.75,
+        "market_rates": []
+      },
+      {
+        "id": "kSVF",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2495.96,
+        "coverted_max_cash_payment": 3420.43,
+        "points": 85500,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2495.96,
+        "price": 3420.43,
+        "converted_price": 3420.43,
+        "lowest_converted_price": 3420.43,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2939.120168322
+          }
+        ]
+      },
+      {
+        "id": "swyZ",
+        "searchRank": 0.87,
+        "price_type": "multi",
+        "max_cash_payment": 1439.71,
+        "coverted_max_cash_payment": 1972.96,
+        "points": 49300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1439.71,
+        "price": 1972.96,
+        "converted_price": 1972.96,
+        "lowest_converted_price": 1972.96,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1852.48684854
+          }
+        ]
+      },
+      {
+        "id": "IqwD",
+        "searchRank": 0.81,
+        "price_type": "multi",
+        "max_cash_payment": 488.69,
+        "coverted_max_cash_payment": 669.69,
+        "points": 16725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 488.69,
+        "price": 669.69,
+        "converted_price": 669.69,
+        "lowest_converted_price": 669.69,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 669.693592257
+          }
+        ]
+      },
+      {
+        "id": "xcB7",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 3436.11,
+        "coverted_max_cash_payment": 4708.79,
+        "points": 117700,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3436.11,
+        "price": 4708.79,
+        "converted_price": 4708.79,
+        "lowest_converted_price": 4708.79,
+        "market_rates": []
+      },
+      {
+        "id": "EvHf",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 134.68,
+        "coverted_max_cash_payment": 184.56,
+        "points": 4600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 134.68,
+        "price": 184.56,
+        "converted_price": 184.56,
+        "lowest_converted_price": 184.56,
+        "market_rates": []
+      },
+      {
+        "id": "5Ik8",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 741.39,
+        "coverted_max_cash_payment": 1015.99,
+        "points": 25375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 741.39,
+        "price": 1015.99,
+        "converted_price": 1015.99,
+        "lowest_converted_price": 1015.99,
+        "market_rates": []
+      },
+      {
+        "id": "jzzR",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 423.35,
+        "coverted_max_cash_payment": 580.15,
+        "points": 14500,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 423.35,
+        "price": 580.15,
+        "converted_price": 580.15,
+        "lowest_converted_price": 580.15,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 561.542784381
+          }
+        ]
+      },
+      {
+        "id": "Mf55",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1422.8,
+        "coverted_max_cash_payment": 1949.78,
+        "points": 48725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1422.8,
+        "price": 1949.78,
+        "converted_price": 1949.78,
+        "lowest_converted_price": 1949.78,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1747.65237309
+          }
+        ]
+      },
+      {
+        "id": "Qrwy",
+        "searchRank": 0.97,
+        "price_type": "multi",
+        "max_cash_payment": 852.95,
+        "coverted_max_cash_payment": 1168.87,
+        "points": 29200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 852.95,
+        "price": 1168.87,
+        "converted_price": 1168.87,
+        "lowest_converted_price": 1168.87,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 991.281910608
+          }
+        ]
+      },
+      {
+        "id": "lkX9",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 5403.05,
+        "coverted_max_cash_payment": 7404.26,
+        "points": 185100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 5403.05,
+        "price": 7404.26,
+        "converted_price": 7404.26,
+        "lowest_converted_price": 7404.26,
+        "market_rates": []
+      },
+      {
+        "id": "dXFm",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 547.12,
+        "coverted_max_cash_payment": 749.77,
+        "points": 18725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 547.12,
+        "price": 749.77,
+        "converted_price": 749.77,
+        "lowest_converted_price": 749.77,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 721.672306686
+          }
+        ]
+      },
+      {
+        "id": "UavY",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1850.07,
+        "coverted_max_cash_payment": 2535.31,
+        "points": 63375,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1850.07,
+        "price": 2535.31,
+        "converted_price": 2535.31,
+        "lowest_converted_price": 2535.31,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2227.396858914
+          }
+        ]
+      },
+      {
+        "id": "xvUu",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 736.16,
+        "coverted_max_cash_payment": 1008.82,
+        "points": 25200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 736.16,
+        "price": 1008.82,
+        "converted_price": 1008.82,
+        "lowest_converted_price": 1008.82,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 866.878333074
+          }
+        ]
+      },
+      {
+        "id": "zXRb",
+        "searchRank": 0.68,
+        "price_type": "multi",
+        "max_cash_payment": 1409.22,
+        "coverted_max_cash_payment": 1931.17,
+        "points": 48275,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1409.22,
+        "price": 1931.17,
+        "converted_price": 1931.17,
+        "lowest_converted_price": 1931.17,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1931.174372466
+          }
+        ]
+      },
+      {
+        "id": "onxz",
+        "searchRank": 0.84,
+        "price_type": "multi",
+        "max_cash_payment": 1124.89,
+        "coverted_max_cash_payment": 1541.53,
+        "points": 38525,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1124.89,
+        "price": 1541.53,
+        "converted_price": 1541.53,
+        "lowest_converted_price": 1541.53,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1497.96817143
+          }
+        ]
+      },
+      {
+        "id": "gQbu",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 959.34,
+        "coverted_max_cash_payment": 1314.67,
+        "points": 32850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 959.34,
+        "price": 1314.67,
+        "converted_price": 1314.67,
+        "lowest_converted_price": 1314.67,
+        "market_rates": []
+      },
+      {
+        "id": "4HJl",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 800.13,
+        "coverted_max_cash_payment": 1096.49,
+        "points": 27400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 800.13,
+        "price": 1096.49,
+        "converted_price": 1096.49,
+        "lowest_converted_price": 1096.49,
+        "market_rates": []
+      },
+      {
+        "id": "Yhe6",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 3460.43,
+        "coverted_max_cash_payment": 4742.12,
+        "points": 118550,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3460.43,
+        "price": 4742.12,
+        "converted_price": 4742.12,
+        "lowest_converted_price": 4742.12,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 4101.946910784
+          }
+        ]
+      },
+      {
+        "id": "11fD",
+        "searchRank": 0.9,
+        "price_type": "multi",
+        "max_cash_payment": 1747.9,
+        "coverted_max_cash_payment": 2395.3,
+        "points": 59875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1747.9,
+        "price": 2395.3,
+        "converted_price": 2395.3,
+        "lowest_converted_price": 2395.3,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2183.256748401
+          }
+        ]
+      },
+      {
+        "id": "sKMI",
+        "searchRank": 0.83,
+        "price_type": "multi",
+        "max_cash_payment": 530.16,
+        "coverted_max_cash_payment": 726.52,
+        "points": 18150,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 530.16,
+        "price": 726.52,
+        "converted_price": 726.52,
+        "lowest_converted_price": 726.52,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 721.672306686
+          }
+        ]
+      },
+      {
+        "id": "BN5n",
+        "searchRank": 0.56,
+        "price_type": "multi",
+        "max_cash_payment": 1580.7,
+        "coverted_max_cash_payment": 2166.17,
+        "points": 54150,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1580.7,
+        "price": 2166.17,
+        "converted_price": 2166.17,
+        "lowest_converted_price": 2166.17,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2166.16804371
+          }
+        ]
+      },
+      {
+        "id": "XV8q",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 1590.77,
+        "coverted_max_cash_payment": 2179.97,
+        "points": 54475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1590.77,
+        "price": 2179.97,
+        "converted_price": 2179.97,
+        "lowest_converted_price": 2179.97,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1911.6874935
+          }
+        ]
+      },
+      {
+        "id": "jC5j",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 276.95,
+        "coverted_max_cash_payment": 379.53,
+        "points": 9475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 276.95,
+        "price": 379.53,
+        "converted_price": 379.53,
+        "lowest_converted_price": 379.53,
+        "market_rates": []
+      },
+      {
+        "id": "FtBV",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 2410.41,
+        "coverted_max_cash_payment": 3303.19,
+        "points": 82575,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2410.41,
+        "price": 3303.19,
+        "converted_price": 3303.19,
+        "lowest_converted_price": 3303.19,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2991.057771192
+          }
+        ]
+      },
+      {
+        "id": "Kiy6",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1159.34,
+        "coverted_max_cash_payment": 1588.74,
+        "points": 39700,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1159.34,
+        "price": 1588.74,
+        "converted_price": 1588.74,
+        "lowest_converted_price": 1588.74,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1365.31487439
+          }
+        ]
+      },
+      {
+        "id": "nQX6",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 12208.52,
+        "coverted_max_cash_payment": 16730.38,
+        "points": 418250,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 12208.52,
+        "price": 16730.38,
+        "converted_price": 16730.38,
+        "lowest_converted_price": 16730.38,
+        "market_rates": []
+      },
+      {
+        "id": "BbOZ",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 826.61,
+        "coverted_max_cash_payment": 1132.77,
+        "points": 28300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 826.61,
+        "price": 1132.77,
+        "converted_price": 1132.77,
+        "lowest_converted_price": 1132.77,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 979.852897206
+          }
+        ]
+      },
+      {
+        "id": "zIoo",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 671.2,
+        "coverted_max_cash_payment": 919.8,
+        "points": 22975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 671.2,
+        "price": 919.8,
+        "converted_price": 919.8,
+        "lowest_converted_price": 919.8,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 795.09755106
+          }
+        ]
+      },
+      {
+        "id": "lXJq",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 439.04,
+        "coverted_max_cash_payment": 601.65,
+        "points": 15025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 439.04,
+        "price": 601.65,
+        "converted_price": 601.65,
+        "lowest_converted_price": 601.65,
+        "market_rates": []
+      },
+      {
+        "id": "dnhy",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 462.86,
+        "coverted_max_cash_payment": 634.3,
+        "points": 15850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 462.86,
+        "price": 634.3,
+        "converted_price": 634.3,
+        "lowest_converted_price": 634.3,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 634.296539958
+          }
+        ]
+      },
+      {
+        "id": "cf0f",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1959.72,
+        "coverted_max_cash_payment": 2685.57,
+        "points": 67125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1959.72,
+        "price": 2685.57,
+        "converted_price": 2685.57,
+        "lowest_converted_price": 2685.57,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2323.049752854
+          }
+        ]
+      },
+      {
+        "id": "W2Mj",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 661.5,
+        "coverted_max_cash_payment": 906.51,
+        "points": 22650,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 661.5,
+        "price": 906.51,
+        "converted_price": 906.51,
+        "lowest_converted_price": 906.51,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 779.009227638
+          }
+        ]
+      },
+      {
+        "id": "MkgI",
+        "searchRank": 0.58,
+        "price_type": "multi",
+        "max_cash_payment": 1375.28,
+        "coverted_max_cash_payment": 1884.66,
+        "points": 47100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1375.28,
+        "price": 1884.66,
+        "converted_price": 1884.66,
+        "lowest_converted_price": 1884.66,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1884.663495384
+          }
+        ]
+      },
+      {
+        "id": "yFji",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 743.98,
+        "coverted_max_cash_payment": 1019.54,
+        "points": 25475,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 743.98,
+        "price": 1019.54,
+        "converted_price": 1019.54,
+        "lowest_converted_price": 1019.54,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 881.884052109
+          }
+        ]
+      },
+      {
+        "id": "WJZQ",
+        "searchRank": 0.9,
+        "price_type": "multi",
+        "max_cash_payment": 577.37,
+        "coverted_max_cash_payment": 791.22,
+        "points": 19775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 577.37,
+        "price": 791.22,
+        "converted_price": 791.22,
+        "lowest_converted_price": 791.22,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 721.699714392
+          }
+        ]
+      },
+      {
+        "id": "RdhW",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 648.88,
+        "coverted_max_cash_payment": 889.22,
+        "points": 22225,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 648.88,
+        "price": 889.22,
+        "converted_price": 889.22,
+        "lowest_converted_price": 889.22,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 774.295102206
+          }
+        ]
+      },
+      {
+        "id": "aUeC",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1138.35,
+        "coverted_max_cash_payment": 1559.98,
+        "points": 38975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1138.35,
+        "price": 1559.98,
+        "converted_price": 1559.98,
+        "lowest_converted_price": 1559.98,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1370.481226971
+          }
+        ]
+      },
+      {
+        "id": "h3z1",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1050.74,
+        "coverted_max_cash_payment": 1439.92,
+        "points": 35975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1050.74,
+        "price": 1439.92,
+        "converted_price": 1439.92,
+        "lowest_converted_price": 1439.92,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1248.311377476
+          }
+        ]
+      },
+      {
+        "id": "53PX",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1194.41,
+        "coverted_max_cash_payment": 1636.8,
+        "points": 40900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1194.41,
+        "price": 1636.8,
+        "converted_price": 1636.8,
+        "lowest_converted_price": 1636.8,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1437.972702996
+          }
+        ]
+      },
+      {
+        "id": "4vyb",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1895.63,
+        "coverted_max_cash_payment": 2597.74,
+        "points": 64925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1895.63,
+        "price": 2597.74,
+        "converted_price": 2597.74,
+        "lowest_converted_price": 2597.74,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2334.355431579
+          }
+        ]
+      },
+      {
+        "id": "VuCh",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1748.79,
+        "coverted_max_cash_payment": 2396.52,
+        "points": 59900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1748.79,
+        "price": 2396.52,
+        "converted_price": 2396.52,
+        "lowest_converted_price": 2396.52,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2105.418863361
+          }
+        ]
+      },
+      {
+        "id": "bVl1",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1121.57,
+        "coverted_max_cash_payment": 1536.98,
+        "points": 38400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1121.57,
+        "price": 1536.98,
+        "converted_price": 1536.98,
+        "lowest_converted_price": 1536.98,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1321.73662185
+          }
+        ]
+      },
+      {
+        "id": "4J3Z",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 768.2,
+        "coverted_max_cash_payment": 1052.73,
+        "points": 26300,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 768.2,
+        "price": 1052.73,
+        "converted_price": 1052.73,
+        "lowest_converted_price": 1052.73,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 904.673559648
+          }
+        ]
+      },
+      {
+        "id": "6jsK",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 3465.8,
+        "coverted_max_cash_payment": 4749.48,
+        "points": 118725,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 3465.8,
+        "price": 4749.48,
+        "converted_price": 4749.48,
+        "lowest_converted_price": 4749.48,
+        "market_rates": []
+      },
+      {
+        "id": "6lYS",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 969.38,
+        "coverted_max_cash_payment": 1328.42,
+        "points": 33200,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 969.38,
+        "price": 1328.42,
+        "converted_price": 1328.42,
+        "lowest_converted_price": 1328.42,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1141.5309549
+          }
+        ]
+      },
+      {
+        "id": "GRwi",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 774.56,
+        "coverted_max_cash_payment": 1061.45,
+        "points": 26525,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 774.56,
+        "price": 1061.45,
+        "converted_price": 1061.45,
+        "lowest_converted_price": 1061.45,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1027.37785941
+          }
+        ]
+      },
+      {
+        "id": "fB9j",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2902.27,
+        "coverted_max_cash_payment": 3977.23,
+        "points": 99425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2902.27,
+        "price": 3977.23,
+        "converted_price": 3977.23,
+        "lowest_converted_price": 3977.23,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3432.732953382
+          }
+        ]
+      },
+      {
+        "id": "FkVS",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 555.98,
+        "coverted_max_cash_payment": 761.91,
+        "points": 19025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 555.98,
+        "price": 761.91,
+        "converted_price": 761.91,
+        "lowest_converted_price": 761.91,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 663.430931436
+          }
+        ]
+      },
+      {
+        "id": "iB9z",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1284.88,
+        "coverted_max_cash_payment": 1760.78,
+        "points": 44000,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1284.88,
+        "price": 1760.78,
+        "converted_price": 1760.78,
+        "lowest_converted_price": 1760.78,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1546.89092664
+          }
+        ]
+      },
+      {
+        "id": "AXqe",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 6622.02,
+        "coverted_max_cash_payment": 9074.72,
+        "points": 226850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 6622.02,
+        "price": 9074.72,
+        "converted_price": 9074.72,
+        "lowest_converted_price": 9074.72,
+        "market_rates": []
+      },
+      {
+        "id": "4ldi",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1538.59,
+        "coverted_max_cash_payment": 2108.46,
+        "points": 52700,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1538.59,
+        "price": 2108.46,
+        "converted_price": 2108.46,
+        "lowest_converted_price": 2108.46,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1852.34981001
+          }
+        ]
+      },
+      {
+        "id": "CRU4",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 799.87,
+        "coverted_max_cash_payment": 1096.13,
+        "points": 27400,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 799.87,
+        "price": 1096.13,
+        "converted_price": 1096.13,
+        "lowest_converted_price": 1096.13,
+        "market_rates": []
+      },
+      {
+        "id": "KAe0",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 1250.78,
+        "coverted_max_cash_payment": 1714.05,
+        "points": 42850,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1250.78,
+        "price": 1714.05,
+        "converted_price": 1714.05,
+        "lowest_converted_price": 1714.05,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1662.469222842
+          }
+        ]
+      },
+      {
+        "id": "o8CS",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 90.95,
+        "coverted_max_cash_payment": 124.64,
+        "points": 3100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 90.95,
+        "price": 124.64,
+        "converted_price": 124.64,
+        "lowest_converted_price": 124.64,
+        "market_rates": []
+      },
+      {
+        "id": "EDy3",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1162.9,
+        "coverted_max_cash_payment": 1593.62,
+        "points": 39825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1162.9,
+        "price": 1593.62,
+        "converted_price": 1593.62,
+        "lowest_converted_price": 1593.62,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1400.081549451
+          }
+        ]
+      },
+      {
+        "id": "PXFa",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 2244.37,
+        "coverted_max_cash_payment": 3075.65,
+        "points": 76875,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2244.37,
+        "price": 3075.65,
+        "converted_price": 3075.65,
+        "lowest_converted_price": 3075.65,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2783.581436772
+          }
+        ]
+      },
+      {
+        "id": "050G",
+        "searchRank": 0.77,
+        "price_type": "multi",
+        "max_cash_payment": 1069.32,
+        "coverted_max_cash_payment": 1465.38,
+        "points": 36625,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1069.32,
+        "price": 1465.38,
+        "converted_price": 1465.38,
+        "lowest_converted_price": 1465.38,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1465.380408996
+          }
+        ]
+      },
+      {
+        "id": "6L5I",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1863.3,
+        "coverted_max_cash_payment": 2553.44,
+        "points": 63825,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1863.3,
+        "price": 2553.44,
+        "converted_price": 2553.44,
+        "lowest_converted_price": 2553.44,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2243.293328394
+          }
+        ]
+      },
+      {
+        "id": "qO6Y",
+        "searchRank": 0.85,
+        "price_type": "multi",
+        "max_cash_payment": 1723.02,
+        "coverted_max_cash_payment": 2361.2,
+        "points": 59025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1723.02,
+        "price": 2361.2,
+        "converted_price": 2361.2,
+        "lowest_converted_price": 2361.2,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2276.292206418
+          }
+        ]
+      },
+      {
+        "id": "9BUs",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 129.29,
+        "coverted_max_cash_payment": 177.18,
+        "points": 4425,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 129.29,
+        "price": 177.18,
+        "converted_price": 177.18,
+        "lowest_converted_price": 177.18,
+        "market_rates": []
+      },
+      {
+        "id": "fM4D",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 552.49,
+        "coverted_max_cash_payment": 757.12,
+        "points": 18925,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 552.49,
+        "price": 757.12,
+        "converted_price": 757.12,
+        "lowest_converted_price": 757.12,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 659.264960124
+          }
+        ]
+      },
+      {
+        "id": "cETW",
+        "searchRank": 0.83,
+        "price_type": "multi",
+        "max_cash_payment": 840.2,
+        "coverted_max_cash_payment": 1151.4,
+        "points": 28775,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 840.2,
+        "price": 1151.4,
+        "converted_price": 1151.4,
+        "lowest_converted_price": 1151.4,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1131.39010368
+          }
+        ]
+      },
+      {
+        "id": "RIUz",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 1346.28,
+        "coverted_max_cash_payment": 1844.92,
+        "points": 46100,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1346.28,
+        "price": 1844.92,
+        "converted_price": 1844.92,
+        "lowest_converted_price": 1844.92,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1635.41781702
+          }
+        ]
+      },
+      {
+        "id": "gWo3",
+        "searchRank": 0.93,
+        "price_type": "multi",
+        "max_cash_payment": 2280.88,
+        "coverted_max_cash_payment": 3125.68,
+        "points": 78125,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2280.88,
+        "price": 3125.68,
+        "converted_price": 3125.68,
+        "lowest_converted_price": 3125.68,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2746.005471846
+          }
+        ]
+      },
+      {
+        "id": "ne1F",
+        "searchRank": 0.92,
+        "price_type": "multi",
+        "max_cash_payment": 2467.68,
+        "coverted_max_cash_payment": 3381.67,
+        "points": 84525,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2467.68,
+        "price": 3381.67,
+        "converted_price": 3381.67,
+        "lowest_converted_price": 3381.67,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3004.473843279
+          }
+        ]
+      },
+      {
+        "id": "f0fe",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1219,
+        "coverted_max_cash_payment": 1670.5,
+        "points": 41750,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1219,
+        "price": 1670.5,
+        "converted_price": 1670.5,
+        "lowest_converted_price": 1670.5,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1435.533417162
+          }
+        ]
+      },
+      {
+        "id": "Albg",
+        "searchRank": 0.82,
+        "price_type": "multi",
+        "max_cash_payment": 1628.94,
+        "coverted_max_cash_payment": 2232.28,
+        "points": 55800,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1628.94,
+        "price": 2232.28,
+        "converted_price": 2232.28,
+        "lowest_converted_price": 2232.28,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 2232.275430582
+          }
+        ]
+      },
+      {
+        "id": "mfMu",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 1652.1,
+        "coverted_max_cash_payment": 2264.01,
+        "points": 56600,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1652.1,
+        "price": 2264.01,
+        "converted_price": 2264.01,
+        "lowest_converted_price": 2264.01,
+        "market_rates": []
+      },
+      {
+        "id": "z6kE",
+        "searchRank": 0.88,
+        "price_type": "multi",
+        "max_cash_payment": 1546.94,
+        "coverted_max_cash_payment": 2119.9,
+        "points": 52975,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1546.94,
+        "price": 2119.9,
+        "converted_price": 2119.9,
+        "lowest_converted_price": 2119.9,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1967.928106212
+          }
+        ]
+      },
+      {
+        "id": "e5cm",
+        "searchRank": 2,
+        "price_type": "multi",
+        "max_cash_payment": 5339.11,
+        "coverted_max_cash_payment": 7316.64,
+        "points": 182900,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 5339.11,
+        "price": 7316.64,
+        "converted_price": 7316.64,
+        "lowest_converted_price": 7316.64,
+        "market_rates": []
+      },
+      {
+        "id": "y7XA",
+        "searchRank": 0.94,
+        "price_type": "multi",
+        "max_cash_payment": 555.98,
+        "coverted_max_cash_payment": 761.91,
+        "points": 19025,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 555.98,
+        "price": 761.91,
+        "converted_price": 761.91,
+        "lowest_converted_price": 761.91,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 663.430931436
+          }
+        ]
+      },
+      {
+        "id": "jsGI",
+        "searchRank": 0.91,
+        "price_type": "multi",
+        "max_cash_payment": 1286.06,
+        "coverted_max_cash_payment": 1762.4,
+        "points": 44050,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1286.06,
+        "price": 1762.4,
+        "converted_price": 1762.4,
+        "lowest_converted_price": 1762.4,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1595.81368185
+          }
+        ]
+      },
+      {
+        "id": "t7oL",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 2627.32,
+        "coverted_max_cash_payment": 3600.44,
+        "points": 90000,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 2627.32,
+        "price": 3600.44,
+        "converted_price": 3600.44,
+        "lowest_converted_price": 3600.44,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 3093.78185328
+          }
+        ]
+      },
+      {
+        "id": "TMUA",
+        "searchRank": 0.95,
+        "price_type": "multi",
+        "max_cash_payment": 1437.84,
+        "coverted_max_cash_payment": 1970.39,
+        "points": 49250,
+        "bonuses": 0,
+        "bonus_programs": [],
+        "bonus_tiers": [],
+        "lowest_price": 1437.84,
+        "price": 1970.39,
+        "converted_price": 1970.39,
+        "lowest_converted_price": 1970.39,
+        "market_rates": [
+          {
+            "supplier": "expedia",
+            "rate": 1708.678615158
+          }
+        ]
+      }
+    ]
+  }

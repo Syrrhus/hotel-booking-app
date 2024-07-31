@@ -2,17 +2,17 @@ import "./searchItem.css";
 import { useNavigate } from 'react-router-dom';
 
 const SearchItem = ({ hotel }) => {
-
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}`, { state: { hotel } });
   };
 
-  console.log(hotel);
+  // console.log('hotel')
+  // console.log(`hotel.id ${hotel.id}\nhotel:${JSON.stringify(hotel)}`);
   return (
     <div className="searchItem">
       <img
-        src={hotel.image_details || "https://via.placeholder.com/600"} // Fallback to a placeholder if no image URL
+        src={hotel.image_details || "https://via.placeholder.com/600"}
         alt={hotel.name}
         className="siImg"
       />
@@ -35,7 +35,11 @@ const SearchItem = ({ hotel }) => {
           <button>{hotel.rating}</button>
         </div>
         <div className="siDetailTexts">
-          <span className="siPrice">${hotel.price}</span>
+          <span className="siPrice">
+            {hotel.priceInfo && hotel.priceInfo.converted_price
+              ? `$${hotel.priceInfo.price.toFixed(2)}`
+              : 'Price not available'}
+          </span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <button className="siCheckButton" onClick={handleNavigate}>See availability</button>
         </div>
