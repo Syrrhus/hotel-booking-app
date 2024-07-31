@@ -205,7 +205,7 @@ const Header = ({ type }) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={6} md={2}>
-                    <Button variant="contained" color="primary" fullWidth onClick={handleSubmit} disabled={submit}>
+                    <Button variant="contained" color="primary" fullWidth onClick={handleSubmit} disabled={submit}   className="searchButton">
                       {submit ? "Searching..." : "Search"}
                     </Button>
                   </Grid>

@@ -9,6 +9,7 @@ import Hotel from './pages/hotel/Hotel';
 import List from './pages/list/List';
 import HotelReservationForm from "./pages/hotelreservationform/HotelReservationForm";
 import { Payment } from '@mui/icons-material';
+import CombinedForm from './pages/CombinedForm/CombinedForm';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<List />} />
         <Route path="/hotels/:id" element={<Hotel />} />
-        <Route path="/hotels/:id/book" element={<HotelReservationForm/>}/>
+        <Route path="/hotels/:id/book" element={<CombinedForm/>}/>
         <Route path="/hotels/:id/payment" element={<Payment />} />
       </Routes>
     </Router>

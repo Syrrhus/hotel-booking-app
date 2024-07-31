@@ -23,12 +23,16 @@
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between  ;
   padding: 10px;
   border-radius: 5px;
   z-index: 3;
   margin-top: 10px; /* Adjust this value to move the search bar up */
 }
+.headerSearch .searchButton {
+  height: 56px; 
+}
+
 
 .featuredImg {
   position: absolute;

@@ -32,8 +32,8 @@ const Hotel = () => {
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
-        src: `${hotel.image_details.prefix}${i}${hotel.image_details.suffix}`
-      }))
+      src: `${hotel.image_details.prefix}${i}${hotel.image_details.suffix}`
+    }))
     : [];
 
   const handleOpen = (i) => {
@@ -68,110 +68,112 @@ const Hotel = () => {
   return (
     <div>
       <Navbar />
-      <div className="hotelContainer">
-        {open && (
-          <div className="slider">
-            <FontAwesomeIcon icon={faTimes} className="close" onClick={() => setOpen(false)} />
-            <FontAwesomeIcon icon={faChevronLeft} className="arrow" onClick={() => handleMove("l")} />
-            <div className="sliderWrapper">
-              <img src={photos[slideNumber].src} alt="" className="sliderImg" />
-            </div>
-            <FontAwesomeIcon icon={faChevronRight} className="arrow" onClick={() => handleMove("r")} />
-          </div>
-        )}
-        <div className="hotelContent">
-          <div className="hotelDetailsWrapper">
-            <h1 className="hotelTitle">{hotel.name} <button className="bookNow" onClick={handleNavigate}>Reserve or Book Now!</button></h1>
-            <div className="hotelAddress">
-              <FontAwesomeIcon icon={faLocationDot} />
-              <span>{hotel.address}</span>
-            </div>
-            <span className="hotelRating">Rating: {hotel.rating}</span>
-            <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
-            <span className="hotelPriceHighlight">Book a stay over ${hotel.price} only!</span>
-            <div className="hotelImages">
-              <div className="carousel">
-                <FontAwesomeIcon icon={faChevronLeft} className="carouselArrow left" onClick={() => handleMove("l")} />
-                <div className="carouselWrapper">
-                  <img src={photos[slideNumber].src} alt="" className="carouselImg" />
-                </div>
-                <FontAwesomeIcon icon={faChevronRight} className="carouselArrow right" onClick={() => handleMove("r")} />
+      <div className="container">
+        <div className="hotelContainer">
+          {open && (
+            <div className="slider">
+              <FontAwesomeIcon icon={faTimes} className="close" onClick={() => setOpen(false)} />
+              <FontAwesomeIcon icon={faChevronLeft} className="arrow" onClick={() => handleMove("l")} />
+              <div className="sliderWrapper">
+                <img src={photos[slideNumber].src} alt="" className="sliderImg" />
               </div>
-              <div className="thumbnailCarousel">
-                <div className="thumbnailWrapper">
-                  {photos.map((photo, i) => (
-                    <img
-                      key={i}
-                      src={photo.src}
-                      alt=""
-                      className={`thumbnailImg ${i === slideNumber ? "active" : ""}`}
-                      onClick={() => handleThumbnailClick(i)}
-                    />
-                  ))}
-                </div>
-              </div>
+              <FontAwesomeIcon icon={faChevronRight} className="arrow" onClick={() => handleMove("r")} />
             </div>
-            <div className="hotelDetails">
-              <div className="hotelDetailsTexts">
-                <h1 className="hotelTitle">Stay in the heart of {hotel.original_metadata.city}</h1>
-                <p className="hotelDesc" dangerouslySetInnerHTML={{ __html: hotel.description }}></p>
-                <div className="hotelTrustYouScores">
-                  <h2>TrustYou Scores</h2>
-                  <p>Overall: {hotel.trustyou.score.overall}</p>
-                  <p>Kaligo Overall: {hotel.trustyou.score.kaligo_overall}</p>
-                  <p>Solo: {hotel.trustyou.score.solo}</p>
-                  <p>Couple: {hotel.trustyou.score.couple}</p>
-                  <p>Family: {hotel.trustyou.score.family}</p>
-                  <p>Business: {hotel.trustyou.score.business}</p>
+          )}
+          <div className="hotelContent">
+            <div className="hotelDetailsWrapper">
+              <h1 className="hotelTitle">{hotel.name} <button className="bookNow" onClick={handleNavigate}>Reserve or Book Now!</button></h1>
+              <div className="hotelAddress">
+                <FontAwesomeIcon icon={faLocationDot} />
+                <span>{hotel.address}</span>
+              </div>
+              <span className="hotelRating">Rating: {hotel.rating}</span>
+              <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
+              <span className="hotelPriceHighlight">Book a stay over ${hotel.price} only!</span>
+              <div className="hotelImages">
+                <div className="carousel">
+                  <FontAwesomeIcon icon={faChevronLeft} className="carouselArrow left" onClick={() => handleMove("l")} />
+                  <div className="carouselWrapper">
+                    <img src={photos[slideNumber].src} alt="" className="carouselImg" />
+                  </div>
+                  <FontAwesomeIcon icon={faChevronRight} className="carouselArrow right" onClick={() => handleMove("r")} />
                 </div>
-                <div className="hotelCategories">
-                  <h2>Categories</h2>
-                  {Object.keys(hotel.categories).map((key) => (
-                    <div key={key}>
-                      <p>{hotel.categories[key].name}: {hotel.categories[key].score}</p>
-                      <p>Popularity: {hotel.categories[key].popularity}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="hotelAmenitiesRatings">
-                  <h2>Amenities Ratings</h2>
-                  {hotel.amenities_ratings.map((amenity, index) => (
-                    <div key={index}>
-                      <p>{amenity.name}: {amenity.score}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="hotelAmenities">
-                  <h2>Amenities</h2>
-                  <ul>
-                    {Object.keys(hotel.amenities).map((key) => (
-                      <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
+                <div className="thumbnailCarousel">
+                  <div className="thumbnailWrapper">
+                    {photos.map((photo, i) => (
+                      <img
+                        key={i}
+                        src={photo.src}
+                        alt=""
+                        className={`thumbnailImg ${i === slideNumber ? "active" : ""}`}
+                        onClick={() => handleThumbnailClick(i)}
+                      />
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
-              <div className="hotelDetailsPrice">
-                <h1>Perfect for a {hotel.categories.family_hotel ? "Family" : "Business"} stay!</h1>
-                <h2>
-                  <b>${hotel.price}</b> (9 nights)
-                </h2>
-                <button onClick={handleNavigate}>Reserve or Book Now!</button>
+              <div className="hotelDetails">
+                <div className="hotelDetailsTexts">
+                  <h1 className="hotelTitle">Stay in the heart of {hotel.original_metadata.city}</h1>
+                  <p className="hotelDesc" dangerouslySetInnerHTML={{ __html: hotel.description }}></p>
+                  <div className="hotelTrustYouScores">
+                    <h2>TrustYou Scores</h2>
+                    <p>Overall: {hotel.trustyou.score.overall}</p>
+                    <p>Kaligo Overall: {hotel.trustyou.score.kaligo_overall}</p>
+                    <p>Solo: {hotel.trustyou.score.solo}</p>
+                    <p>Couple: {hotel.trustyou.score.couple}</p>
+                    <p>Family: {hotel.trustyou.score.family}</p>
+                    <p>Business: {hotel.trustyou.score.business}</p>
+                  </div>
+                  <div className="hotelCategories">
+                    <h2>Categories</h2>
+                    {Object.keys(hotel.categories).map((key) => (
+                      <div key={key}>
+                        <p>{hotel.categories[key].name}: {hotel.categories[key].score}</p>
+                        <p>Popularity: {hotel.categories[key].popularity}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hotelAmenitiesRatings">
+                    <h2>Amenities Ratings</h2>
+                    {hotel.amenities_ratings.map((amenity, index) => (
+                      <div key={index}>
+                        <p>{amenity.name}: {amenity.score}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hotelAmenities">
+                    <h2>Amenities</h2>
+                    <ul>
+                      {Object.keys(hotel.amenities).map((key) => (
+                        <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="hotelDetailsPrice">
+                  <h1>Perfect for a {hotel.categories.family_hotel ? "Family" : "Business"} stay!</h1>
+                  <h2>
+                    <b>${hotel.price}</b> (9 nights)
+                  </h2>
+                  <button onClick={handleNavigate}>Reserve or Book Now!</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="hotelMapWrapper">
-            <div className="hotelMap">
-              <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%" }}>
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker position={[hotel.latitude, hotel.longitude]} icon={redIcon}>
-                  <Popup>
-                    {hotel.name} <br /> {hotel.address}
-                  </Popup>
-                </Marker>
-              </MapContainer>
+            <div className="hotelMapWrapper">
+              <div className="hotelMap">
+                <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%" }}>
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  <Marker position={[hotel.latitude, hotel.longitude]} icon={redIcon}>
+                    <Popup>
+                      {hotel.name} <br /> {hotel.address}
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
             </div>
           </div>
         </div>
