@@ -102,10 +102,10 @@ const Header = ({ type }) => {
           ...searchParams
         }
       });
-      setData(response.data.slice(0, 10));
+      setData(response.data.slice(0, 40));
       setShow(false);
       setSubmit(false);
-      navigate("/hotels", { state: { data: response.data.slice(0, 10), searchParams } });
+      navigate("/hotels", { state: { data: response.data.slice(0, 40), searchParams } });
     } catch (error) {
       console.error('Error fetching hotels:', error);
       setSubmit(false);

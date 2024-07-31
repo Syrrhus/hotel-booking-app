@@ -50,79 +50,105 @@ app.get('/api/hotels/:id', async (req, res) => {
 app.use('/api/bookings', bookingsRouter);
 
 
-app.get('/api/hotel-prices', async (req, res) => {
-    const { destination_id, checkin, checkout, guests } = req.query;
-    
-    // Log the received parameters
-    console.log('Received request for hotel prices with params:', { destination_id, checkin, checkout, guests });
-    
-    try {
-    const response = await axios.get('https://hotelapi.loyalty.dev/api/hotels/prices', {
-    params: {
-    destination_id,
-    checkin,
-    checkout,
-    lang: 'en_US',
-    currency: 'SGD',
-    country_code: 'SG',
-    guests,
-    partner_id: 1
-    }
-    });
-    
-    // Log the response data
-    console.log('API Response:', response.data);
-    
-    res.json(response.data);
-    } catch (error) {
-    console.error("Error occurred while fetching hotel prices:", error);
-    
-    if (error.response) {
-    console.error("Error data:", error.response.data);
-    console.error("Error status:", error.response.status);
-    console.error("Error headers:", error.response.headers);
-    } else if (error.request) {
-    console.error("Error request:", error.request);
-    } else {
-    console.error('Error message:', error.message);
-    }
-    
-    res.status(error.response?.status || 500).json({
-    message: 'Failed to fetch hotel prices',
-    error: error.response?.data || error.message
-    });
-    }
-    });
 
 
-    app.get('/api/hotels/:id/prices', async (req, res) => {
-        const hotelId = req.params.id;
+
+    app.get('/hotels/prices', async (req, res) => {
+        // const { id } = req.params;
         const { destination_id, checkin, checkout, guests } = req.query;
-    
-        try {
-            const response = await axios.get(`https://hotelapi.loyalty.dev/api/hotels/${hotelId}/price`, {
-                params: {
-                    destination_id,
-                    checkin,
-                    checkout,
-                    lang: 'en_US',
-                    currency: 'SGD',
-                    country_code: 'SG',
-                    guests,
-                    partner_id: 1
-                }
-            });
-            res.json(response.data.json);
-            console.log(res.json(response.data.json),"hotel code");
-            res.status(200).json(response.data);
-            
-        } catch (error) {
-            console.error(`Error fetching hotel prices: ${error.message}`); 
-            
-            res.status(500).json({ error: 'An error occurred while fetching hotel price', details: error.response ? error.response.data : null });
-            //res.status(500).json({ message: 'Failed to fetch hotel prices', error: error.message });
+        
+        if (!destination_id || !checkin || !checkout || !guests) {
+        return res.status(400).json({ error: 'Missing required query parameters' });
         }
-    });
+        
+        try {
+        const response = await axios.get(`https://hotelapi.loyalty.dev/api/hotels/prices`, {
+        params: {
+        destination_id: destination_id,
+        checkin: checkin,
+        checkout: checkout,
+        lang: 'en_US',
+        currency: 'SGD',
+        partner_id: '1',
+        country_code: 'SG',
+        guests: guests
+        }
+        });
+        
+        const hotels = response.data.hotels;
+        hotels.forEach(hotel => {
+        console.log(hotel.price,"new data");
+       });
+        
+        
+        // The API request was successful
+        // if (response.data.completed && response.data.rooms.length === 0) {
+        // // No rooms available
+        // res.status(200).json({ message: 'No rooms available for the specified criteria', data: response.data });
+        // } else {
+        // // Rooms are available
+        res.status(200).json(response.data.hotels);
+        // }
+        } catch (error) {
+        console.error('Error fetching hotel price:', error.message);
+        if (error.response) {
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+        console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+        console.error('Request details:', error.request);
+        }
+        res.status(500).json({ error: 'An error occurred while fetching hotel price', details: error.response ? error.response.data : null });
+        }
+        });
+
+
+    app.get('/hotels/:id/prices', async (req, res) => {
+        const { id } = req.params;
+        const { destination_id, checkin, checkout, guests } = req.query;
+      
+        if (!destination_id || !checkin || !checkout || !guests) {
+          return res.status(400).json({ error: 'Missing required query parameters' });
+        }
+      
+        try {
+          const response = await axios.get(`https://hotelapi.loyalty.dev/api/hotels/${id}/price`, {
+            params: {
+              destination_id: destination_id,
+              checkin: checkin,
+              checkout: checkout,
+              lang: 'en_US',
+              currency: 'SGD',
+              partner_id: '1',
+              country_code: 'SG',
+              guests: guests
+            }
+          });
+          console.log(response.data);
+      
+          // The API request was successful
+          if (response.data.completed && response.data.rooms.length === 0) {
+            // No rooms available
+            res.status(200).json({ message: 'No rooms available for the specified criteria', data: response.data });
+          } else {
+            // Rooms are available
+            res.status(200).json(response.data);
+          }
+        } catch (error) {
+          console.error('Error fetching hotel price:', error.message);
+          if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+          } else if (error.request) {
+            console.error('Request details:', error.request);
+          }
+          res.status(500).json({ error: 'An error occurred while fetching hotel price', details: error.response ? error.response.data : null });
+        }
+      });
+      
+      
+    
 
 // Cron job to restart the server after 10 seconds (modify as needed)
 cron.schedule('*/10 * * * * *', () => {

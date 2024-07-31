@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useEffect,useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import SearchItem from '../../components/searchItem/SearchItem';
@@ -15,7 +15,9 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import destinationsData from '../../components/header/destinations.json';
+import { SearchContext } from '../../context/SearchContext'; // Adjust path accordingly
 import { format } from 'date-fns';
+
 
 const theme = createTheme({
   palette: {
@@ -26,8 +28,11 @@ const theme = createTheme({
 });
 
 const List = () => {
+  const { searchParams } = useContext(SearchContext);
+  const { setSearchParams } = useContext(SearchContext);
   const location = useLocation();
   const navigate = useNavigate();
+
 
   const [data, setData] = useState(location.state.data || []);
   const [destination, setDestination] = useState('');
@@ -43,6 +48,8 @@ const List = () => {
   const [ratingRange, setRatingRange] = useState([0, 5]);
   const [rating, setRating] = useState([0, 5]);
   const [polling, setPolling] = useState(false); // State to control polling
+  const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
+const [isLoading, setIsLoading] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
@@ -73,7 +80,7 @@ const List = () => {
       });
       setData(response.data.slice(0, 10));
       setSubmit(false);
-      navigate("/hotels", { state: { data: response.data.slice(0, 10), searchParams } });
+      navigate("/hotels", { state: { data: response.data.slice(0, 40), searchParams } });
     } catch (error) {
       console.error('Error fetching hotels:', error);
       setSubmit(false);
@@ -84,6 +91,8 @@ const List = () => {
     event.preventDefault();
 
     const selectedDestination = uniqueDestinationsData.find(s => s.uid === destination);
+    console.log(selectedDestination,"Selected Destination");
+
     if (!selectedDestination) {
       setErrorMessage('Please fill in all required fields.');
       return;
@@ -97,6 +106,7 @@ const List = () => {
         guests: adults + children,
         rooms
       };
+      setSearchParams(searchParams);
       handleSearch(searchParams);
     } else {
       setErrorMessage('Please fill in all required fields.');
@@ -112,14 +122,16 @@ const List = () => {
     }, 300),
     [errorMessage]
   );
+  
+  
 
   const handleApplyFilters = () => {
 
     
     const filteredData = data.filter(hotel => {
       return (
-        hotel.price >= priceRange[0] &&
-        hotel.price <= priceRange[1] &&
+        //hotel.price >= priceRange[0] &&
+        //hotel.price <= priceRange[1] &&
         hotel.rating >= rating[0] &&
         hotel.rating <= rating[1]
       );
@@ -127,7 +139,7 @@ const List = () => {
     setData(filteredData);
   };
 
-
+//useless
   const fetchFilteredHotels = async () => {
     if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
       console.error('Invalid check-in or check-out date');
@@ -157,7 +169,7 @@ const List = () => {
 
       
 
-      const requestUrl = `http://localhost:5000/api/hotel-prices?${new URLSearchParams(params).toString()}`;
+      const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
       console.log('Request URL:', requestUrl);
 
       const response = await axios.get(requestUrl);
@@ -197,6 +209,50 @@ const List = () => {
   useEffect(() => {
     fetchFilteredHotels();
   }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
+
+
+  const fetchAndMergePrices = async () => {
+    setIsLoading(true);
+    try {
+      const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
+      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
+  
+      const response = await axios.get(`http://localhost:5000/hotels/prices`, {
+        params: {
+          destination_id: searchParams.destination_id,
+          checkin: formattedCheckIn,
+          checkout: formattedCheckOut,
+          guests: searchParams.adults,
+        },
+      });
+
+      
+  
+      // Assuming response.data is an array of hotels with price details
+      const prices = response.data;
+  
+      // Merge prices with existing data
+    const mergedData = data.map(hotel => {
+      const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
+      return priceData
+        ? { ...hotel, price: priceData.max_cash_payment }
+        : null; // Filter out hotels without a price
+        console.log(priceData,"pricedata")
+    }).filter(hotel => hotel !== null); // Filter out any null values
+    
+
+  
+     
+    const top10Hotels = mergedData.slice(0, 10); // Get the first 10 hotels
+  
+      setData(top10Hotels); // Update the data state with the top 10 hotels
+      console.log(top10Hotels, "Top 10 hotels with prices");
+    } catch (error) {
+      console.error('Error fetching hotel prices:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -288,11 +344,10 @@ const List = () => {
                   <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
-                <div className="filterGroup">
-                  <label>Price</label>
-                  <Slider range min={50} max={1000} defaultValue={priceRange} onChange={(value) => setPriceRange(value)} />
-                  <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
-                </div>
+                <button onClick={fetchAndMergePrices}>Show Hotels with Prices</button>
+  {isLoading && <p>Loading...</p>}
+                
+                
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
               </div>
             </div>

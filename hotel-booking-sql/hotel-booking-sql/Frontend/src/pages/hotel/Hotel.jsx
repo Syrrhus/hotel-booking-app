@@ -2,12 +2,15 @@ import "./hotel.css";
 import Navbar from "../../components/navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { SearchContext } from '../../context/SearchContext';
+import { format } from 'date-fns';
+import axios from 'axios';
 
 // Custom icon for the map marker
 const redIcon = new L.Icon({
@@ -19,16 +22,60 @@ const redIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
+
+
 const Hotel = () => {
+  const { searchParams } = useContext(SearchContext);
   const navigate = useNavigate();
   const location = useLocation();
   const hotel = location.state.hotel; // Extracting hotel data from state
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [RoomDetails, SetRoomDetails] = useState();
+
 
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}/book`, { state: { hotel } });
   };
+
+
+  
+useEffect(()=>{
+  const fetchroomprice= async () => {
+    const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
+      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
+    try{
+    const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
+      params: {
+        destination_id: searchParams.destination_id,
+        checkin: formattedCheckIn,
+        checkout: formattedCheckOut,
+        guests: searchParams.adults,
+      },
+    });
+    if (response.data.completed) {
+      console.log(response.data, "room response");
+      SetRoomDetails(response.data.rooms);
+      // Handle the response, e.g., update state with the fetched data
+    } else {
+      console.log('Response not completed, polling again...');
+      setTimeout(fetchroomprice, 5000); // Poll every 5 seconds
+    }
+
+    
+
+    console.log(response.data,"room response");
+  }
+  catch (error) {
+    console.error('Error fetching hotel room price:', error);
+  }
+
+  }
+  fetchroomprice()
+
+ 
+
+},[hotel]);
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({

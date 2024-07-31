@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 const SearchItem = ({ hotel }) => {
   const { searchParams } = useContext(SearchContext);
   const [price, setPrice] = useState(null);
+  const [polling, setPolling] = useState(false); // State to control pollin
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -31,30 +32,83 @@ const SearchItem = ({ hotel }) => {
   }
 
   useEffect(() => {
-    console.log(searchParams, "searchparams");
     if (searchParams.destination_id && searchParams.checkIn && searchParams.checkOut) {
       const fetchPrice = async () => {
         try {
           const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-          const response = await axios.get(`http://localhost:5000/api/hotels/${hotel.id}/prices`, {
+          const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
+
+          const response = await axios.get(`http://localhost:5000/hotels/prices`, {
             params: {
               destination_id: searchParams.destination_id,
-              checkin: formattedCheckIn ,
+              checkin: formattedCheckIn,
               checkout: formattedCheckOut,
               guests: searchParams.adults,
             },
           });
-          setPrice(response.data.price);
+// Initialize a counter to track the number of prices fetched
+let fetchedPricesCount = 0;
+
+// Loop through the hotels in response.data
+response.data.forEach((hotelItem) => {
+  if (fetchedPricesCount < 50) {
+    if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
+      setPrice(hotelItem.price); // Assuming hotelItem has a price field
+      console.log(hotelItem.price, "price");
+
+      fetchedPricesCount++; // Increment the counter
+    }
+  } else {
+    console.log('Fetched 50 prices, stopping further fetching.');
+    return; // Exit the loop early if the limit is reached
+  }
+});
+  
+         
+            
+           
+  
+          
         } catch (error) {
           console.error('Error fetching hotel price:', error);
         }
       };
-      console.log(searchParams,"searchparams");
   
       fetchPrice();
     }
+    
   }, [hotel]);
+
+  useEffect(()=>{
+    const fetchroomprice= async () => {
+      const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
+        const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
+      try{
+      const response = await axios.get(`http://localhost:5000/api/hotels/${hotel.id}/prices`, {
+        params: {
+          destination_id: searchParams.destination_id,
+          checkin: formattedCheckIn,
+          checkout: formattedCheckOut,
+          guests: searchParams.adults,
+        },
+      });
+
+      console.log(response.data,"room response");
+      
+
+
+      
+    }
+    catch (error) {
+      console.error('Error fetching hotel room price:', error);
+    }
+
+    }
+    fetchroomprice();
+
+   
+
+  },[hotel]);
   
 
   return (
@@ -83,7 +137,7 @@ const SearchItem = ({ hotel }) => {
           <button>{hotel.rating}</button>
         </div>
         <div className="siDetailTexts">
-          <span className="siPrice">${price || 'Loading...'}</span>
+          <span className="siPrice">${price || 'NotAvailable'}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <button className="siCheckButton" onClick={handleNavigate}>See availability</button>
         </div>
