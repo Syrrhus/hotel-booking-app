@@ -25,13 +25,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          '&.MuiButton-containedPrimary': {
-            backgroundColor: '#262e5d',
-            color: 'white',
-            '&:hover': {
-              backgroundColor: '#1f264b',
-            },
-          },
+
           '&.MuiButton-outlinedPrimary': {
             borderColor: '#262e5d',
             color: '#262e5d',
@@ -40,13 +34,7 @@ const theme = createTheme({
               color: '#1f264b',
             },
           },
-          '&.MuiButton-contained': {
-            backgroundColor: '#262e5d',
-            color: 'white',
-            '&:hover': {
-              backgroundColor: '#1f264b',
-            },
-          },
+
           '&.MuiButton-outlined': {
             borderColor: '#262e5d',
             color: '#262e5d',

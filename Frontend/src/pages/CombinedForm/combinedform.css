@@ -1,21 +1,22 @@
 .combinedform-container {
     margin: none;
     width: 100%;
+    min-width: 600px;
     max-width: 600px;
-    padding: 20px;
     /* border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     flex: 1;
 }
 
+
 .combinedform-container h1 {
     text-align: left;
+    margin-bottom: 10px;
 }
 
 form {
     width: 100%;
-    /* Ensure the form uses the full width */
 }
 
 .form-group {
@@ -49,7 +50,7 @@ textarea {
     padding: 8px;
     box-sizing: border-box;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 button {
@@ -72,12 +73,13 @@ button[type="button"] {
 
 .paymenthotelDetailsWrapper {
     max-width: 400px;
+    min-width: 400px;
     width: 60%;
-    background-color: #fff;
+    /* background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 80px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    margin-left: 50px;
 }
 
 .paymenthotelDetailsWrapper h2 {
@@ -85,9 +87,18 @@ button[type="button"] {
 }
 
 .paymentcontainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin-top: 20px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    width: fit-content;
     justify-content: center;
     align-items: flex-start;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
