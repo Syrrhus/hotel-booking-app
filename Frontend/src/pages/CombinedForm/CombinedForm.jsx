@@ -148,36 +148,37 @@ const CombinedForm = () => {
 
     return (
         <div>
-            <Navbar />
-            <div className="paymentcontainer">
-                <div className="combinedform-container">
-                    <h1>Finalize Booking</h1>
-                    {/* <h2>{hotel.name}</h2> */}
-                    <ProgressBar step={step} />
-                    {step === 1 && <BookingDetails bookingInfo={bookingInfo} handleChange={handleChange} nextStep={nextStep} />}
-                    {step === 2 && <GuestDetails guestInfo={guestInfo} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep} />}
-                    {step === 3 && <PaymentDetails paymentInfo={paymentInfo} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep} value={value} setValue={setValue} />}
-                    {step === 4 && <Confirmation bookingInfo={bookingInfo} guestInfo={guestInfo} paymentInfo={{ ...paymentInfo, cardNumber: value }} handleSubmit={handleSubmit} prevStep={prevStep} />}
-                </div>
-                <div className="paymenthotelDetailsWrapper">
-                    <h2>{hotel.name}</h2>
-                    <div className="hotelAddress">
-                        <FontAwesomeIcon icon={faLocationDot} />
-                        <span>{hotel.address}</span>
+            <Navbar style={{ position: "sticky" }} />
+            <div className='formcontainer'>
+                <div className="paymentcontainer">
+                    <div className="combinedform-container">
+                        <h1>Finalize Booking</h1>
+                        {/* <h2>{hotel.name}</h2> */}
+                        <ProgressBar step={step} />
+                        {step === 1 && <BookingDetails bookingInfo={bookingInfo} handleChange={handleChange} nextStep={nextStep} />}
+                        {step === 2 && <GuestDetails guestInfo={guestInfo} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep} />}
+                        {step === 3 && <PaymentDetails paymentInfo={paymentInfo} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep} value={value} setValue={setValue} />}
+                        {step === 4 && <Confirmation bookingInfo={bookingInfo} guestInfo={guestInfo} paymentInfo={{ ...paymentInfo, cardNumber: value }} handleSubmit={handleSubmit} prevStep={prevStep} />}
                     </div>
-                    <span className="hotelRating">Rating: {hotel.rating}</span>
-                    <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
-                    <span className="hotelPriceHighlight">Price: ${hotel.price}</span>
-                    <div className="hotelImages">
-                        <div className="carousel">
-                            <div className="carouselWrapper">
-                                <img src={photos[1].src} alt="" className="carouselImg" />
+                    <div className="paymenthotelDetailsWrapper">
+                        <h2>{hotel.name}</h2>
+                        <div className="hotelAddress">
+                            <FontAwesomeIcon icon={faLocationDot} />
+                            <span>{hotel.address}</span>
+                        </div>
+                        <span className="hotelRating">Rating: {hotel.rating}</span>
+                        <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
+                        <span className="hotelPriceHighlight">Price: ${hotel.price}</span>
+                        <div className="hotelImages">
+                            <div className="carousel">
+                                <div className="carouselWrapper">
+                                    <img src={photos[1].src} alt="" className="carouselImg" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="hotelDetails">
-                        <div className="hotelDetailsTexts">
-                            {/* <h1 className="hotelTitle">Stay in the heart of {hotel.original_metadata.city}</h1>
+                        <div className="hotelDetails">
+                            <div className="hotelDetailsTexts">
+                                {/* <h1 className="hotelTitle">Stay in the heart of {hotel.original_metadata.city}</h1>
                             <p className="hotelDesc" dangerouslySetInnerHTML={{ __html: hotel.description }}></p>
                             <div className="hotelTrustYouScores">
                                 <h2>TrustYou Scores</h2>
@@ -188,37 +189,38 @@ const CombinedForm = () => {
                                 <p>Family: {hotel.trustyou.score.family}</p>
                                 <p>Business: {hotel.trustyou.score.business}</p>
                             </div> */}
-                            <div className="hotelCategories">
-                                <h2>Categories</h2>
-                                {Object.keys(hotel.categories).map((key) => (
-                                    <div key={key}>
-                                        <p>{hotel.categories[key].name}: {hotel.categories[key].score}</p>
-                                        <p>Popularity: {hotel.categories[key].popularity}</p>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="hotelAmenitiesRatings">
-                                <h2>Amenities Ratings</h2>
-                                {hotel.amenities_ratings.map((amenity, index) => (
-                                    <div key={index}>
-                                        <p>{amenity.name}: {amenity.score}</p>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="hotelAmenities">
-                                <h2>Amenities</h2>
-                                <ul>
-                                    {Object.keys(hotel.amenities).map((key) => (
-                                        <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
+                                <div className="hotelCategories">
+                                    <h2>Categories</h2>
+                                    {Object.keys(hotel.categories).map((key) => (
+                                        <div key={key}>
+                                            <p>{hotel.categories[key].name}: {hotel.categories[key].score}</p>
+                                            <p>Popularity: {hotel.categories[key].popularity}</p>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
+                                <div className="hotelAmenitiesRatings">
+                                    <h2>Amenities Ratings</h2>
+                                    {hotel.amenities_ratings.map((amenity, index) => (
+                                        <div key={index}>
+                                            <p>{amenity.name}: {amenity.score}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="hotelAmenities">
+                                    <h2>Amenities</h2>
+                                    <ul>
+                                        {Object.keys(hotel.amenities).map((key) => (
+                                            <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
+        </div >
     );
 };
 
