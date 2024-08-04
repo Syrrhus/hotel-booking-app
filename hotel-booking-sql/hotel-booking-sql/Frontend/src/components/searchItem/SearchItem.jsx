@@ -93,7 +93,7 @@ response.data.forEach((hotelItem) => {
         },
       });
 
-      console.log(response.data,"room response");
+      //console.log(response.data,"room response");
       
 
 
