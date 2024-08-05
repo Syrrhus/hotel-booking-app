@@ -306,9 +306,9 @@ const List = () => {
                   <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
-                <Button className="show-prices-button" onClick={fetchAndMergePrices} variant="contained" color="primary" disabled={isLoading}>
+                <button className="show-prices-button" onClick={fetchAndMergePrices} variant="contained" color="primary" disabled={isLoading}>
                   {isLoading ? <CircularProgress size={24} /> : 'Show Hotels with Prices'}
-                </Button>
+                </button>
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
               </div>
             </div>

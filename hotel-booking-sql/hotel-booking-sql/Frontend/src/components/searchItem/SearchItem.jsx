@@ -53,23 +53,24 @@ const SearchItem = ({ hotel }) => {
               guests: searchParams.adults,
             },
           });
-// Initialize a counter to track the number of prices fetched
-let fetchedPricesCount = 0;
 
-// Loop through the hotels in response.data
-response.data.forEach((hotelItem) => {
-  if (fetchedPricesCount < 50) {
-    if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
-      setPrice(hotelItem.price); // Assuming hotelItem has a price field
-      console.log(hotelItem.price, "price");
+          // Initialize a counter to track the number of prices fetched
+          let fetchedPricesCount = 0;
 
-      fetchedPricesCount++; // Increment the counter
-    }
-  } else {
-    console.log('Fetched 50 prices, stopping further fetching.');
-    return; // Exit the loop early if the limit is reached
-  }
-});
+          // Loop through the hotels in response.data
+          response.data.forEach((hotelItem) => {
+            if (fetchedPricesCount < 50) {
+              if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
+                setPrice(hotelItem.price); // Assuming hotelItem has a price field
+                console.log(hotelItem.price, "price");
+
+                fetchedPricesCount++; // Increment the counter
+              }
+            } else {
+              console.log('Fetched 50 prices, stopping further fetching.');
+              return; // Exit the loop early if the limit is reached
+            }
+          });
        
         } catch (error) {
           console.error('Error fetching hotel price:', error);
@@ -112,7 +113,16 @@ response.data.forEach((hotelItem) => {
     fetchroomprice();
 
   },[hotel]);
-  
+
+  const getLimitedWords = (htmlString) => {
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = htmlString;
+    const text = tempElement.textContent || tempElement.innerText || "";
+    const words = text.split(/\s+/).slice(2, 32).join(' '); // Skipping first 2 words and taking next 20 words
+    return words + (text.split(/\s+/).length > 22 ? '...' : '');
+  };
+
+  const limitedDescription = hotel.description ? getLimitedWords(hotel.description) : "";
 
   return (
     <div className="searchItem">
@@ -126,8 +136,13 @@ response.data.forEach((hotelItem) => {
         <span className="siDistance">
           <FontAwesomeIcon icon={faLocationDot} />
           <span> {hotel.address}</span>
+          
+          {/* edit this */}
+          <p className="hotelDesc">{limitedDescription}</p>
+
         </span>
         {hotel.freeTaxi && <span className="siTaxiOp">Free airport taxi</span>}
+        
         <span className="siSubtitle">{hotel.subtitle}</span>
         <span className="siFeatures">{hotel.features}</span>
         {hotel.freeCancellation && <span className="siCancelOp">Free cancellation</span>}
