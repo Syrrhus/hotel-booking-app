@@ -47,14 +47,15 @@ const Hotel = () => {
 
 useEffect(()=>{
   const fetchroomprice= async () => {
-    const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
+   
+    console.log(searchParams.checkin,"searchparamchecin");
+    
     try{
     const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
       params: {
         destination_id: searchParams.destination_id,
-        checkin: formattedCheckIn,
-        checkout: formattedCheckOut,
+        checkin: searchParams.checkin,
+        checkout: searchParams.checkout,
         guests: searchParams.adults,
       },
     });
@@ -83,6 +84,11 @@ useEffect(()=>{
  
 
 },[hotel]);
+
+const isValidDate = (date) => {
+  return date instanceof Date && !isNaN(date);
+};
+
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({

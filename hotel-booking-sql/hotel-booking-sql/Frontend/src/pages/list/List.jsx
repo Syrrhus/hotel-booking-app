@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import destinationsData from '../../components/header/destinations.json';
 import { SearchContext } from '../../context/SearchContext'; // Adjust path accordingly
 import { format } from 'date-fns';
+import { parseISO } from 'date-fns';
 
 
 const theme = createTheme({
@@ -33,12 +34,12 @@ const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const [data, setData] = useState(location.state.data || []);
-  const [destination, setDestination] = useState('');
+  const [destination, setDestination] = useState(searchParams.destination_id);
   const [filterdataID, setfilterdataID] = useState(location.state.data || []);
-  const [checkIn, setCheckIn] = useState(null);
-  const [checkOut, setCheckOut] = useState(null);
+  //const { destination_id, checkin, checkout } = location.state.searchParams;
+  const [checkIn, setCheckIn] = useState(new Date(location.state.searchParams.checkin));
+  const [checkOut, setCheckOut] = useState(new Date(location.state.checkout));
   const [adults, setAdults] = useState(2); // Default to 2 adults
   const [children, setChildren] = useState(0); // Default to 0 children
   const [rooms, setRooms] = useState(1);
@@ -49,26 +50,28 @@ const List = () => {
   const [rating, setRating] = useState([0, 5]);
   const [polling, setPolling] = useState(false); // State to control polling
   const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
-
 
   useEffect(() => {
     if (location.state && location.state.searchParams) {
       const { destination_id, checkin, checkout } = location.state.searchParams;
       setDestination(destination_id);
+      console.log(new Date(checkin),"new date")
       setCheckIn(new Date(checkin));
       setCheckOut(new Date(checkout));
     }
   }, [location.state]);
 
+  
+  
   const uniqueDestinationsData = useMemo(() => {
     return Array.from(new Set(destinationsData.map(a => a.uid)))
       .map(uid => {
         return destinationsData.find(a => a.uid === uid);
       });
-  }, []);
+  }, [searchParams]);
 
   const handleSearch = async (searchParams) => {
     try {
@@ -78,40 +81,50 @@ const [isLoading, setIsLoading] = useState(false);
           ...searchParams
         }
       });
+
+      if (!response.data || response.data.length === 0) {
+        setErrorMessage('No hotels found for the given search criteria.');
+        setSubmit(false);
+        return;
+      }
+
       setData(response.data.slice(0, 10));
       setSubmit(false);
       navigate("/hotels", { state: { data: response.data.slice(0, 40), searchParams } });
     } catch (error) {
       console.error('Error fetching hotels:', error);
+      setErrorMessage('An error occurred while fetching hotel data. Please try again later.');
       setSubmit(false);
     }
-  };
+};
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const selectedDestination = uniqueDestinationsData.find(s => s.uid === destination);
-    console.log(selectedDestination,"Selected Destination");
+    console.log(selectedDestination, "Selected Destination");
 
-    if (!selectedDestination) {
+    if (!selectedDestination || !isValidDate(checkIn) || !isValidDate(checkOut)) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
 
-    if (selectedDestination && checkIn && checkOut) {
+    try {
       const searchParams = {
         destination_id: selectedDestination.uid,
-        checkin: checkIn.toISOString().split('T')[0],
-        checkout: checkOut.toISOString().split('T')[0],
+        checkin: format(checkIn, 'yyyy-MM-dd'),
+        checkout: format(checkOut, 'yyyy-MM-dd'),
         guests: adults + children,
         rooms
       };
       setSearchParams(searchParams);
       handleSearch(searchParams);
-    } else {
-      setErrorMessage('Please fill in all required fields.');
+    } catch (error) {
+      console.error('Error formatting dates:', error);
+      setErrorMessage('An error occurred while processing your request. Please try again.');
     }
-  };
+};
 
   const debouncedHandleChange = useCallback(
     debounce((event, newValue) => {
@@ -122,16 +135,10 @@ const [isLoading, setIsLoading] = useState(false);
     }, 300),
     [errorMessage]
   );
-  
-  
 
   const handleApplyFilters = () => {
-
-    
     const filteredData = data.filter(hotel => {
       return (
-        //hotel.price >= priceRange[0] &&
-        //hotel.price <= priceRange[1] &&
         hotel.rating >= rating[0] &&
         hotel.rating <= rating[1]
       );
@@ -139,10 +146,10 @@ const [isLoading, setIsLoading] = useState(false);
     setData(filteredData);
   };
 
-
   const fetchFilteredHotels = useCallback(
     debounce(async () => {
       if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
+        console.log(checkIn,"checkin")
         console.error('Invalid check-in or check-out date');
         return;
       }
@@ -150,6 +157,7 @@ const [isLoading, setIsLoading] = useState(false);
       try {
         const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
         const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
+        console.log(formattedCheckIn,"formattedcheicunu")
 
         const params = {
           destination_id: destination,
@@ -174,14 +182,27 @@ const [isLoading, setIsLoading] = useState(false);
     }, 500), [checkIn, checkOut, destination, adults, children]);
 
   useEffect(() => {
-    fetchFilteredHotels();
-  }, [rating, checkIn, checkOut, adults, children, rooms]);
+    
+
+    setCheckIn(searchParams.checkin);
+    setCheckOut(searchParams.checkout);
+
+    console.log(searchParams.checkin,"checkim,mas")
+
+
+    
+  }, [searchParams]);
 
   const fetchAndMergePrices = useCallback(async () => {
+    if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
+      console.error('Invalid check-in or check-out date');
+      return;
+    }
+
     setIsLoading(true);
     try {
-      const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
+      const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
+      const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
 
       const response = await axios.get(`http://localhost:5000/hotels/prices`, {
         params: {
@@ -204,89 +225,15 @@ const [isLoading, setIsLoading] = useState(false);
     } finally {
       setIsLoading(false);
     }
-  }, [data, searchParams]);
+  }, [data, searchParams, checkIn, checkOut]);
 
   return (
     <ThemeProvider theme={theme}>
       <div>
         <Navbar style={{ position: "sticky" }} />
         <div className="listContainer">
-          <div className="listSearchBar">
-            <div className="headerSearch">
-              <Grid container spacing={2} alignItems="center">
-                <Grid item xs={12} sm={6} md={3}>
-                  <Autocomplete
-                    options={uniqueDestinationsData}
-                    getOptionLabel={(option) => option.term || option.type || 'Unknown'}
-                    filterOptions={(options, state) =>
-                      options.filter(option => option.term && option.term.toLowerCase().startsWith(state.inputValue.toLowerCase()))
-                    }
-                    value={uniqueDestinationsData.find(option => option.uid === destination) || null}
-                    onChange={debouncedHandleChange}
-                    renderInput={(params) => <TextField {...params} label="Destination/Hotel Name" variant="outlined" />}
-                    renderOption={(props, option) => {
-                      const uniqueKey = `${option.uid}-${option.term}`;
-                      return (
-                        <li {...props} key={uniqueKey}>
-                          {option.term}
-                        </li>
-                      );
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={2}>
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DatePicker
-                      label="Check-in"
-                      value={checkIn}
-                      onChange={(newValue) => {
-                        setCheckIn(newValue);
-                        if (errorMessage) setErrorMessage('');
-                      }}
-                      renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
-                    />
-                  </LocalizationProvider>
-                </Grid>
-                <Grid item xs={12} sm={6} md={2}>
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DatePicker
-                      label="Check-out"
-                      value={checkOut}
-                      onChange={(newValue) => {
-                        setCheckOut(newValue);
-                        if (errorMessage) setErrorMessage('');
-                      }}
-                      renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
-                    />
-                  </LocalizationProvider>
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <RoomsAndGuests
-                    rooms={rooms}
-                    setRooms={setRooms}
-                    adults={adults}
-                    setAdults={setAdults}
-                    children={children}
-                    setChildren={setChildren}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={2}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    onClick={handleSubmit}
-                    disabled={submit}
-                  >
-                    {submit ? "Searching..." : "Search"}
-                  </Button>
-                </Grid>
-              </Grid>
-              {errorMessage && (
-                <div className="error-message">{errorMessage}</div>
-              )}
-            </div>
-          </div>
+          
+            
           <div className="listWrapper">
             <div className="hotelFilterWrapper">
               <div className="filterSection">
