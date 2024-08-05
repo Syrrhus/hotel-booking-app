@@ -285,8 +285,9 @@ body {
 }
 
 .hotelMapWrapper {
-  width: 80%;
+  width: 100%;
   display: flex;
+  flex-direction: column; /* Ensure elements are stacked vertically */
   justify-content: center;
   margin: 20px 0;
 }
@@ -297,4 +298,42 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.roomDetails {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.roomDetails h2 {
+  font-size: 18px;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.roomDetailItem {
+  margin-top: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.roomDetailItem h3 {
+  font-size: 16px;
+  color: #0071c2;
+  margin-bottom: 5px;
+}
+
+.roomDetailItem p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.roomDetailItem p b {
+  color: #008009;
 }

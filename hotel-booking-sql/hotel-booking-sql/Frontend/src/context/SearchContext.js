@@ -10,6 +10,7 @@ export const SearchProvider = ({ children }) => {
     checkin: '',
     checkout: '',
     guests: '',
+    roomDetails:[]
   });
 
   return (
