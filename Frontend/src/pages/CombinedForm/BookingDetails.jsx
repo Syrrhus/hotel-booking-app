@@ -1,6 +1,35 @@
 import React from 'react';
+import { validateNumNights, validatePeople, validDate, validNoneEmpty } from './validation';
+
 
 const BookingDetails = ({ bookingInfo, handleChange, nextStep }) => {
+  
+  const handleNext = async (e) => {
+    e.preventDefault();
+    const newErrors = {};
+    if (!validateNumNights(bookingInfo.numberOfNights)){
+      newErrors.numberOfNights = 'please enter validate days you intent to stay'
+      alert("invalid number of night entered")
+    } else if (!validDate(bookingInfo.startDate) || !validDate(bookingInfo.endDate)) {
+      newErrors.validDate = 'Please enter valid dates that have not passed';
+      alert('You cannot book a room for a date before today!');
+    } else if (new Date(bookingInfo.startDate) > new Date(bookingInfo.endDate)) {
+      newErrors.validDate = 'Start date cannot be after end date';
+      alert('The start date cannot be after the end date!');
+    } else if (!validNoneEmpty(bookingInfo.roomTypes)) {
+      newErrors.firstName = 'Please enter the room you prefer';
+      alert("Please fill in the room you prefer");
+    }else if (!validatePeople(bookingInfo.adults, bookingInfo.children) === 1) {
+      newErrors.people = 'Please ensure there is at least one adult if there are children';
+      alert("Please ensure there is at least one adult if there are children");
+    }else if (!validatePeople(bookingInfo.adults, bookingInfo.children) === 2) {
+      newErrors.ppl = 'Please choose the number of adults';
+      alert("Please ensure there is at least one adult ");
+    }else {
+      nextStep()
+    }
+  }
+
   return (
     <div>
       {/* <h2>Booking Details</h2> */}
@@ -73,7 +102,7 @@ const BookingDetails = ({ bookingInfo, handleChange, nextStep }) => {
             onChange={handleChange}
           />
         </div>
-        <button type="button" onClick={nextStep}>Next</button>
+        <button type="button" onClick={handleNext}>Next</button>
       </form>
     </div>
   );

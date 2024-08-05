@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Confirmation = ({ bookingInfo, guestInfo, paymentInfo, handleSubmit, prevStep }) => {
+const Confirmation = ({ bookingInfo, guestInfo,prevStep, nextStep}) => {
   return (
     <div>
       {/* <h2>Confirmation</h2> */}
@@ -22,15 +22,8 @@ const Confirmation = ({ bookingInfo, guestInfo, paymentInfo, handleSubmit, prevS
         <p>Phone Number: {guestInfo.phoneNumber}</p>
         <p>Email: {guestInfo.email}</p>
       </div>
-      <div>
-        <h3>Payment Details</h3>
-        <p>Billing Address: {paymentInfo.billingAddress}</p>
-        <p>Card Number: {paymentInfo.cardNumber}</p>
-        <p>CVC: {paymentInfo.cvc}</p>
-        <p>Card Expiry: {paymentInfo.cardExpiry}</p>
-      </div>
       <button type="button" onClick={prevStep}>Back</button>
-      <button type="button" onClick={handleSubmit}>Confirm</button>
+      <button type="button" onClick={nextStep}>Confirm and Pay</button>
     </div>
   );
 };

@@ -1,11 +1,41 @@
 import React from 'react';
-import { MaskedInput, createDefaultMaskGenerator } from 'react-hook-mask';
+import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { validNoneEmpty } from './validation';
 
-const PaymentDetails = ({ paymentInfo, handleChange, nextStep, prevStep, value, setValue }) => {
-  const maskGenerator = createDefaultMaskGenerator('9999 9999 9999 9999');
+// Load your Stripe public key
+const stripePromise = loadStripe('pk_test_51PixgOCs37t9J4ObCB1eASvICPMoV1Nr2k94QT4tfowt4zSRVjHOTxl17mEW5w1DEpyIE6KFVDodu1YLGqXD1eYI00zY7jp3nd');
+
+const PaymentDetails = ({ paymentInfo, handleChange, handleSubmit, prevStep }) => {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleNext = async (e) => {
+    e.preventDefault();
+    
+    const cardElement = elements.getElement(CardElement);
+
+    if (!validNoneEmpty(paymentInfo.billingAddress)) {
+      alert("Please fill in your address");
+      return;
+    }
+
+    if (!stripe || !elements || !cardElement) {
+      console.error('Stripe, Elements, or CardElement is not available');
+      return;
+    }
+
+    const { error } = await stripe.createToken(cardElement);
+
+    if (error) {
+      alert(`Invalid card details: ${error.message}`);
+    } else {
+      handleSubmit();
+    }
+  };
+
   return (
     <div>
-      {/* <h2>Payment Details</h2> */}
       <form>
         <div>
           <label>Billing Address</label>
@@ -17,39 +47,23 @@ const PaymentDetails = ({ paymentInfo, handleChange, nextStep, prevStep, value, 
             required
           />
         </div>
-        <div>
-          <MaskedInput
-            maskGenerator={maskGenerator}
-            value={value}
-            onChange={setValue}
-            placeholder='Card number'
-          />
+        <div className="form-group">
+          <CardElement options={{ hidePostalCode: true }} />
         </div>
-        <div>
-          <input
-            type="text"
-            name="cvc"
-            placeholder="CVC"
-            value={paymentInfo.cvc}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="cardExpiry"
-            placeholder="MM/YYYY"
-            value={paymentInfo.cardExpiry}
-            onChange={handleChange}
-            required
-          />
-        </div>
+
         <button type="button" onClick={prevStep}>Back</button>
-        <button type="button" onClick={nextStep}>Next</button>
+        <button type="button" onClick={handleSubmit}>Confirm Booking</button>
       </form>
     </div>
   );
 };
 
-export default PaymentDetails;
+const PaymentDetailsWrapper = (props) => {
+  return (
+    <Elements stripe={stripePromise}>
+      <PaymentDetails {...props} />
+    </Elements>
+  );
+};
+
+export default PaymentDetailsWrapper;
