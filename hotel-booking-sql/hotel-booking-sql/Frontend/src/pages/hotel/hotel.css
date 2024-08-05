@@ -410,7 +410,7 @@ body {
   
 }
 
-.hotelDetailsWrapper h1 {
+.hotelDetailsWrapper > h1 {
   font-size: xx-large;
   color: #262e5d;
 }
