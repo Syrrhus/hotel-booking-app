@@ -177,16 +177,11 @@ const List = () => {
         const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
         const response = await axios.get(requestUrl);
 
-        //if (response.data.completed) {
-        //  setData(response.data);
-        //}
         if (response.data.completed) {
           const filteredHotels = response.data;
           console.log(filteredHotels, "filteredhotels");
     
-          //const hotelIDs = filteredHotels.map(hotel => hotel.id);
-          //setfilterdataID(hotelIDs);
-          //console.log(filterdataID, "dataID");
+
           
           setPolling(false); // Stop polling when completed
         } else {
@@ -200,19 +195,7 @@ const List = () => {
         setPolling(false);
       }
     }));
-/*
-  useEffect(() => {
-    
 
-    setCheckIn(parseISO(searchParams.checkin));
-    setCheckOut(parseISO(searchParams.checkout));
-
-    console.log(searchParams.checkin,"checkim,mas")
-
-
-    
-  }, [searchParams]);
-*/
 
   useEffect(() => {
       fetchFilteredHotels();
@@ -280,7 +263,7 @@ const List = () => {
                     />
                   <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
                 </div>
-                <button onClick={fetchAndMergePrices}>Fetch Prices</button>
+                <button onClick={fetchAndMergePrices}>Show Hotels with Prices</button>
                 {isLoading && <p>Loading...</p>}
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
                 {hasUpdated && <p>Filter Applied!</p>}
