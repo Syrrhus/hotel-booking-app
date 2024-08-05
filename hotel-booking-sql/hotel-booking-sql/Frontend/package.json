@@ -17,7 +17,7 @@
     "@mui/material": "^5.16.4",
     "@mui/x-date-pickers": "^7.10.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.3",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "date-fns": "^2.30.0",
     "leaflet": "^1.9.4",
@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^10.3.2",
-    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",

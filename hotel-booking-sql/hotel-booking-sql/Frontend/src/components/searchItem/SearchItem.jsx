@@ -6,14 +6,18 @@ import { SearchContext } from '../../context/SearchContext'; // Adjust path acco
 import { format } from 'date-fns';
 
 const SearchItem = ({ hotel }) => {
-  const { searchParams } = useContext(SearchContext);
+  const { searchParams,setSearchParams } = useContext(SearchContext);
   const [price, setPrice] = useState(null);
+  const [RoomDetails, setRoomDetails] = useState([]);
   const [polling, setPolling] = useState(false); // State to control pollin
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}`, { state: { hotel } });
   };
+  const firstImageUrl = hotel.image_details
+  ?`${hotel.image_details.prefix}${hotel.image_details.suffix}`
+  :"https://via.placeholder.com/600";
 
   function getRatingText(rating) {
     if (rating >= 4) {
@@ -92,8 +96,15 @@ response.data.forEach((hotelItem) => {
           guests: searchParams.adults,
         },
       });
-
-      console.log(response.data,"room response");
+      if (response.data.room!=null){
+     setRoomDetails(response.data.rooms);
+      console.log(RoomDetails,"room response");
+       // Update the searchParams with the new room details
+    setSearchParams(prevState => ({
+      ...prevState,
+      roomDetails: RoomDetails
+    }));
+      }
       
 
 

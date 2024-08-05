@@ -139,84 +139,50 @@ const [isLoading, setIsLoading] = useState(false);
     setData(filteredData);
   };
 
-//useless
-  const fetchFilteredHotels = async () => {
-    if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
-      console.error('Invalid check-in or check-out date');
-      return;
-    }
-  
-    try {
-      const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
-      console.log(`Formatted Check-in Date: ${formattedCheckIn}`);
-      console.log(`Formatted Check-out Date: ${formattedCheckOut}`);
-      console.log(`Destination ID: ${destination}`);
-      console.log(`Guests: ${adults + children}`);
-  
-      
-  
-      const params = {
-        destination_id: destination,
-        checkin: formattedCheckIn,
-        checkout: formattedCheckOut,
-        lang: 'en_US',
-        currency: 'SGD',
-        country_code: 'SG',
-        guests: `${adults + children}`,
-        partner_id: 1,
-      };
 
-      
+  const fetchFilteredHotels = useCallback(
+    debounce(async () => {
+      if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
+        console.error('Invalid check-in or check-out date');
+        return;
+      }
 
-      const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
-      console.log('Request URL:', requestUrl);
+      try {
+        const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
+        const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
 
-      const response = await axios.get(requestUrl);
-      console.log('API Response:', response.data);
-  
-      if (response.data.completed) {
-        const filteredHotels = response.data;
-        console.log(filteredHotels, "filteredhotels");
-  
-        //const hotelIDs = filteredHotels.map(hotel => hotel.id);
-        //setfilterdataID(hotelIDs);
-        //console.log(filterdataID, "dataID");
-        
-        setPolling(false); // Stop polling when completed
-      } else {
-        if (!polling) {
-          setPolling(true);
-          setTimeout(fetchFilteredHotels, 5000); // Poll every 5 seconds
+        const params = {
+          destination_id: destination,
+          checkin: formattedCheckIn,
+          checkout: formattedCheckOut,
+          lang: 'en_US',
+          currency: 'SGD',
+          country_code: 'SG',
+          guests: `${adults + children}`,
+          partner_id: 1,
+        };
+
+        const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
+        const response = await axios.get(requestUrl);
+
+        if (response.data.completed) {
+          setData(response.data);
         }
+      } catch (error) {
+        console.error('Error fetching filtered hotels:', error);
       }
-    } catch (error) {
-      console.error('Error fetching filtered hotels:', error);
-      if (error.response) {
-        console.error('Error data:', error.response.data);
-        console.error('Error status:', error.response.status);
-        console.error('Error headers:', error.response.headers);
-      } else if (error.request) {
-        console.error('Error request:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
-      setPolling(false); // Stop polling on error
-    }
-  };
-  
+    }, 500), [checkIn, checkOut, destination, adults, children]);
 
   useEffect(() => {
     fetchFilteredHotels();
-  }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
+  }, [rating, checkIn, checkOut, adults, children, rooms]);
 
-
-  const fetchAndMergePrices = async () => {
+  const fetchAndMergePrices = useCallback(async () => {
     setIsLoading(true);
     try {
       const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
       const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-  
+
       const response = await axios.get(`http://localhost:5000/hotels/prices`, {
         params: {
           destination_id: searchParams.destination_id,
@@ -226,33 +192,19 @@ const [isLoading, setIsLoading] = useState(false);
         },
       });
 
-      
-  
-      // Assuming response.data is an array of hotels with price details
       const prices = response.data;
-  
-      // Merge prices with existing data
-    const mergedData = data.map(hotel => {
-      const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
-      return priceData
-        ? { ...hotel, price: priceData.max_cash_payment }
-        : null; // Filter out hotels without a price
-        console.log(priceData,"pricedata")
-    }).filter(hotel => hotel !== null); // Filter out any null values
-    
+      const mergedData = data.map(hotel => {
+        const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
+        return priceData ? { ...hotel, price: priceData.max_cash_payment } : hotel;
+      });
 
-  
-     
-    const top10Hotels = mergedData.slice(0, 10); // Get the first 10 hotels
-  
-      setData(top10Hotels); // Update the data state with the top 10 hotels
-      console.log(top10Hotels, "Top 10 hotels with prices");
+      setData(mergedData.slice(0, 10)); // Show only top 10 hotels
     } catch (error) {
       console.error('Error fetching hotel prices:', error);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [data, searchParams]);
 
   return (
     <ThemeProvider theme={theme}>

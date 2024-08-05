@@ -12,6 +12,7 @@ import { SearchContext } from '../../context/SearchContext';
 import { format } from 'date-fns';
 import axios from 'axios';
 
+
 // Custom icon for the map marker
 const redIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
@@ -32,14 +33,18 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [RoomDetails, SetRoomDetails] = useState();
+  const [loadingRoom, setLoadingRoom] = useState(true);
 
 
-  const handleNavigate = () => {
-    navigate(`/hotels/${hotel.id}/book`, { state: { hotel } });
+  const handleNavigate = (price, description) => {
+    navigate(`/hotels/${hotel.id}/book`, { state: { price, description, hotel } });
   };
-
-
   
+  
+
+
+
+
 useEffect(()=>{
   const fetchroomprice= async () => {
     const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
@@ -72,6 +77,8 @@ useEffect(()=>{
 
   }
   fetchroomprice()
+  SetRoomDetails(searchParams.rooms);
+  setLoadingRoom(false);
 
  
 
@@ -128,7 +135,7 @@ useEffect(()=>{
         )}
         <div className="hotelContent">
           <div className="hotelDetailsWrapper">
-            <h1 className="hotelTitle">{hotel.name} <button className="bookNow" onClick={handleNavigate}>Reserve or Book Now!</button></h1>
+           
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{hotel.address}</span>
@@ -220,6 +227,46 @@ useEffect(()=>{
                 </Marker>
               </MapContainer>
             </div>
+            <div className="roomDetails">
+  <h2>Available Rooms</h2>
+  {loadingRoom ? (
+    <p>Loading room details...</p>
+  ) : (
+    <ul>
+      {RoomDetails && RoomDetails.map((room, index) => (
+        <li key={index} className="roomDetailItem">
+          <h3>{room.description}</h3>
+          <p><b>Price: ${room.price}</b></p>
+          
+          {/* Display amenities as bullet points */}
+          <p><b>Amenities:</b></p>
+          <ul className="amenitiesList">
+            {room.amenities.map((amenity, amenityIndex) => (
+              <li key={amenityIndex}>{amenity}</li>
+            ))}
+          </ul>
+
+          {/* Display images if available */}
+          {room.images && room.images.length > 0 && (
+            <div className="roomImages">
+              {room.images.map((image, imgIndex) => (
+                <img 
+                  key={imgIndex} 
+                  src={image.url} 
+                  alt={`Room ${index + 1} image ${imgIndex + 1}`} 
+                  className="roomImage"
+                />
+              ))}
+            </div>
+          )}
+          
+          {/* Add the "Reserve or Book Now!" button */}
+          <button onClick={() => handleNavigate(room.price, room.description,hotel)}>Reserve or Book Now!</button>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
           </div>
         </div>
       </div>
