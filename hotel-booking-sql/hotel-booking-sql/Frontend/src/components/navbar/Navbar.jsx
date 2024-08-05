@@ -24,10 +24,10 @@ const Navbar = () => {
           alt="Ascenda Logo"
         />
         {/* <span className="logo">Ascenda</span> */}
-        <div className="navItems">
+        {/* <div className="navItems">
           <button className="navButton">Register</button>
           <button className="navButton">Login</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
