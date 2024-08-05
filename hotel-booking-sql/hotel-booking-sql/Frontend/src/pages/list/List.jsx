@@ -45,12 +45,13 @@ const List = () => {
   const [rooms, setRooms] = useState(1);
   const [errorMessage, setErrorMessage] = useState('');
   const [submit, setSubmit] = useState(false);
-  const [priceRange, setPriceRange] = useState([50, 500]);
+  const [priceRange, setPriceRange] = useState([50, 5000]);
   const [ratingRange, setRatingRange] = useState([0, 5]);
   const [rating, setRating] = useState([0, 5]);
   const [polling, setPolling] = useState(false); // State to control polling
   const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasUpdated, setHasUpdated] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
@@ -91,7 +92,7 @@ const List = () => {
       setData(response.data.slice(0, 10));
       setSubmit(false);
       navigate("/hotels", { state: { data: response.data.slice(0, 40), searchParams } });
-    } catch (error) {
+    } catch (error) { 
       console.error('Error fetching hotels:', error);
       setErrorMessage('An error occurred while fetching hotel data. Please try again later.');
       setSubmit(false);
@@ -113,8 +114,8 @@ const List = () => {
     try {
       const searchParams = {
         destination_id: selectedDestination.uid,
-        checkin: format(checkIn, 'yyyy-MM-dd'),
-        checkout: format(checkOut, 'yyyy-MM-dd'),
+        checkin: checkIn.toISOString().split('T')[0],
+        checkout: checkOut.toISOString().split('T')[0],
         guests: adults + children,
         rooms
       };
@@ -137,13 +138,16 @@ const List = () => {
   );
 
   const handleApplyFilters = () => {
-    const filteredData = data.filter(hotel => {
-      return (
-        hotel.rating >= rating[0] &&
-        hotel.rating <= rating[1]
-      );
-    });
-    setData(filteredData);
+    setHasUpdated(false);
+    const filtered = data.filter(hotel => 
+      (hotel.price !== null && hotel.price !== undefined) &&
+      hotel.price >= priceRange[0] && 
+      hotel.price <= priceRange[1] && 
+      hotel.rating >= rating[0] && 
+      hotel.rating <= rating[1]
+    );
+    setData(filtered);
+    setHasUpdated(true);
   };
 
   const fetchFilteredHotels = useCallback(
@@ -174,24 +178,28 @@ const List = () => {
         const response = await axios.get(requestUrl);
 
         if (response.data.completed) {
-          setData(response.data);
+          const filteredHotels = response.data;
+          console.log(filteredHotels, "filteredhotels");
+    
+
+          
+          setPolling(false); // Stop polling when completed
+        } else {
+          if (!polling) {
+            setPolling(true);
+            setTimeout(fetchFilteredHotels, 5000); // Poll every 5 seconds
+          }
         }
       } catch (error) {
         console.error('Error fetching filtered hotels:', error);
+        setPolling(false);
       }
-    }, 500), [checkIn, checkOut, destination, adults, children]);
+    }));
+
 
   useEffect(() => {
-    
-
-    setCheckIn(searchParams.checkin);
-    setCheckOut(searchParams.checkout);
-
-    console.log(searchParams.checkin,"checkim,mas")
-
-
-    
-  }, [searchParams]);
+      fetchFilteredHotels();
+    }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
 
   const fetchAndMergePrices = useCallback(async () => {
     if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
@@ -213,11 +221,14 @@ const List = () => {
         },
       });
 
-      const prices = response.data;
-      const mergedData = data.map(hotel => {
+        const prices = response.data;
+
+        const mergedData = data.map(hotel => {
         const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
-        return priceData ? { ...hotel, price: priceData.max_cash_payment } : hotel;
-      });
+        return priceData ? 
+        { ...hotel, price: priceData.max_cash_payment } : 
+        null
+      }).filter(hotel => hotel !== null);
 
       setData(mergedData.slice(0, 10)); // Show only top 10 hotels
     } catch (error) {
@@ -232,8 +243,6 @@ const List = () => {
       <div>
         <Navbar style={{ position: "sticky" }} />
         <div className="listContainer">
-          
-            
           <div className="listWrapper">
             <div className="hotelFilterWrapper">
               <div className="filterSection">
@@ -243,11 +252,22 @@ const List = () => {
                   <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
+                <div className="filterGroup">
+                  <label>Price Range</label>
+                    <Slider 
+                      range 
+                      min={0} 
+                      max={5000} 
+                      defaultValue={priceRange} 
+                      onChange={(value) => setPriceRange(value)} 
+                    />
+                  <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
+                </div>
                 <button onClick={fetchAndMergePrices}>Show Hotels with Prices</button>
-  {isLoading && <p>Loading...</p>}
-                
-                
+                {isLoading && <p>Loading...</p>}
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
+                {hasUpdated && <p>Filter Applied!</p>}
+
               </div>
             </div>
             <div className="listResult">
@@ -261,7 +281,6 @@ const List = () => {
     </ThemeProvider>
   );
 };
-
 const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
