@@ -1,20 +1,20 @@
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
-// Create a context
 export const SearchContext = createContext();
 
-// Create a provider component
 export const SearchProvider = ({ children }) => {
-  const [searchParams, setSearchParams] = useState({
-    destination_id: '',
-    checkin: '',
-    checkout: '',
-    guests: '',
-  });
+    const [searchParams, setSearchParams] = useState({
+        destination_id: '',
+        checkIn: null,
+        checkOut: null,
+        adults: 2,
+        children: 0,
+        rooms: 1,
+    });
 
-  return (
-    <SearchContext.Provider value={{ searchParams, setSearchParams }}>
-      {children}
-    </SearchContext.Provider>
-  );
+    return (
+        <SearchContext.Provider value={{ searchParams, setSearchParams }}>
+            {children}
+        </SearchContext.Provider>
+    );
 };

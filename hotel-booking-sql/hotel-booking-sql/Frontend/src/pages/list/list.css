@@ -59,15 +59,22 @@
   border: 1px solid #ddd;
 }
 
-.filterButton {
+.filterButton,
+.show-prices-button {
   padding: 10px 20px;
-  background-color: #0071c2;
+  background-color: #262e5d;
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.filterButton:hover,
+.show-prices-button:hover {
+  background-color: #1f264b;
 }
 
 .listResult {
@@ -77,4 +84,36 @@
 .error-message {
   color: red;
   margin-top: 10px;
+}
+
+/* New styles for Rooms and Guests Popper */
+.field-label {
+  display: flex;
+  align-items: center;
+}
+
+.field-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.field-buttons .MuiIconButton-root {
+  padding: 5px;
+  border-radius: 50%; /* To ensure buttons are not oval */
+  border: 1px solid #262e5d;
+  width: 24px;
+  height: 24px;
+}
+
+.field-buttons .MuiIconButton-root:hover {
+  background-color: #f1f1f1;
+}
+
+.field-buttons .MuiBox-root {
+  margin: 0 50px; /* Added more space between the buttons and the number */
+}
+
+/* New styles for the Show Hotels with Prices button */
+.show-prices-button .MuiCircularProgress-root {
+  margin-left: 10px;
 }

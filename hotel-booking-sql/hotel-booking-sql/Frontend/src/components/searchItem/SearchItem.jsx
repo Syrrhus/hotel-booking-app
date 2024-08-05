@@ -8,12 +8,17 @@ import { format } from 'date-fns';
 const SearchItem = ({ hotel }) => {
   const { searchParams } = useContext(SearchContext);
   const [price, setPrice] = useState(null);
+  const [RoomDetails, setRoomDetails] = useState([]);
   const [polling, setPolling] = useState(false); // State to control pollin
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}`, { state: { hotel } });
   };
+
+  const firstImageUrl = hotel.image_details
+  ? `${hotel.image_details.prefix}0${hotel.image_details.suffix}`
+  : "https://via.placeholder.com/600";
 
   function getRatingText(rating) {
     if (rating >= 4) {
@@ -63,12 +68,7 @@ response.data.forEach((hotelItem) => {
     return; // Exit the loop early if the limit is reached
   }
 });
-  
-         
-            
-           
-  
-          
+       
         } catch (error) {
           console.error('Error fetching hotel price:', error);
         }
@@ -91,9 +91,12 @@ response.data.forEach((hotelItem) => {
           checkout: formattedCheckOut,
           guests: searchParams.adults,
         },
+        
+        
       });
 
-      console.log(response.data,"room response");
+      console.log(response.data.rooms,"room response");
+      setRoomDetails(response.data.rooms)
       
 
 
@@ -102,11 +105,9 @@ response.data.forEach((hotelItem) => {
     catch (error) {
       console.error('Error fetching hotel room price:', error);
     }
-
     }
-    fetchroomprice();
 
-   
+    fetchroomprice();
 
   },[hotel]);
   
@@ -114,7 +115,7 @@ response.data.forEach((hotelItem) => {
   return (
     <div className="searchItem">
       <img
-        src={hotel.image_details || "https://via.placeholder.com/600"} // Fallback to a placeholder if no image URL
+        src={firstImageUrl}
         alt={hotel.name}
         className="siImg"
       />
@@ -122,8 +123,8 @@ response.data.forEach((hotelItem) => {
         <h1 className="siTitle">{hotel.name}</h1>
         <span className="siDistance">{hotel.address}</span>
         {hotel.freeTaxi && <span className="siTaxiOp">Free airport taxi</span>}
-        <span className="siSubtitle">{hotel.subtitle || "Studio Apartment with Air conditioning"}</span>
-        <span className="siFeatures">{hotel.features || "Entire studio • 1 bathroom • 21m² 1 full bed"}</span>
+        <span className="siSubtitle">{hotel.subtitle}</span>
+        <span className="siFeatures">{hotel.features}</span>
         {hotel.freeCancellation && <span className="siCancelOp">Free cancellation</span>}
         {hotel.freeCancellation && (
           <span className="siCancelOpSubtitle">

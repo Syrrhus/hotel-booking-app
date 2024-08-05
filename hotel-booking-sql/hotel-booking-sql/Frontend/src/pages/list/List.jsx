@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect,useContext } from 'react';
+import React, { useState, useMemo, useCallback, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import SearchItem from '../../components/searchItem/SearchItem';
@@ -8,7 +8,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper } from '@mui/material';
+import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper, CircularProgress } from '@mui/material';
 import { debounce } from 'lodash';
 import axios from 'axios';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,11 +18,23 @@ import destinationsData from '../../components/header/destinations.json';
 import { SearchContext } from '../../context/SearchContext'; // Adjust path accordingly
 import { format } from 'date-fns';
 
-
 const theme = createTheme({
   palette: {
     primary: {
       main: '#262e5d',
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#262e5d',
+          color: 'white',
+          '&:hover': {
+            backgroundColor: '#1f264b',
+          },
+        },
+      },
     },
   },
 });
@@ -33,26 +45,21 @@ const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const [data, setData] = useState(location.state.data || []);
-  const [destination, setDestination] = useState('');
-  const [filterdataID, setfilterdataID] = useState(location.state.data || []);
-  const [checkIn, setCheckIn] = useState(null);
-  const [checkOut, setCheckOut] = useState(null);
-  const [adults, setAdults] = useState(2); // Default to 2 adults
-  const [children, setChildren] = useState(0); // Default to 0 children
-  const [rooms, setRooms] = useState(1);
+  const [destination, setDestination] = useState(searchParams.destination_id || '');
+  const [checkIn, setCheckIn] = useState(searchParams.checkIn ? new Date(searchParams.checkIn) : null);
+  const [checkOut, setCheckOut] = useState(searchParams.checkOut ? new Date(searchParams.checkOut) : null);
+  const [adults, setAdults] = useState(searchParams.adults || 2); // Default to 2 adults
+  const [children, setChildren] = useState(searchParams.children || 0); // Default to 0 children
+  const [rooms, setRooms] = useState(searchParams.rooms || 1);
   const [errorMessage, setErrorMessage] = useState('');
   const [submit, setSubmit] = useState(false);
   const [priceRange, setPriceRange] = useState([50, 500]);
-  const [ratingRange, setRatingRange] = useState([0, 5]);
   const [rating, setRating] = useState([0, 5]);
   const [polling, setPolling] = useState(false); // State to control polling
-  const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
-
 
   useEffect(() => {
     if (location.state && location.state.searchParams) {
@@ -74,9 +81,7 @@ const [isLoading, setIsLoading] = useState(false);
     try {
       setSubmit(true);
       const response = await axios.get('http://localhost:5000/api/hotels', {
-        params: {
-          ...searchParams
-        }
+        params: { ...searchParams }
       });
       setData(response.data.slice(0, 10));
       setSubmit(false);
@@ -89,28 +94,24 @@ const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const selectedDestination = uniqueDestinationsData.find(s => s.uid === destination);
-    console.log(selectedDestination,"Selected Destination");
 
-    if (!selectedDestination) {
+    if (!selectedDestination || !checkIn || !checkOut) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
 
-    if (selectedDestination && checkIn && checkOut) {
-      const searchParams = {
-        destination_id: selectedDestination.uid,
-        checkin: checkIn.toISOString().split('T')[0],
-        checkout: checkOut.toISOString().split('T')[0],
-        guests: adults + children,
-        rooms
-      };
-      setSearchParams(searchParams);
-      handleSearch(searchParams);
-    } else {
-      setErrorMessage('Please fill in all required fields.');
-    }
+    const searchParams = {
+      destination_id: selectedDestination.uid,
+      checkIn,
+      checkOut,
+      adults,
+      children,
+      rooms
+    };
+
+    setSearchParams(searchParams);
+    handleSearch(searchParams);
   };
 
   const debouncedHandleChange = useCallback(
@@ -122,16 +123,10 @@ const [isLoading, setIsLoading] = useState(false);
     }, 300),
     [errorMessage]
   );
-  
-  
 
   const handleApplyFilters = () => {
-
-    
     const filteredData = data.filter(hotel => {
       return (
-        //hotel.price >= priceRange[0] &&
-        //hotel.price <= priceRange[1] &&
         hotel.rating >= rating[0] &&
         hotel.rating <= rating[1]
       );
@@ -139,50 +134,29 @@ const [isLoading, setIsLoading] = useState(false);
     setData(filteredData);
   };
 
-//useless
   const fetchFilteredHotels = async () => {
     if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
       console.error('Invalid check-in or check-out date');
       return;
     }
-  
+
     try {
       const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
       const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
-      console.log(`Formatted Check-in Date: ${formattedCheckIn}`);
-      console.log(`Formatted Check-out Date: ${formattedCheckOut}`);
-      console.log(`Destination ID: ${destination}`);
-      console.log(`Guests: ${adults + children}`);
-  
-      
-  
+
       const params = {
         destination_id: destination,
         checkin: formattedCheckIn,
         checkout: formattedCheckOut,
-        lang: 'en_US',
-        currency: 'SGD',
-        country_code: 'SG',
         guests: `${adults + children}`,
-        partner_id: 1,
+        rooms,
       };
 
-      
-
       const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
-      console.log('Request URL:', requestUrl);
 
       const response = await axios.get(requestUrl);
-      console.log('API Response:', response.data);
-  
+
       if (response.data.completed) {
-        const filteredHotels = response.data;
-        console.log(filteredHotels, "filteredhotels");
-  
-        //const hotelIDs = filteredHotels.map(hotel => hotel.id);
-        //setfilterdataID(hotelIDs);
-        //console.log(filterdataID, "dataID");
-        
         setPolling(false); // Stop polling when completed
       } else {
         if (!polling) {
@@ -192,31 +166,20 @@ const [isLoading, setIsLoading] = useState(false);
       }
     } catch (error) {
       console.error('Error fetching filtered hotels:', error);
-      if (error.response) {
-        console.error('Error data:', error.response.data);
-        console.error('Error status:', error.response.status);
-        console.error('Error headers:', error.response.headers);
-      } else if (error.request) {
-        console.error('Error request:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
       setPolling(false); // Stop polling on error
     }
   };
-  
 
   useEffect(() => {
     fetchFilteredHotels();
-  }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
-
+  }, [rating, priceRange, checkIn, checkOut, adults, children, rooms]);
 
   const fetchAndMergePrices = async () => {
     setIsLoading(true);
     try {
       const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
       const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-  
+
       const response = await axios.get(`http://localhost:5000/hotels/prices`, {
         params: {
           destination_id: searchParams.destination_id,
@@ -226,27 +189,20 @@ const [isLoading, setIsLoading] = useState(false);
         },
       });
 
-      
-  
       // Assuming response.data is an array of hotels with price details
       const prices = response.data;
-  
-      // Merge prices with existing data
-    const mergedData = data.map(hotel => {
-      const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
-      return priceData
-        ? { ...hotel, price: priceData.max_cash_payment }
-        : null; // Filter out hotels without a price
-        console.log(priceData,"pricedata")
-    }).filter(hotel => hotel !== null); // Filter out any null values
-    
 
-  
-     
-    const top10Hotels = mergedData.slice(0, 10); // Get the first 10 hotels
-  
+      // Merge prices with existing data
+      const mergedData = data.map(hotel => {
+        const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
+        return priceData
+          ? { ...hotel, price: priceData.max_cash_payment }
+          : null; // Filter out hotels without a price
+      }).filter(hotel => hotel !== null); // Filter out any null values
+
+      const top10Hotels = mergedData.slice(0, 10); // Get the first 10 hotels
+
       setData(top10Hotels); // Update the data state with the top 10 hotels
-      console.log(top10Hotels, "Top 10 hotels with prices");
     } catch (error) {
       console.error('Error fetching hotel prices:', error);
     } finally {
@@ -289,8 +245,12 @@ const [isLoading, setIsLoading] = useState(false);
                       value={checkIn}
                       onChange={(newValue) => {
                         setCheckIn(newValue);
-                        if (errorMessage) setErrorMessage('');
+                        if (checkOut && newValue >= checkOut) {
+                          setCheckOut(null);
+                        }
                       }}
+                      minDate={new Date()}
+                      disablePast
                       renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                     />
                   </LocalizationProvider>
@@ -300,10 +260,9 @@ const [isLoading, setIsLoading] = useState(false);
                     <DatePicker
                       label="Check-out"
                       value={checkOut}
-                      onChange={(newValue) => {
-                        setCheckOut(newValue);
-                        if (errorMessage) setErrorMessage('');
-                      }}
+                      onChange={(newValue) => setCheckOut(newValue)}
+                      minDate={checkIn ? new Date(checkIn.getTime() + 24 * 60 * 60 * 1000) : new Date()}
+                      disablePast
                       renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                     />
                   </LocalizationProvider>
@@ -344,10 +303,9 @@ const [isLoading, setIsLoading] = useState(false);
                   <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
-                <button onClick={fetchAndMergePrices}>Show Hotels with Prices</button>
-  {isLoading && <p>Loading...</p>}
-                
-                
+                <Button className="show-prices-button" onClick={fetchAndMergePrices} variant="contained" color="primary" disabled={isLoading}>
+                  {isLoading ? <CircularProgress size={24} /> : 'Show Hotels with Prices'}
+                </Button>
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
               </div>
             </div>
@@ -402,44 +360,44 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
           readOnly: true,
         }}
       />
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px", zIndex: 3 }}>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "300px", zIndex: 3 }}>
         <ClickAwayListener onClickAway={handleClose}>
           <Paper sx={{ p: 2 }}>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Rooms
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1}>
-                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{rooms}</Box>
-                <IconButton onClick={() => handleOption("rooms", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{rooms}</Box>
+                <IconButton onClick={() => handleOption("rooms", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Adults
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1}>
-                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{adults}</Box>
-                <IconButton onClick={() => handleOption("adults", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{adults}</Box>
+                <IconButton onClick={() => handleOption("adults", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Children
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0}>
-                  <RemoveIcon style={{ border: children !== 0 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{children}</Box>
-                <IconButton onClick={() => handleOption("children", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{children}</Box>
+                <IconButton onClick={() => handleOption("children", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
             </Grid>
