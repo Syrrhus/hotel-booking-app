@@ -10,6 +10,8 @@ const SearchItem = ({ hotel }) => {
   const [price, setPrice] = useState(null);
   const [RoomDetails, setRoomDetails] = useState([]);
   const [polling, setPolling] = useState(false); // State to control pollin
+  const [PriceDetails, setPriceDetails] = useState([]);
+  const [loadingPrice, setLoadingPrice] = useState(true);
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -36,13 +38,20 @@ const SearchItem = ({ hotel }) => {
   }
 
   useEffect(() => {
-    console.log(searchParams,"result")
+    console.log(searchParams,"searchparams")
     if (searchParams.destination_id && searchParams.checkin && searchParams.checkout) {
       const fetchPrice = async () => {
         try {
-          //const formattedCheckIn = format(searchParams.checkin, 'yyyy-MM-dd');
-          //const formattedCheckOut = format(searchParams.checkout, 'yyyy-MM-dd');
-console.log("call price api")
+
+          if (searchParams.hotelprices && searchParams.hotelprices[hotel.id]) {
+            // If room details exist, use them and avoid fetching again
+            console.log("Attempting to set Price for destination:", searchParams.hotelprices[hotel.id]);
+            setPriceDetails(searchParams.hotelprices[hotel.id]);
+            setLoadingPrice(false);
+            return;
+          }
+          //console.log(searchParams,"searchparams")
+       console.log("call price api")
           const response = await axios.get(`http://localhost:5000/hotels/prices`, {
             params: {
               destination_id: searchParams.destination_id,
@@ -51,6 +60,10 @@ console.log("call price api")
               guests: searchParams.adults,
             },
           });
+
+          
+
+        //console.log(response.data,"price api");
 // Initialize a counter to track the number of prices fetched
 let fetchedPricesCount = 0;
 
@@ -60,6 +73,17 @@ response.data.forEach((hotelItem) => {
     if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
       setPrice(hotelItem.price); // Assuming hotelItem has a price field
       console.log(hotelItem.price, "price");
+      setSearchParams((prev) => ({
+        ...prev,
+        PriceDetails: {
+          ...prev.PriceDetails,
+          [hotel.id]: {
+            ...hotel, // Spread the full hotel object from your current data
+            price: hotelItem.price // Add the price from hotelItem
+          }
+        }
+      }));
+      //console.log(searchParams,"seargcoarakjsm ")
 
       fetchedPricesCount++; // Increment the counter
     }
@@ -83,6 +107,7 @@ response.data.forEach((hotelItem) => {
     }
     
   }, [hotel,searchParams]);
+
 
   
   
@@ -113,7 +138,7 @@ response.data.forEach((hotelItem) => {
           <button>{hotel.rating}</button>
         </div>
         <div className="siDetailTexts">
-          <span className="siPrice">${price || 'NotAvailable'}</span>
+          <span className="siPrice">${hotel.price || 'NotAvailable'}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <button className="siCheckButton" onClick={handleNavigate}>See availability</button>
         </div>
