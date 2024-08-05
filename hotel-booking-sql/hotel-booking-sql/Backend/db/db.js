@@ -5,7 +5,7 @@ const db = mysql.createConnection({
   user: 'root',
   
   //change this part
-  password: 'password', 
+  password: '18S232k2022!', 
 
   database: 'booking_system'
 });
