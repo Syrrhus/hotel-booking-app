@@ -403,3 +403,14 @@ body {
   display: flex;
   justify-content: flex-end; /* Align items to the right */
 }
+
+.siTitle {
+  display: flex;
+  align-items: center;
+  
+}
+
+.hotelDetailsWrapper h1 {
+  font-size: xx-large;
+  color: #262e5d;
+}

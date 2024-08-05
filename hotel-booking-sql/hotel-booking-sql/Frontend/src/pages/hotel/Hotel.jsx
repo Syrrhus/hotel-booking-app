@@ -181,6 +181,7 @@ const Hotel = () => {
         )}
         <div className="hotelContent">
           <div className="hotelDetailsWrapper">
+          <h1 className="siTitle">{hotel.name}</h1>
 
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
