@@ -4,9 +4,11 @@ import axios from 'axios';
 import "./searchItem.css";
 import { SearchContext } from '../../context/SearchContext'; // Adjust path accordingly
 import { format } from 'date-fns';
+import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchItem = ({ hotel }) => {
-  const { searchParams,setSearchParams } = useContext(SearchContext);
+  const { searchParams } = useContext(SearchContext);
   const [price, setPrice] = useState(null);
   const [RoomDetails, setRoomDetails] = useState([]);
   const [polling, setPolling] = useState(false); // State to control pollin
@@ -15,9 +17,10 @@ const SearchItem = ({ hotel }) => {
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}`, { state: { hotel } });
   };
+
   const firstImageUrl = hotel.image_details
-  ?`${hotel.image_details.prefix}${hotel.image_details.suffix}`
-  :"https://via.placeholder.com/600";
+  ? `${hotel.image_details.prefix}0${hotel.image_details.suffix}`
+  : "https://via.placeholder.com/600";
 
   function getRatingText(rating) {
     if (rating >= 4) {
@@ -50,29 +53,25 @@ const SearchItem = ({ hotel }) => {
               guests: searchParams.adults,
             },
           });
-// Initialize a counter to track the number of prices fetched
-let fetchedPricesCount = 0;
 
-// Loop through the hotels in response.data
-response.data.forEach((hotelItem) => {
-  if (fetchedPricesCount < 50) {
-    if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
-      setPrice(hotelItem.price); // Assuming hotelItem has a price field
-      console.log(hotelItem.price, "price");
+          // Initialize a counter to track the number of prices fetched
+          let fetchedPricesCount = 0;
 
-      fetchedPricesCount++; // Increment the counter
-    }
-  } else {
-    console.log('Fetched 50 prices, stopping further fetching.');
-    return; // Exit the loop early if the limit is reached
-  }
-});
-  
-         
-            
-           
-  
-          
+          // Loop through the hotels in response.data
+          response.data.forEach((hotelItem) => {
+            if (fetchedPricesCount < 50) {
+              if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
+                setPrice(hotelItem.price); // Assuming hotelItem has a price field
+                console.log(hotelItem.price, "price");
+
+                fetchedPricesCount++; // Increment the counter
+              }
+            } else {
+              console.log('Fetched 50 prices, stopping further fetching.');
+              return; // Exit the loop early if the limit is reached
+            }
+          });
+       
         } catch (error) {
           console.error('Error fetching hotel price:', error);
         }
@@ -95,16 +94,12 @@ response.data.forEach((hotelItem) => {
           checkout: formattedCheckOut,
           guests: searchParams.adults,
         },
+        
+        
       });
-      if (response.data.room!=null){
-     setRoomDetails(response.data.rooms);
-      console.log(RoomDetails,"room response");
-       // Update the searchParams with the new room details
-    setSearchParams(prevState => ({
-      ...prevState,
-      roomDetails: RoomDetails
-    }));
-      }
+
+      console.log(response.data.rooms,"room response");
+      setRoomDetails(response.data.rooms)
       
 
 
@@ -113,28 +108,43 @@ response.data.forEach((hotelItem) => {
     catch (error) {
       console.error('Error fetching hotel room price:', error);
     }
-
     }
+
     fetchroomprice();
 
-   
-
   },[hotel]);
-  
+
+  const getLimitedWords = (htmlString) => {
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = htmlString;
+    const text = tempElement.textContent || tempElement.innerText || "";
+    const words = text.split(/\s+/).slice(2, 32).join(' '); // Skipping first 2 words and taking next 20 words
+    return words + (text.split(/\s+/).length > 22 ? '...' : '');
+  };
+
+  const limitedDescription = hotel.description ? getLimitedWords(hotel.description) : "";
 
   return (
     <div className="searchItem">
       <img
-        src={hotel.image_details || "https://via.placeholder.com/600"} // Fallback to a placeholder if no image URL
+        src={firstImageUrl}
         alt={hotel.name}
         className="siImg"
       />
       <div className="siDesc">
         <h1 className="siTitle">{hotel.name}</h1>
-        <span className="siDistance">{hotel.address}</span>
+        <span className="siDistance">
+          <FontAwesomeIcon icon={faLocationDot} />
+          <span> {hotel.address}</span>
+          
+          {/* edit this */}
+          <p className="hotelDesc">{limitedDescription}</p>
+
+        </span>
         {hotel.freeTaxi && <span className="siTaxiOp">Free airport taxi</span>}
-        <span className="siSubtitle">{hotel.subtitle || "Studio Apartment with Air conditioning"}</span>
-        <span className="siFeatures">{hotel.features || "Entire studio • 1 bathroom • 21m² 1 full bed"}</span>
+        
+        <span className="siSubtitle">{hotel.subtitle}</span>
+        <span className="siFeatures">{hotel.features}</span>
         {hotel.freeCancellation && <span className="siCancelOp">Free cancellation</span>}
         {hotel.freeCancellation && (
           <span className="siCancelOpSubtitle">
@@ -148,7 +158,7 @@ response.data.forEach((hotelItem) => {
           <button>{hotel.rating}</button>
         </div>
         <div className="siDetailTexts">
-          <span className="siPrice">${price || 'NotAvailable'}</span>
+          <span className="siPrice">${price || 'NA'}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <button className="siCheckButton" onClick={handleNavigate}>See availability</button>
         </div>

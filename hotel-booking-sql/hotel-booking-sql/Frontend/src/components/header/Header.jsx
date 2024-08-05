@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback,useContext } from 'react';
+import React, { useState, useMemo, useCallback, useContext } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBed, faCalendarDays, faPerson } from "@fortawesome/free-solid-svg-icons";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
@@ -15,7 +15,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SearchContext } from '../../context/SearchContext'; // Adjust path accordingly
-
 
 const theme = createTheme({
   palette: {
@@ -73,7 +72,6 @@ const theme = createTheme({
 });
 
 const Header = ({ type }) => {
-
   const { setSearchParams } = useContext(SearchContext);
   const [destination, setDestination] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -82,9 +80,7 @@ const Header = ({ type }) => {
   const [rooms, setRooms] = useState(1);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [data, setData] = useState([]);
   const [submit, setSubmit] = useState(false);
-  const [show, setShow] = useState(true);
   const navigate = useNavigate();
 
   const uniqueDestinationsData = useMemo(() => {
@@ -98,12 +94,8 @@ const Header = ({ type }) => {
     try {
       setSubmit(true);
       const response = await axios.get('http://localhost:5000/api/hotels', {
-        params: {
-          ...searchParams
-        }
+        params: { ...searchParams }
       });
-      setData(response.data.slice(0, 40));
-      setShow(false);
       setSubmit(false);
       navigate("/hotels", { state: { data: response.data.slice(0, 40), searchParams } });
     } catch (error) {
@@ -114,39 +106,24 @@ const Header = ({ type }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    
-    
-
     const selectedDestination = uniqueDestinationsData.find(s => s.term === destination);
-    
-    if (!selectedDestination) {
+
+    if (!selectedDestination || !checkIn || !checkOut) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
 
-    if (selectedDestination && checkIn && checkOut) {
-      const searchParams = {
-        destination_id: selectedDestination.uid,
-        checkin: checkIn,
-        checkout: checkOut,
-        // checkin: checkIn.toISOString().split('T')[0],
-        // checkout: checkOut.toISOString().split('T')[0],
-        guests: adults + children,
-        rooms
-      };
-      console.log(checkIn);
-      setSearchParams({
-        destination_id: selectedDestination.uid,
-        checkIn,
-        checkOut,
-        adults,
-      });
-    
-      handleSearch(searchParams);
-    } else {
-      setErrorMessage('Please fill in all required fields.');
-    }
+    const searchParams = {
+      destination_id: selectedDestination.uid,
+      checkIn,
+      checkOut,
+      adults,
+      children,
+      rooms
+    };
+
+    setSearchParams(searchParams);
+    handleSearch(searchParams);
   };
 
   const debouncedHandleChange = useCallback(
@@ -192,8 +169,14 @@ const Header = ({ type }) => {
                       <DatePicker
                         label="Check-in"
                         value={checkIn}
-                        onChange={(newValue) => setCheckIn(newValue)}
-                        format="dd/MM/yyyy"
+                        onChange={(newValue) => {
+                          setCheckIn(newValue);
+                          if (checkOut && newValue >= checkOut) {
+                            setCheckOut(null);
+                          }
+                        }}
+                        minDate={new Date()}
+                        disablePast
                         renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                       />
                     </LocalizationProvider>
@@ -204,7 +187,8 @@ const Header = ({ type }) => {
                         label="Check-out"
                         value={checkOut}
                         onChange={(newValue) => setCheckOut(newValue)}
-                        format="dd/MM/yyyy" 
+                        minDate={checkIn ? new Date(checkIn.getTime() + 24 * 60 * 60 * 1000) : new Date()}
+                        disablePast
                         renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                       />
                     </LocalizationProvider>
@@ -288,44 +272,44 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
           readOnly: true,
         }}
       />
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px", zIndex: 3 }}>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "300px", zIndex: 3 }}>
         <ClickAwayListener onClickAway={handleClose}>
           <Paper sx={{ p: 2 }}>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Rooms
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1}>
-                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{rooms}</Box>
-                <IconButton onClick={() => handleOption("rooms", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{rooms}</Box>
+                <IconButton onClick={() => handleOption("rooms", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Adults
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1}>
-                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{adults}</Box>
-                <IconButton onClick={() => handleOption("adults", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{adults}</Box>
+                <IconButton onClick={() => handleOption("adults", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Children
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0}>
-                  <RemoveIcon style={{ border: children !== 0 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{children}</Box>
-                <IconButton onClick={() => handleOption("children", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{children}</Box>
+                <IconButton onClick={() => handleOption("children", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
             </Grid>

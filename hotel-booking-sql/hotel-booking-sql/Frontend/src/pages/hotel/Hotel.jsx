@@ -1,8 +1,8 @@
 import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar2/Navbar2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -11,7 +11,6 @@ import L from "leaflet";
 import { SearchContext } from '../../context/SearchContext';
 import { format } from 'date-fns';
 import axios from 'axios';
-
 
 // Custom icon for the map marker
 const redIcon = new L.Icon({
@@ -23,8 +22,6 @@ const redIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-
-
 const Hotel = () => {
   const { searchParams } = useContext(SearchContext);
   const navigate = useNavigate();
@@ -32,62 +29,56 @@ const Hotel = () => {
   const hotel = location.state.hotel; // Extracting hotel data from state
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
-  const [RoomDetails, SetRoomDetails] = useState();
+  const [RoomDetails, SetRoomDetails] = useState([]);
   const [loadingRoom, setLoadingRoom] = useState(true);
-
 
   const handleNavigate = (price, description) => {
     navigate(`/hotels/${hotel.id}/book`, { state: { price, description, hotel } });
   };
-  
-  
 
+  useEffect(() => {
+    const fetchroomprice = async () => {
 
+      console.log(searchParams.checkin, "searchparamchecin");
 
+      try {
+        const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
+          params: {
+            destination_id: searchParams.destination_id,
+            checkin: searchParams.checkin,
+            checkout: searchParams.checkout,
+            guests: searchParams.adults,
+          },
+        });
+        if (response.data.completed) {
+          console.log(response.data, "room response");
+          SetRoomDetails(response.data.rooms);
+          // Handle the response, e.g., update state with the fetched data
+        } else {
+          console.log('Response not completed, polling again...');
+          setTimeout(fetchroomprice, 5000); // Poll every 5 seconds
+        }
 
-useEffect(()=>{
-  const fetchroomprice= async () => {
-    const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-    try{
-    const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
-      params: {
-        destination_id: searchParams.destination_id,
-        checkin: formattedCheckIn,
-        checkout: formattedCheckOut,
-        guests: searchParams.adults,
-      },
-    });
-    if (response.data.completed) {
-      console.log(response.data, "room response");
-      SetRoomDetails(response.data.rooms);
-      // Handle the response, e.g., update state with the fetched data
-    } else {
-      console.log('Response not completed, polling again...');
-      setTimeout(fetchroomprice, 5000); // Poll every 5 seconds
+        console.log(response.data, "room response");
+      }
+      catch (error) {
+        console.error('Error fetching hotel room price:', error);
+      }
     }
+    fetchroomprice();
+    SetRoomDetails(searchParams.rooms || []);
+    setLoadingRoom(false);
 
-    
+  }, [hotel]);
 
-    console.log(response.data,"room response");
-  }
-  catch (error) {
-    console.error('Error fetching hotel room price:', error);
-  }
-
-  }
-  fetchroomprice()
-  SetRoomDetails(searchParams.rooms);
-  setLoadingRoom(false);
-
- 
-
-},[hotel]);
+  const isValidDate = (date) => {
+    return date instanceof Date && !isNaN(date);
+  };
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
-        src: `${hotel.image_details.prefix}${i}${hotel.image_details.suffix}`
-      }))
+      src: `${hotel.image_details.prefix}${i}${hotel.image_details.suffix}`
+    }))
     : [];
 
   const handleOpen = (i) => {
@@ -135,7 +126,7 @@ useEffect(()=>{
         )}
         <div className="hotelContent">
           <div className="hotelDetailsWrapper">
-           
+
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{hotel.address}</span>
@@ -228,45 +219,49 @@ useEffect(()=>{
               </MapContainer>
             </div>
             <div className="roomDetails">
-  <h2>Available Rooms</h2>
-  {loadingRoom ? (
-    <p>Loading room details...</p>
-  ) : (
-    <ul>
-      {RoomDetails && RoomDetails.map((room, index) => (
-        <li key={index} className="roomDetailItem">
-          <h3>{room.description}</h3>
-          <p><b>Price: ${room.price}</b></p>
-          
-          {/* Display amenities as bullet points */}
-          <p><b>Amenities:</b></p>
-          <ul className="amenitiesList">
-            {room.amenities.map((amenity, amenityIndex) => (
-              <li key={amenityIndex}>{amenity}</li>
-            ))}
-          </ul>
+              <h2>Available Rooms</h2>
+              {loadingRoom ? (
+                <p>Loading room details...</p>
+              ) : (
+                <ul>
+                  {Array.isArray(RoomDetails) && RoomDetails.length > 0 ? (
+                    RoomDetails.map((room, index) => (
+                      <li key={index} className="roomDetailItem">
+                        <h3>{room.description}</h3>
+                        <p><b>Price: ${room.price}</b></p>
 
-          {/* Display images if available */}
-          {room.images && room.images.length > 0 && (
-            <div className="roomImages">
-              {room.images.map((image, imgIndex) => (
-                <img 
-                  key={imgIndex} 
-                  src={image.url} 
-                  alt={`Room ${index + 1} image ${imgIndex + 1}`} 
-                  className="roomImage"
-                />
-              ))}
+                        {/* Display amenities as bullet points */}
+                        <p><b>Amenities:</b></p>
+                        <ul className="amenitiesList">
+                          {room.amenities.map((amenity, amenityIndex) => (
+                            <li key={amenityIndex}>{amenity}</li>
+                          ))}
+                        </ul>
+
+                        {/* Display images if available */}
+                        {room.images && room.images.length > 0 && (
+                          <div className="roomImages">
+                            {room.images.map((image, imgIndex) => (
+                              <img
+                                key={imgIndex}
+                                src={image.url}
+                                alt={`Room ${index + 1} image ${imgIndex + 1}`}
+                                className="roomImage"
+                              />
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Add the "Reserve or Book Now!" button */}
+                        <button onClick={() => handleNavigate(room.price, room.description, hotel)}>Reserve or Book Now!</button>
+                      </li>
+                    ))
+                  ) : (
+                    <p>No room details available.</p>
+                  )}
+                </ul>
+              )}
             </div>
-          )}
-          
-          {/* Add the "Reserve or Book Now!" button */}
-          <button onClick={() => handleNavigate(room.price, room.description,hotel)}>Reserve or Book Now!</button>
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
           </div>
         </div>
       </div>
