@@ -19,12 +19,15 @@ const BookingDetails = ({ bookingInfo, handleChange, nextStep }) => {
     } else if (!validNoneEmpty(bookingInfo.roomTypes)) {
       newErrors.firstName = 'Please enter the room you prefer';
       alert("Please fill in the room you prefer");
-    }else if (!validatePeople(bookingInfo.adults, bookingInfo.children) === 1) {
+    }else if (validatePeople(bookingInfo.adults, bookingInfo.children) === 1) {
       newErrors.people = 'Please ensure there is at least one adult if there are children';
       alert("Please ensure there is at least one adult if there are children");
-    }else if (!validatePeople(bookingInfo.adults, bookingInfo.children) === 2) {
+    }else if (validatePeople(bookingInfo.adults, bookingInfo.children) === 2) {
       newErrors.ppl = 'Please choose the number of adults';
       alert("Please ensure there is at least one adult ");
+    }else if (validatePeople(bookingInfo.adults, bookingInfo.children) === false) {
+        newErrors.ppl = 'Please enter a valid value!';
+        alert("Please enter a valid value!");
     }else {
       nextStep()
     }

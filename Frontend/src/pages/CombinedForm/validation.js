@@ -4,38 +4,21 @@ export const validatePhoneNumber = (phoneNumber) => {
   return phoneNumberAsInt >= 80000000 && phoneNumberAsInt < 100000000;
 };
 
-export const validateCardNumber = (cardNumber) => {
-const cardNumberAsInt = parseInt(cardNumber.replaceAll(' ', ''), 10);
-return cardNumberAsInt >= Math.pow(10, 15) && cardNumberAsInt < Math.pow(10, 16);
-};
-
-export const validateCVC = (cvc) => {
-const cvcAsInt = parseInt(cvc);
-return cvcAsInt >= 100 && cvcAsInt < 1000;
-};
-
-export const validateCardExpiry = (date) => {
-const yearAsInt = parseInt(date.slice(3));
-const monthAsInt = parseInt(date.slice(0, 2));
-const currentYear = new Date().getFullYear();
-const currentMonth = new Date().getMonth();
-if (yearAsInt > currentYear) {
-  return true;
-} else if (yearAsInt === currentYear) {
-  return monthAsInt > currentMonth;
-} else {
-  return yearAsInt > currentYear;
-}
-};
-
 export const validateNumNights = (nights) => {
-const night = parseInt(nights);
-return (night > 0 );
+  if (typeof nights !== 'string') return false;
+  if (nights.includes(".") || !/^\d+$/.test(nights)) return false;
+
+  const night = parseInt(nights, 10); // Parse the input as an integer
+  
+  // Return true if the parsed integer is greater than 0
+  return night > 0;
 };
 
 export const validatePeople = (adults, children) => {
   const adultCount = parseInt(adults, 10);
   const childCount = parseInt(children, 10);
+
+  if (adults.includes(".")|| children.includes(".") || !/^\d+$/.test(adults) || !/^\d+$/.test(children)) return false;
   
   if (adultCount > 0 && childCount >= 0) {
     return true;
@@ -49,7 +32,14 @@ export const validatePeople = (adults, children) => {
 };
 
 export const dateDifference = (start, end) =>{
-return start <= end ;
+  if (!(start instanceof Date) || !(end instanceof Date)) {
+    return false;
+  }
+
+  if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+    return false;
+  }
+  return start < end ;
 };
 
 export const validDate = (date) => {
@@ -59,5 +49,6 @@ return new Date(date) >= currentDate;
 };
 
 export const validNoneEmpty = (name) => {
+  if (!/^\d+$/.test(name)) return false;
   return name !== "";
 }
