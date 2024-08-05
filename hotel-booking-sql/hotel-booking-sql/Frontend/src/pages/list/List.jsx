@@ -35,6 +35,7 @@ const List = () => {
 
 
   const [data, setData] = useState(location.state.data || []);
+
   const [destination, setDestination] = useState('');
   const [filterdataID, setfilterdataID] = useState(location.state.data || []);
   const [checkIn, setCheckIn] = useState(null);
@@ -49,7 +50,8 @@ const List = () => {
   const [rating, setRating] = useState([0, 5]);
   const [polling, setPolling] = useState(false); // State to control polling
   const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasUpdated, setHasUpdated] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
@@ -123,66 +125,117 @@ const [isLoading, setIsLoading] = useState(false);
     [errorMessage]
   );
   
-  
+  /*
 
   const handleApplyFilters = () => {
-
-    
-    const filteredData = data.filter(hotel => {
-      return (
-        //hotel.price >= priceRange[0] &&
-        //hotel.price <= priceRange[1] &&
-        hotel.rating >= rating[0] &&
-        hotel.rating <= rating[1]
-      );
-    });
-    setData(filteredData);
+    setIsLoading(true);
+    const filteredData = data.filter(hotel => 
+      hotel.price >= priceRange[0] && 
+      hotel.price <= priceRange[1] && 
+      hotel.rating >= rating[0] && 
+      hotel.rating <= rating[1]
+    );
+    console.log("Filter applied")
+    setIsLoading(false);
   };
+  */
+
+  const handleApplyFilters = () => {
+    setHasUpdated(false);
+    const filtered = data.filter(hotel => 
+      (hotel.price !== null && hotel.price !== undefined) &&
+      hotel.price >= priceRange[0] && 
+      hotel.price <= priceRange[1] && 
+      hotel.rating >= rating[0] && 
+      hotel.rating <= rating[1]
+    );
+    setData(filtered);
+    setHasUpdated(true);
+  };
+  
 
 
-  const fetchFilteredHotels = useCallback(
-    debounce(async () => {
-      if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
-        console.error('Invalid check-in or check-out date');
-        return;
-      }
+//useless
 
-      try {
-        const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
-        const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
+  const fetchFilteredHotels = async () => {
+    if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
+      console.error('Invalid check-in or check-out date');
+      return;
+    }
+  
+    try {
+      const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
+      const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
+      console.log(`Formatted Check-in Date: ${formattedCheckIn}`);
+      console.log(`Formatted Check-out Date: ${formattedCheckOut}`);
+      console.log(`Destination ID: ${destination}`);
+      console.log(`Guests: ${adults + children}`);
+  
+      
+  
+      const params = {
+        destination_id: destination,
+        checkin: formattedCheckIn,
+        checkout: formattedCheckOut,
+        lang: 'en_US',
+        currency: 'SGD',
+        country_code: 'SG',
+        guests: `${adults + children}`,
+        partner_id: 1,
+      };
 
-        const params = {
-          destination_id: destination,
-          checkin: formattedCheckIn,
-          checkout: formattedCheckOut,
-          lang: 'en_US',
-          currency: 'SGD',
-          country_code: 'SG',
-          guests: `${adults + children}`,
-          partner_id: 1,
-        };
+      
 
-        const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
-        const response = await axios.get(requestUrl);
+      const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
+      console.log('Request URL:', requestUrl);
 
-        if (response.data.completed) {
-          setData(response.data);
+      const response = await axios.get(requestUrl); 
+      console.log('API Response:', response.data);
+
+     
+  
+      if (response.data.completed) {
+        const filteredHotels = response.data;
+        console.log(filteredHotels, "filteredhotels");
+  
+        //const hotelIDs = filteredHotels.map(hotel => hotel.id);
+        //setfilterdataID(hotelIDs);
+        //console.log(filterdataID, "dataID");
+        
+        setPolling(false); // Stop polling when completed
+      } else {
+        if (!polling) {
+          setPolling(true);
+          setTimeout(fetchFilteredHotels, 5000); // Poll every 5 seconds
         }
-      } catch (error) {
-        console.error('Error fetching filtered hotels:', error);
       }
-    }, 500), [checkIn, checkOut, destination, adults, children]);
+    } catch (error) {
+      console.error('Error fetching filtered hotels:', error);
+      if (error.response) {
+        console.error('Error data:', error.response.data);
+        console.error('Error status:', error.response.status);
+        console.error('Error headers:', error.response.headers);
+      } else if (error.request) {
+        console.error('Error request:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
+      setPolling(false); // Stop polling on error
+    }
+  };
+  
 
   useEffect(() => {
     fetchFilteredHotels();
-  }, [rating, checkIn, checkOut, adults, children, rooms]);
+  }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
 
-  const fetchAndMergePrices = useCallback(async () => {
+
+  const fetchAndMergePrices = async () => {
     setIsLoading(true);
     try {
       const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
       const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-
+  
       const response = await axios.get(`http://localhost:5000/hotels/prices`, {
         params: {
           destination_id: searchParams.destination_id,
@@ -191,21 +244,34 @@ const [isLoading, setIsLoading] = useState(false);
           guests: searchParams.adults,
         },
       });
-
+  
       const prices = response.data;
+  
       const mergedData = data.map(hotel => {
         const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
-        return priceData ? { ...hotel, price: priceData.max_cash_payment } : hotel;
-      });
-
-      setData(mergedData.slice(0, 10)); // Show only top 10 hotels
+        return priceData
+          ? { ...hotel, price: priceData.max_cash_payment }
+          : null
+      }).filter(hotel => hotel !== null); // Filter out any null values
+  /*
+      // Apply price filter
+      const filteredData = mergedData.filter(hotel => 
+        hotel.price >= priceRange[0] && 
+        hotel.price <= priceRange[1] && 
+        hotel.rating >= rating[0] && 
+        hotel.rating <= rating[1]
+      );
+      setData(filteredData);
+*/
+      const top10Hotels = mergedData.slice(0, 10);
+      setData(top10Hotels);
+      console.log(top10Hotels, "Top 10 hotels with prices (filtered by price)");
     } catch (error) {
       console.error('Error fetching hotel prices:', error);
     } finally {
       setIsLoading(false);
     }
-  }, [data, searchParams]);
-
+  };
   return (
     <ThemeProvider theme={theme}>
       <div>
@@ -296,11 +362,22 @@ const [isLoading, setIsLoading] = useState(false);
                   <Slider range min={0} max={5} defaultValue={rating} onChange={(value) => setRating(value)} />
                   <span>{`Rating: ${rating[0]} - ${rating[1]}`}</span>
                 </div>
-                <button onClick={fetchAndMergePrices}>Show Hotels with Prices</button>
-  {isLoading && <p>Loading...</p>}
-                
-                
+                <div className="filterGroup">
+                  <label>Price Range</label>
+                    <Slider 
+                      range 
+                      min={0} 
+                      max={5000} 
+                      defaultValue={priceRange} 
+                      onChange={(value) => setPriceRange(value)} 
+                    />
+                  <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
+                </div>
+                <button onClick={fetchAndMergePrices}>Fetch Prices</button>
+                {isLoading && <p>Loading...</p>}
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
+                {hasUpdated && <p>Filter Applied!</p>}
+                
               </div>
             </div>
             <div className="listResult">
