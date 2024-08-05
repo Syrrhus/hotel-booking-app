@@ -40,9 +40,10 @@ const SearchItem = ({ hotel }) => {
     if (searchParams.destination_id && searchParams.checkin && searchParams.checkout) {
       const fetchPrice = async () => {
         try {
-          //const formattedCheckIn = format(searchParams.checkin, 'yyyy-MM-dd');
-          //const formattedCheckOut = format(searchParams.checkout, 'yyyy-MM-dd');
-console.log("call price api")
+          //const formattedCheckIn = format(new Date(searchParams.checkin), 'yyyy-MM-dd');
+          //const formattedCheckOut = format(new Date(searchParams.checkout), 'yyyy-MM-dd');
+
+          console.log("call price api")
           const response = await axios.get(`http://localhost:5000/hotels/prices`, {
             params: {
               destination_id: searchParams.destination_id,
@@ -52,7 +53,7 @@ console.log("call price api")
             },
           });
 // Initialize a counter to track the number of prices fetched
-let fetchedPricesCount = 0;
+let fetchedPricesCount = 0;   
 
 // Loop through the hotels in response.data
 response.data.forEach((hotelItem) => {
@@ -60,7 +61,7 @@ response.data.forEach((hotelItem) => {
     if (hotelItem.id === hotel.id) { // Assuming hotel is defined and has an id
       setPrice(hotelItem.price); // Assuming hotelItem has a price field
       console.log(hotelItem.price, "price");
-
+      console.log(fetchedPricesCount);
       fetchedPricesCount++; // Increment the counter
     }
   } else {

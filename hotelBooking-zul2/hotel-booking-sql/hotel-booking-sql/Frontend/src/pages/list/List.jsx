@@ -35,12 +35,7 @@ const List = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState(location.state.data || []);
-<<<<<<< HEAD
-
-  const [destination, setDestination] = useState('');
-=======
   const [destination, setDestination] = useState(searchParams.destination_id);
->>>>>>> 44319312560a7258087313b802e7a491e85fb761
   const [filterdataID, setfilterdataID] = useState(location.state.data || []);
   //const { destination_id, checkin, checkout } = location.state.searchParams;
   const [checkIn, setCheckIn] = useState(new Date(location.state.searchParams.checkin));
@@ -56,10 +51,7 @@ const List = () => {
   const [polling, setPolling] = useState(false); // State to control polling
   const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-<<<<<<< HEAD
   const [hasUpdated, setHasUpdated] = useState(false);
-=======
->>>>>>> 44319312560a7258087313b802e7a491e85fb761
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
@@ -100,7 +92,7 @@ const List = () => {
       setData(response.data.slice(0, 10));
       setSubmit(false);
       navigate("/hotels", { state: { data: response.data.slice(0, 40), searchParams } });
-    } catch (error) {
+    } catch (error) { 
       console.error('Error fetching hotels:', error);
       setErrorMessage('An error occurred while fetching hotel data. Please try again later.');
       setSubmit(false);
@@ -122,8 +114,8 @@ const List = () => {
     try {
       const searchParams = {
         destination_id: selectedDestination.uid,
-        checkin: format(checkIn, 'yyyy-MM-dd'),
-        checkout: format(checkOut, 'yyyy-MM-dd'),
+        checkin: checkIn.toISOString().split('T')[0],
+        checkout: checkOut.toISOString().split('T')[0],
         guests: adults + children,
         rooms
       };
@@ -144,33 +136,6 @@ const List = () => {
     }, 300),
     [errorMessage]
   );
-<<<<<<< HEAD
-  
-  /*
-
-  const handleApplyFilters = () => {
-    setIsLoading(true);
-    const filteredData = data.filter(hotel => 
-      hotel.price >= priceRange[0] && 
-      hotel.price <= priceRange[1] && 
-      hotel.rating >= rating[0] && 
-      hotel.rating <= rating[1]
-    );
-    console.log("Filter applied")
-    setIsLoading(false);
-=======
-
-  const handleApplyFilters = () => {
-    const filteredData = data.filter(hotel => {
-      return (
-        hotel.rating >= rating[0] &&
-        hotel.rating <= rating[1]
-      );
-    });
-    setData(filteredData);
->>>>>>> 44319312560a7258087313b802e7a491e85fb761
-  };
-  */
 
   const handleApplyFilters = () => {
     setHasUpdated(false);
@@ -184,39 +149,7 @@ const List = () => {
     setData(filtered);
     setHasUpdated(true);
   };
-  
 
-<<<<<<< HEAD
-
-//useless
-
-  const fetchFilteredHotels = async () => {
-    if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
-      console.error('Invalid check-in or check-out date');
-      return;
-    }
-  
-    try {
-      const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
-      console.log(`Formatted Check-in Date: ${formattedCheckIn}`);
-      console.log(`Formatted Check-out Date: ${formattedCheckOut}`);
-      console.log(`Destination ID: ${destination}`);
-      console.log(`Guests: ${adults + children}`);
-  
-      
-  
-      const params = {
-        destination_id: destination,
-        checkin: formattedCheckIn,
-        checkout: formattedCheckOut,
-        lang: 'en_US',
-        currency: 'SGD',
-        country_code: 'SG',
-        guests: `${adults + children}`,
-        partner_id: 1,
-      };
-=======
   const fetchFilteredHotels = useCallback(
     debounce(async () => {
       if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
@@ -229,72 +162,61 @@ const List = () => {
         const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
         const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
         console.log(formattedCheckIn,"formattedcheicunu")
->>>>>>> 44319312560a7258087313b802e7a491e85fb761
 
-      
+        const params = {
+          destination_id: destination,
+          checkin: formattedCheckIn,
+          checkout: formattedCheckOut,
+          lang: 'en_US',
+          currency: 'SGD',
+          country_code: 'SG',
+          guests: `${adults + children}`,
+          partner_id: 1,
+        };
 
-      const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
-      console.log('Request URL:', requestUrl);
+        const requestUrl = `http://localhost:5000/api/hotel/prices?${new URLSearchParams(params).toString()}`;
+        const response = await axios.get(requestUrl);
 
-      const response = await axios.get(requestUrl); 
-      console.log('API Response:', response.data);
-
-     
-  
-      if (response.data.completed) {
-        const filteredHotels = response.data;
-        console.log(filteredHotels, "filteredhotels");
-  
-        //const hotelIDs = filteredHotels.map(hotel => hotel.id);
-        //setfilterdataID(hotelIDs);
-        //console.log(filterdataID, "dataID");
-        
-        setPolling(false); // Stop polling when completed
-      } else {
-        if (!polling) {
-          setPolling(true);
-          setTimeout(fetchFilteredHotels, 5000); // Poll every 5 seconds
+        //if (response.data.completed) {
+        //  setData(response.data);
+        //}
+        if (response.data.completed) {
+          const filteredHotels = response.data;
+          console.log(filteredHotels, "filteredhotels");
+    
+          //const hotelIDs = filteredHotels.map(hotel => hotel.id);
+          //setfilterdataID(hotelIDs);
+          //console.log(filterdataID, "dataID");
+          
+          setPolling(false); // Stop polling when completed
+        } else {
+          if (!polling) {
+            setPolling(true);
+            setTimeout(fetchFilteredHotels, 5000); // Poll every 5 seconds
+          }
         }
+      } catch (error) {
+        console.error('Error fetching filtered hotels:', error);
+        setPolling(false);
       }
-    } catch (error) {
-      console.error('Error fetching filtered hotels:', error);
-      if (error.response) {
-        console.error('Error data:', error.response.data);
-        console.error('Error status:', error.response.status);
-        console.error('Error headers:', error.response.headers);
-      } else if (error.request) {
-        console.error('Error request:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
-      setPolling(false); // Stop polling on error
-    }
-  };
-  
-
+    }));
+/*
   useEffect(() => {
-<<<<<<< HEAD
-    fetchFilteredHotels();
-  }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
-
-
-  const fetchAndMergePrices = async () => {
-    setIsLoading(true);
-    try {
-      const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-      const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-  
-=======
     
 
-    setCheckIn(searchParams.checkin);
-    setCheckOut(searchParams.checkout);
+    setCheckIn(parseISO(searchParams.checkin));
+    setCheckOut(parseISO(searchParams.checkout));
 
     console.log(searchParams.checkin,"checkim,mas")
 
 
     
   }, [searchParams]);
+*/
+
+  useEffect(() => {
+      fetchFilteredHotels();
+    }, [ratingRange, priceRange, checkIn, checkOut, adults, children, rooms]);
 
   const fetchAndMergePrices = useCallback(async () => {
     if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
@@ -307,7 +229,6 @@ const List = () => {
       const formattedCheckIn = format(checkIn, 'yyyy-MM-dd');
       const formattedCheckOut = format(checkOut, 'yyyy-MM-dd');
 
->>>>>>> 44319312560a7258087313b802e7a491e85fb761
       const response = await axios.get(`http://localhost:5000/hotels/prices`, {
         params: {
           destination_id: searchParams.destination_id,
@@ -316,46 +237,29 @@ const List = () => {
           guests: searchParams.adults,
         },
       });
-  
-      const prices = response.data;
-  
-      const mergedData = data.map(hotel => {
+
+        const prices = response.data;
+
+        const mergedData = data.map(hotel => {
         const priceData = prices.find(priceHotel => priceHotel.id === hotel.id);
-        return priceData
-          ? { ...hotel, price: priceData.max_cash_payment }
-          : null
-      }).filter(hotel => hotel !== null); // Filter out any null values
-  /*
-      // Apply price filter
-      const filteredData = mergedData.filter(hotel => 
-        hotel.price >= priceRange[0] && 
-        hotel.price <= priceRange[1] && 
-        hotel.rating >= rating[0] && 
-        hotel.rating <= rating[1]
-      );
-      setData(filteredData);
-*/
-      const top10Hotels = mergedData.slice(0, 10);
-      setData(top10Hotels);
-      console.log(top10Hotels, "Top 10 hotels with prices (filtered by price)");
+        return priceData ? 
+        { ...hotel, price: priceData.max_cash_payment } : 
+        null
+      }).filter(hotel => hotel !== null);
+
+      setData(mergedData.slice(0, 10)); // Show only top 10 hotels
     } catch (error) {
       console.error('Error fetching hotel prices:', error);
     } finally {
       setIsLoading(false);
     }
-<<<<<<< HEAD
-  };
-=======
   }, [data, searchParams, checkIn, checkOut]);
 
->>>>>>> 44319312560a7258087313b802e7a491e85fb761
   return (
     <ThemeProvider theme={theme}>
       <div>
         <Navbar style={{ position: "sticky" }} />
         <div className="listContainer">
-          
-            
           <div className="listWrapper">
             <div className="hotelFilterWrapper">
               <div className="filterSection">
@@ -380,7 +284,7 @@ const List = () => {
                 {isLoading && <p>Loading...</p>}
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
                 {hasUpdated && <p>Filter Applied!</p>}
-                
+
               </div>
             </div>
             <div className="listResult">
@@ -394,7 +298,6 @@ const List = () => {
     </ThemeProvider>
   );
 };
-
 const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
