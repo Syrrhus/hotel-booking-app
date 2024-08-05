@@ -15,6 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SearchContext } from '../../context/SearchContext'; // Adjust path accordingly
+import { format } from 'date-fns';
 
 
 const theme = createTheme({
@@ -128,18 +129,18 @@ const Header = ({ type }) => {
     if (selectedDestination && checkIn && checkOut) {
       const searchParams = {
         destination_id: selectedDestination.uid,
-        checkin: checkIn,
-        checkout: checkOut,
+        checkin: format(checkIn, 'yyyy-MM-dd'),
+        checkout: format(checkOut, 'yyyy-MM-dd'),
         // checkin: checkIn.toISOString().split('T')[0],
         // checkout: checkOut.toISOString().split('T')[0],
         guests: adults + children,
         rooms
       };
-      console.log(checkIn);
+      
       setSearchParams({
         destination_id: selectedDestination.uid,
-        checkIn,
-        checkOut,
+        checkin:format(checkIn, 'yyyy-MM-dd'),
+        checkout:format(checkOut, 'yyyy-MM-dd'),
         adults,
       });
     

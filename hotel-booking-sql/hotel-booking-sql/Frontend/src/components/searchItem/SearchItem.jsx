@@ -36,17 +36,18 @@ const SearchItem = ({ hotel }) => {
   }
 
   useEffect(() => {
-    if (searchParams.destination_id && searchParams.checkIn && searchParams.checkOut) {
+    console.log(searchParams,"result")
+    if (searchParams.destination_id && searchParams.checkin && searchParams.checkout) {
       const fetchPrice = async () => {
         try {
-          const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-          const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-
+          //const formattedCheckIn = format(searchParams.checkin, 'yyyy-MM-dd');
+          //const formattedCheckOut = format(searchParams.checkout, 'yyyy-MM-dd');
+console.log("call price api")
           const response = await axios.get(`http://localhost:5000/hotels/prices`, {
             params: {
               destination_id: searchParams.destination_id,
-              checkin: formattedCheckIn,
-              checkout: formattedCheckOut,
+              checkin: searchParams.checkin,
+              checkout: searchParams.checkout,
               guests: searchParams.adults,
             },
           });
@@ -81,51 +82,15 @@ response.data.forEach((hotelItem) => {
       fetchPrice();
     }
     
-  }, [hotel]);
+  }, [hotel,searchParams]);
 
-  useEffect(()=>{
-    const fetchroomprice= async () => {
-      const formattedCheckIn = format(searchParams.checkIn, 'yyyy-MM-dd');
-        const formattedCheckOut = format(searchParams.checkOut, 'yyyy-MM-dd');
-      try{
-      const response = await axios.get(`http://localhost:5000/api/hotels/${hotel.id}/prices`, {
-        params: {
-          destination_id: searchParams.destination_id,
-          checkin: formattedCheckIn,
-          checkout: formattedCheckOut,
-          guests: searchParams.adults,
-        },
-      });
-      if (response.data.room!=null){
-     setRoomDetails(response.data.rooms);
-      console.log(RoomDetails,"room response");
-       // Update the searchParams with the new room details
-    setSearchParams(prevState => ({
-      ...prevState,
-      roomDetails: RoomDetails
-    }));
-      }
-      
-
-
-      
-    }
-    catch (error) {
-      console.error('Error fetching hotel room price:', error);
-    }
-
-    }
-    fetchroomprice();
-
-   
-
-  },[hotel]);
+  
   
 
   return (
     <div className="searchItem">
       <img
-        src={hotel.image_details || "https://via.placeholder.com/600"} // Fallback to a placeholder if no image URL
+        src={firstImageUrl} // Fallback to a placeholder if no image URL
         alt={hotel.name}
         className="siImg"
       />
