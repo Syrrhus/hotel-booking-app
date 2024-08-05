@@ -1,5 +1,5 @@
 import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar2/Navbar2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
@@ -38,6 +38,7 @@ const Hotel = () => {
 
   useEffect(() => {
     const fetchroomprice = async () => {
+
       console.log(searchParams.checkin, "searchparamchecin");
 
       try {

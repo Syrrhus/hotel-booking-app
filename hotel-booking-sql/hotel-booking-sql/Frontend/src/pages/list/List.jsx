@@ -172,6 +172,9 @@ const List = () => {
 
   useEffect(() => {
     fetchFilteredHotels();
+
+    console.log(searchParams,"check");
+
   }, [rating, priceRange, checkIn, checkOut, adults, children, rooms]);
 
   const fetchAndMergePrices = async () => {
