@@ -8,7 +8,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper } from '@mui/material';
+import { Autocomplete, Button, TextField, Grid, Paper, ClickAwayListener, IconButton, Box, Popper, CircularProgress } from '@mui/material';
 import { debounce } from 'lodash';
 import axios from 'axios';
 import AddIcon from '@mui/icons-material/Add';
@@ -52,6 +52,7 @@ const List = () => {
   const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasUpdated, setHasUpdated] = useState(false);
+  const [loadingButton, setloadingButton] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
@@ -64,6 +65,22 @@ const List = () => {
       setCheckOut(new Date(checkout));
     }
   }, [location.state]);
+
+  const [filteredHotels, setFilteredHotels] = useState([]);
+
+  useEffect(() => {
+    const showItemsWithPrices = () => {
+      const hotelsWithPrices = Object.values(searchParams.PriceDetails || {});
+      console.log(searchParams.PriceDetails, "price details");
+      setFilteredHotels(hotelsWithPrices);
+    };
+
+    // Automatically display hotels with prices when PriceDetails is updated
+    if (searchParams.PriceDetails && Object.keys(searchParams.PriceDetails).length > 0) {
+      showItemsWithPrices();
+      setloadingButton(true); // Assuming you want to trigger this when data is available
+    }
+  }, [searchParams.PriceDetails]); // Re-run when PriceDetails changes
 
   
   
@@ -263,111 +280,30 @@ const List = () => {
                     />
                   <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
                 </div>
-                <button onClick={fetchAndMergePrices}>Show Hotels with Prices</button>
-                {isLoading && <p>Loading...</p>}
+                {/* Added circular progress */}
+                <button className="show-prices-button" onClick={fetchAndMergePrices} variant="contained" color="primary" disabled={isLoading}>
+                  {isLoading ? <CircularProgress size={24} /> : 'Show Hotels with Prices'}
+                </button>
                 <button className="filterButton" onClick={handleApplyFilters}>Apply Filters</button>
                 {hasUpdated && <p>Filter Applied!</p>}
 
               </div>
             </div>
             <div className="listResult">
-              {data.map((hotel, index) => (
-                <SearchItem key={index} hotel={hotel} />
-              ))}
+            {Array.isArray(filteredHotels) && filteredHotels.length > 4 && loadingButton
+  ? filteredHotels.map((hotel, index) => (
+      <SearchItem key={index} hotel={hotel} />
+    ))
+  : data.map((hotel, index) => (
+      <SearchItem key={index} hotel={hotel} />
+    ))}
+
+
             </div>
           </div>
         </div>
       </div>
     </ThemeProvider>
-  );
-};
-const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
-
-  const handleOption = (field, action) => {
-    if (field === "rooms") {
-      if (action === "i") setRooms(rooms + 1);
-      else if (action === "d" && rooms > 1) setRooms(rooms - 1);
-    } else if (field === "adults") {
-      if (action === "i") setAdults(adults + 1);
-      else if (action === "d" && adults > 1) setAdults(adults - 1);
-    } else if (field === "children") {
-      if (action === "i") setChildren(children + 1);
-      else if (action === "d" && children > 0) setChildren(children - 1);
-    }
-  };
-
-  return (
-    <div>
-      <TextField
-        aria-describedby={id}
-        value={`${rooms} room, ${adults} adults, ${children} children`}
-        variant="outlined"
-        fullWidth
-        onClick={handleClick}
-        InputProps={{
-          readOnly: true,
-        }}
-      />
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px", zIndex: 3 }}>
-        <ClickAwayListener onClickAway={handleClose}>
-          <Paper sx={{ p: 2 }}>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs={6}>
-                Rooms
-              </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1}>
-                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
-                </IconButton>
-                <Box style={{ marginTop: "8px" }}>{rooms}</Box>
-                <IconButton onClick={() => handleOption("rooms", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
-                </IconButton>
-              </Grid>
-              <Grid item xs={6}>
-                Adults
-              </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1}>
-                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
-                </IconButton>
-                <Box style={{ marginTop: "8px" }}>{adults}</Box>
-                <IconButton onClick={() => handleOption("adults", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
-                </IconButton>
-              </Grid>
-              <Grid item xs={6}>
-                Children
-              </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0}>
-                  <RemoveIcon style={{ border: children !== 0 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
-                </IconButton>
-                <Box style={{ marginTop: "8px" }}>{children}</Box>
-                <IconButton onClick={() => handleOption("children", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
-                </IconButton>
-              </Grid>
-            </Grid>
-            <Box mt={2}>
-              <Button fullWidth variant="contained" style={{ backgroundColor: "white", color: "#262e5d", border: "2px solid #262e5d", height: "53px", fontWeight: "650" }} onClick={handleClose}>Done</Button>
-            </Box>
-          </Paper>
-        </ClickAwayListener>
-      </Popper>
-    </div>
   );
 };
 

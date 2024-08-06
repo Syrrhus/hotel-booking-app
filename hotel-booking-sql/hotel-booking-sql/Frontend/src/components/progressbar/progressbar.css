@@ -1,0 +1,18 @@
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 3px solid lightgrey;
+    font-weight: bold;
+  }
+  
+  .step.active {
+    border-bottom: 4px solid #262e5d;
+  }
+  

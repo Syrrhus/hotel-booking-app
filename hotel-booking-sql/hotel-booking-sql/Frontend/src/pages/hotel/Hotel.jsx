@@ -1,5 +1,5 @@
 import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar2/Navbar2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
@@ -41,10 +41,21 @@ const Hotel = () => {
     navigate(`/hotels/${hotel.id}/book`, { state: { price, description, hotel } });
   };
 
-
-
-
-
+  function getRatingText(rating) {
+    if (rating >= 4) {
+      return "Excellent";
+    } else if (rating >= 3.5) {
+      return "Very Good";
+    } else if (rating >= 3) {
+      return "Good";
+    } else if (rating >= 2.5) {
+      return "Average";
+    } else if (rating >= 1.5) {
+      return "Below Average";
+    } else {
+      return "Poor";
+    }
+  }
 
   useEffect(() => {
     const fetchroomprice = async () => {
@@ -187,8 +198,10 @@ const Hotel = () => {
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{hotel.address}</span>
             </div>
-            <span className="hotelRating">Rating: {hotel.rating}</span>
-            <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
+            <span className="hotelRating">
+              Rating: {hotel.rating} ({getRatingText(hotel.rating)})
+            </span>
+            <span className="hotelDistance">Distance: {hotel.distance.toFixed(2)}m</span>
             <span className="hotelPriceHighlight">Book a stay over ${hotel.price} only!</span>
             <div className="hotelImages">
               <div className="carousel">

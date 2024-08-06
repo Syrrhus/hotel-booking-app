@@ -59,7 +59,7 @@
   border: 1px solid #ddd;
 }
 
-.filterButton {
+/* .filterButton {
   padding: 10px 20px;
   background-color: #0071c2;
   color: white;
@@ -68,6 +68,34 @@
   border-radius: 5px;
   cursor: pointer;
   align-self: center;
+} */
+
+.filterButton,
+.show-prices-button {
+  padding: 10px 20px;
+  background-color: #262e5d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s ease;
+  text-transform: none; /* Remove capitalization */
+}
+
+.filterButton:hover,
+.show-prices-button:hover {
+  background-color: white; /* Reverse background color */
+  color: #262e5d; /* Reverse text color */
+  border: 2px solid #262e5d;
+}
+
+/* New styles for the Show Hotels with Prices button */
+.show-prices-button .MuiCircularProgress-root {
+  align-self: center;
+  color: grey;
+  
 }
 
 .listResult {

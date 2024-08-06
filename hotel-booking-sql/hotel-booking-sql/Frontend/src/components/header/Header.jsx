@@ -116,9 +116,6 @@ const Header = ({ type }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    
-    
-
     const selectedDestination = uniqueDestinationsData.find(s => s.term === destination);
     
     if (!selectedDestination) {
@@ -169,7 +166,7 @@ const Header = ({ type }) => {
               <div className="headerSearch">
                 <Grid container spacing={2} alignItems="center">
                   <Grid item xs={12} sm={6} md={3}>
-                    <Autocomplete
+                    <Autocomplete      // the search bar autosearch/autocomplete
                       options={uniqueDestinationsData}
                       getOptionLabel={(option) => option.term || option.type || 'Unknown'}
                       filterOptions={(options, state) =>
@@ -193,8 +190,16 @@ const Header = ({ type }) => {
                       <DatePicker
                         label="Check-in"
                         value={checkIn}
-                        onChange={(newValue) => setCheckIn(newValue)}
                         format="dd/MM/yyyy"
+                        // fixed cant pick last date
+                        onChange={(newValue) => {
+                          setCheckIn(newValue);
+                          if (checkOut && newValue >= checkOut) {
+                            setCheckOut(null);
+                          }
+                        }}
+                        minDate={new Date()}
+                        disablePast
                         renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                       />
                     </LocalizationProvider>
@@ -206,6 +211,9 @@ const Header = ({ type }) => {
                         value={checkOut}
                         onChange={(newValue) => setCheckOut(newValue)}
                         format="dd/MM/yyyy" 
+                        // checking check in date, disabling past dates
+                        minDate={checkIn ? new Date(checkIn.getTime() + 24 * 60 * 60 * 1000) : new Date()}
+                        disablePast
                         renderInput={(params) => <TextField {...params} variant="outlined" fullWidth />}
                       />
                     </LocalizationProvider>
@@ -250,6 +258,7 @@ const Header = ({ type }) => {
   );
 };
 
+// rooms and guests part
 const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChildren }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -289,44 +298,44 @@ const RoomsAndGuests = ({ rooms, setRooms, adults, setAdults, children, setChild
           readOnly: true,
         }}
       />
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "400px", zIndex: 3 }}>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ width: "300px", zIndex: 3 }}>
         <ClickAwayListener onClickAway={handleClose}>
           <Paper sx={{ p: 2 }}>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Rooms
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1}>
-                  <RemoveIcon style={{ border: rooms !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("rooms", "d")} disabled={rooms <= 1} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{rooms}</Box>
-                <IconButton onClick={() => handleOption("rooms", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{rooms}</Box>
+                <IconButton onClick={() => handleOption("rooms", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Adults
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1}>
-                  <RemoveIcon style={{ border: adults !== 1 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("adults", "d")} disabled={adults <= 1} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{adults}</Box>
-                <IconButton onClick={() => handleOption("adults", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{adults}</Box>
+                <IconButton onClick={() => handleOption("adults", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4} className="field-label">
                 Children
               </Grid>
-              <Grid item xs={6} container justifyContent="space-between">
-                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0}>
-                  <RemoveIcon style={{ border: children !== 0 ? "2px solid #262e5d" : "2px solid #d6d6d6", borderRadius: "50%" }} />
+              <Grid item xs={8} className="field-buttons">
+                <IconButton onClick={() => handleOption("children", "d")} disabled={children <= 0} size="small">
+                  <RemoveIcon />
                 </IconButton>
-                <Box style={{ marginTop: "8px" }}>{children}</Box>
-                <IconButton onClick={() => handleOption("children", "i")}>
-                  <AddIcon style={{ border: "2px solid #262e5d", borderRadius: "50%" }} />
+                <Box style={{ margin: "0 50px" }}>{children}</Box>
+                <IconButton onClick={() => handleOption("children", "i")} size="small">
+                  <AddIcon />
                 </IconButton>
               </Grid>
             </Grid>
