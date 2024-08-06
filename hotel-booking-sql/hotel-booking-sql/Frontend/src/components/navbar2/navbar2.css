@@ -1,0 +1,74 @@
+.navbar {
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Vertically center items */
+    position: sticky;
+    border-bottom: 3px solid #262e5d;
+  }
+  
+  .navbar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px; /* Adjust thickness */
+    background-color: #262e5d; /* Adjust color */
+    z-index: 1;
+  }
+  
+  .navContainer {
+    position: relative;
+    width: 100%;
+    max-width: 1750px;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-left: 3vw;
+    margin-right: 80vw; /* left margin (push everything to the left) */
+  }
+  
+  .backButton {
+    background-color: #262e5d; /* Button background color */
+    border: none;
+    border-radius: 10px;
+    color: white; /* Text color */
+    font-size: 1.2rem; /* Adjusted font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer;
+    margin-right: 20px; /* Space between the button and logo */
+    padding: 4px; /* Adjust padding */
+    padding-left: 8px;
+    padding-right: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .backButton:hover {
+    background-color: white; /* Reverse background color */
+    color: #262e5d; /* Reverse text color */
+    border: 2px solid #262e5d; /* Thin outline */
+  }
+  
+  .Ascendalogo {
+    width: 150px; /* Adjusted width */
+    height: 30px; /* Adjusted height */
+    cursor: pointer;
+  }
+  
+  .logo {
+    font-weight: 600;
+    font-size: xx-large;
+    padding-left: 1vw;
+  }
+  
+  .navButton {
+    margin-left: 20px;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #262e5d;
+    background-color: transparent;
+    font-size: medium;
+  }
