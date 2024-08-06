@@ -27,4 +27,5 @@ const Confirmation = ({ bookingInfo, guestInfo,prevStep, nextStep}) => {
   );
 };
 
+
 export default Confirmation;
