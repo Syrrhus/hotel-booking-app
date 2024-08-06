@@ -163,7 +163,7 @@ describe('validNoneEmpty', () => {
       });
 
       it('should return falSE characters', () => {
-        expect(validNoneEmpty('john///')).toBe(true);
+        expect(validNoneEmpty('john///')).toBe(false);
       });
     
       it('should return false for a string with newline characters', () => {
