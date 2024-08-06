@@ -52,6 +52,7 @@ const List = () => {
   const [hotelsWithPrices, setHotelsWithPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasUpdated, setHasUpdated] = useState(false);
+  const [loadingButton, setloadingButton] = useState(false);
 
   const isValidDate = (date) => date instanceof Date && !isNaN(date);
 
@@ -64,6 +65,22 @@ const List = () => {
       setCheckOut(new Date(checkout));
     }
   }, [location.state]);
+
+  const [filteredHotels, setFilteredHotels] = useState([]);
+
+  useEffect(() => {
+    const showItemsWithPrices = () => {
+      const hotelsWithPrices = Object.values(searchParams.PriceDetails || {});
+      console.log(searchParams.PriceDetails, "price details");
+      setFilteredHotels(hotelsWithPrices);
+    };
+
+    // Automatically display hotels with prices when PriceDetails is updated
+    if (searchParams.PriceDetails && Object.keys(searchParams.PriceDetails).length > 0) {
+      showItemsWithPrices();
+      setloadingButton(true); // Assuming you want to trigger this when data is available
+    }
+  }, [searchParams.PriceDetails]); // Re-run when PriceDetails changes
 
   
   
@@ -271,9 +288,15 @@ const List = () => {
               </div>
             </div>
             <div className="listResult">
-              {data.map((hotel, index) => (
-                <SearchItem key={index} hotel={hotel} />
-              ))}
+            {Array.isArray(filteredHotels) && filteredHotels.length > 4 && loadingButton
+  ? filteredHotels.map((hotel, index) => (
+      <SearchItem key={index} hotel={hotel} />
+    ))
+  : data.map((hotel, index) => (
+      <SearchItem key={index} hotel={hotel} />
+    ))}
+
+
             </div>
           </div>
         </div>
