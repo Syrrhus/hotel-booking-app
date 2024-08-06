@@ -1,5 +1,5 @@
 import "./hotel.css";
-import Navbar from "../../components/navbar2/Navbar2";
+import Navbar from "../src/components/navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
@@ -22,9 +22,6 @@ const redIcon = new L.Icon({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   shadowSize: [41, 41]
 });
-
-
-
 const Hotel = () => {
   const { searchParams, setSearchParams } = useContext(SearchContext);
   const navigate = useNavigate();
@@ -65,7 +62,6 @@ const Hotel = () => {
         setLoadingRoom(false);
         return;
       }
-
       try {
         const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
           params: {
@@ -94,15 +90,11 @@ const Hotel = () => {
           console.log('Response not completed, polling again...');
           setTimeout(fetchroomprice, 5000); // Poll every 5 seconds
         }
-
-
-
         console.log(response.data, "room response");
       }
       catch (error) {
         console.error('Error fetching hotel room price:', error);
       }
-
     }
     fetchroomprice()
     //SetRoomDetails(searchParams.rooms);
