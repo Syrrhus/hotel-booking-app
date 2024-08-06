@@ -11,6 +11,7 @@ import L from "leaflet";
 import { SearchContext } from '../../context/SearchContext';
 import { format } from 'date-fns';
 import axios from 'axios';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 // Custom icon for the map marker
@@ -67,8 +68,10 @@ const Hotel = () => {
         // If room details exist, use them and avoid fetching again
         console.log("Attempting to set RoomDetails:", searchParams.roomDetails[hotel.id]);
         SetRoomDetails(searchParams.roomDetails[hotel.id]);
+        if (searchParams.roomDetails[hotel.id]){
         setLoadingRoom(false);
         return;
+        }
       }
 
       try {
@@ -93,7 +96,9 @@ const Hotel = () => {
           }));
 
           SetRoomDetails(rooms);
+          if (RoomDetails){
           setLoadingRoom(false);
+          }
           // Handle the response, e.g., update state with the fetched data
         } else {
           console.log('Response not completed, polling again...');
@@ -111,7 +116,7 @@ const Hotel = () => {
     }
     fetchroomprice()
     //SetRoomDetails(searchParams.rooms);
-    setLoadingRoom(false);
+    //setLoadingRoom(false);
 
 
 
@@ -176,6 +181,17 @@ const Hotel = () => {
     setRoomSlideNumbers(prevState => ({ ...prevState, [index]: imgIndex }));
   };
 
+  const [showAllAmenities, setShowAllAmenities] = useState(false);
+  const amenitiesToShow = showAllAmenities ? Object.keys(hotel.amenities) : Object.keys(hotel.amenities).slice(0, 5);
+
+  const handleShowMore = () => {
+    setShowAllAmenities(true);
+  };
+
+  const handleShowLess = () => {
+    setShowAllAmenities(false);
+  };
+
   return (
     <div>
       <Navbar />
@@ -231,37 +247,68 @@ const Hotel = () => {
                 <p className="hotelDesc" dangerouslySetInnerHTML={{ __html: hotel.description }}></p>
                 <div className="hotelTrustYouScores">
                   <h2>TrustYou Scores</h2>
-                  <p>Overall: {hotel.trustyou.score.overall}</p>
-                  <p>Kaligo Overall: {hotel.trustyou.score.kaligo_overall}</p>
-                  <p>Solo: {hotel.trustyou.score.solo}</p>
-                  <p>Couple: {hotel.trustyou.score.couple}</p>
-                  <p>Family: {hotel.trustyou.score.family}</p>
-                  <p>Business: {hotel.trustyou.score.business}</p>
+                  {/* parsefloat to remove decimals, only Kaligo Overall is out of 10, the rest is 100 */}
+                  <div className="scoreContainer">
+                    <span className="label">Kaligo Overall</span>
+                    <progress value={hotel.trustyou.score.kaligo_overall} max="10"></progress>
+                    <span>{parseFloat(hotel.trustyou.score.kaligo_overall)}</span>
+                  </div>
+                  <div className="scoreContainer">
+                    <span className="label">Overall</span>
+                    <progress value={hotel.trustyou.score.overall} max="100"></progress>
+                    <span>{parseFloat(hotel.trustyou.score.overall)}</span>
+                  </div>
+                  <div className="scoreContainer">
+                    <span className="label">Solo</span>
+                    <progress value={hotel.trustyou.score.solo} max="100"></progress>
+                    <span>{parseFloat(hotel.trustyou.score.solo)}</span>
+                  </div>
+                  <div className="scoreContainer">
+                    <span className="label">Couple</span>
+                    <progress value={hotel.trustyou.score.couple} max="100"></progress>
+                    <span>{parseFloat(hotel.trustyou.score.couple)}</span>
+                  </div>
+                  <div className="scoreContainer">
+                    <span className="label">Family</span>
+                    <progress value={hotel.trustyou.score.family} max="100"></progress>
+                    <span>{parseFloat(hotel.trustyou.score.family)}</span>
+                  </div>
+                  <div className="scoreContainer">
+                    <span className="label">Business</span>
+                    <progress value={hotel.trustyou.score.business} max="100"></progress>
+                    <span>{parseFloat(hotel.trustyou.score.business)}</span>
+                  </div>
                 </div>
                 <div className="hotelCategories">
                   <h2>Categories</h2>
                   {Object.keys(hotel.categories).map((key) => (
                     <div key={key}>
                       <p>{hotel.categories[key].name}: {hotel.categories[key].score}</p>
-                      <p>Popularity: {hotel.categories[key].popularity}</p>
                     </div>
                   ))}
                 </div>
                 <div className="hotelAmenitiesRatings">
                   <h2>Amenities Ratings</h2>
                   {hotel.amenities_ratings.map((amenity, index) => (
-                    <div key={index}>
-                      <p>{amenity.name}: {amenity.score}</p>
+                    <div key={index} className="scoreContainer">
+                      <span className="label">{amenity.name}</span>
+                      <progress value={amenity.score} max="100"></progress>
+                      <span>{parseFloat(amenity.score)}</span>
                     </div>
                   ))}
                 </div>
                 <div className="hotelAmenities">
                   <h2>Amenities</h2>
                   <ul>
-                    {Object.keys(hotel.amenities).map((key) => (
+                    {amenitiesToShow.map((key) => (
                       <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
                     ))}
                   </ul>
+                  {!showAllAmenities ? (
+                    <button onClick={handleShowMore} className="showMoreButton">Show more...</button>
+                  ) : (
+                    <button onClick={handleShowLess} className="showMoreButton">Show less</button>
+                  )}
                 </div>
               </div>
               <div className="hotelMap">
@@ -281,33 +328,17 @@ const Hotel = () => {
                   </Marker>
                 </MapContainer>
               </div>
-              {/* <div className="hotelDetailsPrice">
-                <h1>Perfect for a {hotel.categories.family_hotel ? "Family" : "Business"} stay!</h1>
-                <h2>
-                  <b>${hotel.price}</b> (9 nights)
-                </h2>
-                <button onClick={handleNavigate}>Reserve or Book Now!</button>
-              </div> */}
             </div>
           </div>
-          {/* <div className="hotelMapWrapper"> */}
-          {/* <div className="hotelMap">
-              <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%" }}>
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker position={[hotel.latitude, hotel.longitude]} icon={redIcon}>
-                  <Popup>
-                    {hotel.name} <br /> {hotel.address}
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            </div> */}
+
+          {/* The room options */}
           <div className="roomDetails">
             <h2>Available Rooms</h2>
             {loadingRoom ? (
-              <p>Loading room details...</p>
+              <div className="loadingContainer">
+                <CircularProgress size={24} color="inherit" />
+                <p>Loading room details...</p>
+              </div>
             ) : (
               <ul>
                 {RoomDetails && RoomDetails.map((room, index) => (
@@ -318,7 +349,7 @@ const Hotel = () => {
                     <div className="roomDetailsContent">
                       <h3>{room.description}</h3>
                       <p><b>Price: ${room.price}</b></p>
-                      <p><b>Amenities:</b></p>
+                      <p class="roomAmenities">Amenities:</p>
                       <ul className="amenitiesList">
                         {room.amenities.slice(0, 3).map((amenity, amenityIndex) => (
                           <li key={amenityIndex}>{amenity}</li>

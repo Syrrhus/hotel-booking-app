@@ -10,6 +10,7 @@ import axios from 'axios';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SearchContext } from '../../context/SearchContext';
 import { format } from 'date-fns';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const theme = createTheme({
   palette: {
@@ -144,16 +145,17 @@ const List = () => {
                   <Slider 
                     range 
                     min={0} 
-                    max={5000} 
+                    max={5000}
+                    step={50} 
                     defaultValue={priceRange} 
                     onChange={(value) => setPriceRange(value)} 
                   />
                   <span>{`Price: $${priceRange[0]} - $${priceRange[1]}`}</span>
                 </div>
-                
-                {isLoading && <p>Loading...</p>}
-                <button className="filterButton" onClick={applyFilters}>Apply Filters</button>
-                {hasUpdated && <p>Filter Applied!</p>}
+                <button className="filterButton" onClick={applyFilters}>
+                  {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Apply Filters'}
+                </button>
+                {hasUpdated && <p class="AppliedNotif">Filter Applied!</p>}
               </div>
             </div>
             <div className="listResult">

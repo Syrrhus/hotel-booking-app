@@ -14,9 +14,10 @@ const SearchItem = ({ hotel }) => {
   const handleNavigate = () => {
     navigate(`/hotels/${hotel.id}`, { state: { hotel } });
   };
+  
   const firstImageUrl = hotel.image_details
-  ?`${hotel.image_details.prefix}${hotel.image_details.suffix}`
-  :"https://via.placeholder.com/600";
+  ? `${hotel.image_details.prefix}0${hotel.image_details.suffix}`
+  : "https://via.placeholder.com/600";
 
   function getRatingText(rating) {
     if (rating >= 4) {
@@ -33,8 +34,6 @@ const SearchItem = ({ hotel }) => {
       return "Poor";
     }
   }
- 
-
 
   // limiting the small description words inside Hotel cards.
   const getLimitedWords = (htmlString) => {
@@ -44,7 +43,6 @@ const SearchItem = ({ hotel }) => {
     const words = text.split(/\s+/).slice(2, 32).join(' '); // Skipping first 2 words and taking next 30 words
     return words + (text.split(/\s+/).length > 22 ? '...' : '');
   };
-
 
   const limitedDescription = hotel.description ? getLimitedWords(hotel.description) : "";
 
