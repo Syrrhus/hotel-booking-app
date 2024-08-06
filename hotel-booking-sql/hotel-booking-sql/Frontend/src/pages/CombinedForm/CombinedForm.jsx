@@ -21,8 +21,8 @@ const CombinedForm = () => {
         numberOfNights: '',
         startDate: '',
         endDate: '',
-        adults: 0,
-        children: 0,
+        adults: '',
+        children: '',
         messageToHotel: '',
         roomTypes: ''
     });
