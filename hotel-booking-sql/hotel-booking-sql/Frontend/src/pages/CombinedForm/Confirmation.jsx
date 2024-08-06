@@ -11,7 +11,6 @@ const Confirmation = ({ bookingInfo, guestInfo,prevStep, nextStep}) => {
         <p>End Date: {bookingInfo.endDate}</p>
         <p>Adults: {bookingInfo.adults}</p>
         <p>Children: {bookingInfo.children}</p>
-        <p>Room Types: {bookingInfo.roomTypes}</p>
         <p>Special Requests: {bookingInfo.messageToHotel}</p>
       </div>
       <div>

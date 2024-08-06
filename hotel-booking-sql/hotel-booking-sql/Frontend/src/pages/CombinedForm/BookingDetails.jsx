@@ -17,9 +17,6 @@ const BookingDetails = ({ bookingInfo, handleChange, nextStep }) => {
     } else if (new Date(bookingInfo.startDate) > new Date(bookingInfo.endDate)) {
       newErrors.validDate = 'Start date cannot be after end date';
       alert('The start date cannot be after the end date!');
-    } else if (!validNoneEmpty(bookingInfo.roomTypes)) {
-      newErrors.firstName = 'Please enter the room you prefer';
-      alert("Please fill in the room you prefer");
     }else if (validatePeople(bookingInfo.adults, bookingInfo.children) === 1) {
       newErrors.people = 'Please ensure there is at least one adult if there are children';
       alert(`Please ensure there is at least one adult if there are children ${bookingInfo.ch}`);
@@ -84,16 +81,6 @@ const BookingDetails = ({ bookingInfo, handleChange, nextStep }) => {
             type="text"
             name="children"
             value={bookingInfo.children}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Room Types</label>
-          <input
-            type="text"
-            name="roomTypes"
-            value={bookingInfo.roomTypes}
             onChange={handleChange}
             required
           />
