@@ -34,7 +34,7 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .bookNow {
@@ -162,6 +162,7 @@ body {
 }
 
 .hotelDetailsTexts {
+  margin-top: 10px;
   flex: 3;
 }
 
@@ -178,6 +179,7 @@ body {
   flex-direction: column;
   gap: 20px;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .hotelDetailsPrice > h1 {
@@ -285,23 +287,25 @@ body {
 }
 
 .hotelMapWrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column; /* Ensure elements are stacked vertically */
-  justify-content: center;
-  margin: 20px 0;
+  width: 80%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .hotelMap {
-  width: 100%;
+  width: 400px;
   height: 400px;
-  border-radius: 8px;
+  /* border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .roomDetails {
-  width: 100%;
+  width: 80%;
   margin-top: 20px;
   background-color: #fff;
   padding: 20px;
@@ -317,14 +321,39 @@ body {
 }
 
 .roomDetailItem {
+  display: flex;
+  align-items: flex-start;
   margin-top: 10px;
   padding: 10px;
   border-bottom: 1px solid #eee;
+  list-style: none;
 }
 
-.roomDetailItem h3 {
-  font-size: 16px;
-  color: #0071c2;
+.roomDetailItem p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.roomDetailItem p b {
+  color: #008009;
+}
+
+.roomcarouselImg {
+  width: 400px ;
+}
+
+.roomDetailsContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.roomDetailContent h3 {
+  font-size: x-large;
+  color: #262e5d;
   margin-bottom: 5px;
 }
 
@@ -336,4 +365,52 @@ body {
 
 .roomDetailItem p b {
   color: #008009;
+}
+
+.amenitiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+.amenitiesList li {
+  background: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 4px;
+  list-style: none;
+}
+
+.roomDetails ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0;       /* Remove default padding */
+}
+
+.roomcarouselImg {
+  border-radius: 8px;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.roomButton {
+  width: 200px;
+  background-color: #262e5d;
+}
+
+.buttonContainer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.siTitle {
+  display: flex;
+  align-items: center;
+  
+}
+
+.hotelDetailsWrapper > h1 {
+  font-size: xx-large;
+  color: #262e5d;
 }

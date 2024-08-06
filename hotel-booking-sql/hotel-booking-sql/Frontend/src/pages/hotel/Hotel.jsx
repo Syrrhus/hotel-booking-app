@@ -1,8 +1,8 @@
 import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar2/Navbar2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -26,7 +26,7 @@ const redIcon = new L.Icon({
 
 
 const Hotel = () => {
-  const { searchParams } = useContext(SearchContext);
+  const { searchParams, setSearchParams } = useContext(SearchContext);
   const navigate = useNavigate();
   const location = useLocation();
   const hotel = location.state.hotel; // Extracting hotel data from state
@@ -34,66 +34,98 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [RoomDetails, SetRoomDetails] = useState();
   const [loadingRoom, setLoadingRoom] = useState(true);
+  const [roomSlideNumbers, setRoomSlideNumbers] = useState({});
 
 
   const handleNavigate = (price, description) => {
     navigate(`/hotels/${hotel.id}/book`, { state: { price, description, hotel } });
   };
-  
-  
 
-
-
-
-useEffect(()=>{
-  const fetchroomprice= async () => {
-   
-    console.log(searchParams.checkin,"searchparamchecin");
-    
-    try{
-    const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
-      params: {
-        destination_id: searchParams.destination_id,
-        checkin: searchParams.checkin,
-        checkout: searchParams.checkout,
-        guests: searchParams.adults,
-      },
-    });
-    if (response.data.completed) {
-      console.log(response.data, "room response");
-      SetRoomDetails(response.data.rooms);
-      // Handle the response, e.g., update state with the fetched data
+  function getRatingText(rating) {
+    if (rating >= 4) {
+      return "Excellent";
+    } else if (rating >= 3.5) {
+      return "Very Good";
+    } else if (rating >= 3) {
+      return "Good";
+    } else if (rating >= 2.5) {
+      return "Average";
+    } else if (rating >= 1.5) {
+      return "Below Average";
     } else {
-      console.log('Response not completed, polling again...');
-      setTimeout(fetchroomprice, 5000); // Poll every 5 seconds
+      return "Poor";
     }
-
-    
-
-    console.log(response.data,"room response");
-  }
-  catch (error) {
-    console.error('Error fetching hotel room price:', error);
   }
 
-  }
-  fetchroomprice()
-  SetRoomDetails(searchParams.rooms);
-  setLoadingRoom(false);
+  useEffect(() => {
+    const fetchroomprice = async () => {
 
- 
 
-},[hotel]);
 
-const isValidDate = (date) => {
-  return date instanceof Date && !isNaN(date);
-};
+
+      if (searchParams.roomDetails && searchParams.roomDetails[hotel.id]) {
+        // If room details exist, use them and avoid fetching again
+        console.log("Attempting to set RoomDetails:", searchParams.roomDetails[hotel.id]);
+        SetRoomDetails(searchParams.roomDetails[hotel.id]);
+        setLoadingRoom(false);
+        return;
+      }
+
+      try {
+        const response = await axios.get(`http://localhost:5000/hotels/${hotel.id}/prices`, {
+          params: {
+            destination_id: searchParams.destination_id,
+            checkin: searchParams.checkin,
+            checkout: searchParams.checkout,
+            guests: searchParams.adults,
+          },
+        });
+        if (response.data.completed) {
+          console.log(response.data, "room response");
+          const rooms = response.data.rooms;
+
+          setSearchParams((prev) => ({
+            ...prev,
+            roomDetails: {
+              ...prev.roomDetails,
+              [hotel.id]: rooms // Use hotel.id as the key to store the rooms
+            }
+          }));
+
+          SetRoomDetails(rooms);
+          setLoadingRoom(false);
+          // Handle the response, e.g., update state with the fetched data
+        } else {
+          console.log('Response not completed, polling again...');
+          setTimeout(fetchroomprice, 5000); // Poll every 5 seconds
+        }
+
+
+
+        console.log(response.data, "room response");
+      }
+      catch (error) {
+        console.error('Error fetching hotel room price:', error);
+      }
+
+    }
+    fetchroomprice()
+    //SetRoomDetails(searchParams.rooms);
+    setLoadingRoom(false);
+
+
+
+  }, [hotel, searchParams, setSearchParams]);
+
+  const isValidDate = (date) => {
+    return date instanceof Date && !isNaN(date);
+  };
 
 
   const photos = hotel.image_details.prefix
     ? Array.from({ length: hotel.imageCount }, (_, i) => ({
-        src: `${hotel.image_details.prefix}${i}${hotel.image_details.suffix}`
-      }))
+      src: `${hotel.image_details.prefix}${i}${hotel.image_details.suffix}`
+    }))
     : [];
 
   const handleOpen = (i) => {
@@ -125,6 +157,25 @@ const isValidDate = (date) => {
     setSlideNumber(index);
   };
 
+  const handleRoomMove = (index, direction) => {
+    setRoomSlideNumbers(prevState => {
+      const currentSlideNumber = prevState[index] || 0;
+      let newSlideNumber;
+
+      if (direction === "l") {
+        newSlideNumber = currentSlideNumber === 0 ? RoomDetails[index].images.length - 1 : currentSlideNumber - 1;
+      } else {
+        newSlideNumber = currentSlideNumber === RoomDetails[index].images.length - 1 ? 0 : currentSlideNumber + 1;
+      }
+
+      return { ...prevState, [index]: newSlideNumber };
+    });
+  };
+
+  const handleRoomThumbnailClick = (index, imgIndex) => {
+    setRoomSlideNumbers(prevState => ({ ...prevState, [index]: imgIndex }));
+  };
+
   return (
     <div>
       <Navbar />
@@ -141,13 +192,16 @@ const isValidDate = (date) => {
         )}
         <div className="hotelContent">
           <div className="hotelDetailsWrapper">
-           
+          <h1 className="siTitle">{hotel.name}</h1>
+
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{hotel.address}</span>
             </div>
-            <span className="hotelRating">Rating: {hotel.rating}</span>
-            <span className="hotelDistance">Excellent location: {hotel.distance.toFixed(2)}m</span>
+            <span className="hotelRating">
+              Rating: {hotel.rating} ({getRatingText(hotel.rating)})
+            </span>
+            <span className="hotelDistance">Distance: {hotel.distance.toFixed(2)}m</span>
             <span className="hotelPriceHighlight">Book a stay over ${hotel.price} only!</span>
             <div className="hotelImages">
               <div className="carousel">
@@ -210,17 +264,34 @@ const isValidDate = (date) => {
                   </ul>
                 </div>
               </div>
-              <div className="hotelDetailsPrice">
+              <div className="hotelMap">
+                <div className="hotelDetailsPrice">
+                  <h1>Perfect for a {hotel.categories.family_hotel ? "Family" : "Business"} stay!</h1>
+
+                </div>
+                <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%", borderRadius: "8px" }}>
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  <Marker position={[hotel.latitude, hotel.longitude]} icon={redIcon}>
+                    <Popup>
+                      {hotel.name} <br /> {hotel.address}
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
+              {/* <div className="hotelDetailsPrice">
                 <h1>Perfect for a {hotel.categories.family_hotel ? "Family" : "Business"} stay!</h1>
                 <h2>
                   <b>${hotel.price}</b> (9 nights)
                 </h2>
                 <button onClick={handleNavigate}>Reserve or Book Now!</button>
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="hotelMapWrapper">
-            <div className="hotelMap">
+          {/* <div className="hotelMapWrapper"> */}
+          {/* <div className="hotelMap">
               <MapContainer center={[hotel.latitude, hotel.longitude]} zoom={13} style={{ height: "400px", width: "100%" }}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -232,51 +303,41 @@ const isValidDate = (date) => {
                   </Popup>
                 </Marker>
               </MapContainer>
-            </div>
-            <div className="roomDetails">
-  <h2>Available Rooms</h2>
-  {loadingRoom ? (
-    <p>Loading room details...</p>
-  ) : (
-    <ul>
-      {RoomDetails && RoomDetails.map((room, index) => (
-        <li key={index} className="roomDetailItem">
-          <h3>{room.description}</h3>
-          <p><b>Price: ${room.price}</b></p>
-          
-          {/* Display amenities as bullet points */}
-          <p><b>Amenities:</b></p>
-          <ul className="amenitiesList">
-            {room.amenities.map((amenity, amenityIndex) => (
-              <li key={amenityIndex}>{amenity}</li>
-            ))}
-          </ul>
-
-          {/* Display images if available */}
-          {room.images && room.images.length > 0 && (
-            <div className="roomImages">
-              {room.images.map((image, imgIndex) => (
-                <img 
-                  key={imgIndex} 
-                  src={image.url} 
-                  alt={`Room ${index + 1} image ${imgIndex + 1}`} 
-                  className="roomImage"
-                />
-              ))}
-            </div>
-          )}
-          
-          {/* Add the "Reserve or Book Now!" button */}
-          <button onClick={() => handleNavigate(room.price, room.description,hotel)}>Reserve or Book Now!</button>
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
+            </div> */}
+          <div className="roomDetails">
+            <h2>Available Rooms</h2>
+            {loadingRoom ? (
+              <p>Loading room details...</p>
+            ) : (
+              <ul>
+                {RoomDetails && RoomDetails.map((room, index) => (
+                  <li key={index} className="roomDetailItem">
+                    <div className="roomImageContainer">
+                      <img src={room.images[roomSlideNumbers[index] || 0].url} alt="" className="roomcarouselImg" />
+                    </div>
+                    <div className="roomDetailsContent">
+                      <h3>{room.description}</h3>
+                      <p><b>Price: ${room.price}</b></p>
+                      <p><b>Amenities:</b></p>
+                      <ul className="amenitiesList">
+                        {room.amenities.slice(0, 3).map((amenity, amenityIndex) => (
+                          <li key={amenityIndex}>{amenity}</li>
+                        ))}
+                        {room.amenities.length > 3 && <li>+{room.amenities.length - 3} more</li>}
+                      </ul>
+                      <div className="buttonContainer">
+                        <button className="roomButton" onClick={() => handleNavigate(room.price, room.description, hotel)}>Reserve or Book Now!</button>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 
