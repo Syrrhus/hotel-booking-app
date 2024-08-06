@@ -35,22 +35,12 @@ const Hotel = () => {
   const [RoomDetails, SetRoomDetails] = useState();
   const [loadingRoom, setLoadingRoom] = useState(true);
   const [roomSlideNumbers, setRoomSlideNumbers] = useState({});
-
-
   const handleNavigate = (price, description) => {
     navigate(`/hotels/${hotel.id}/book`, { state: { price, description, hotel } });
   };
 
-
-
-
-
-
   useEffect(() => {
     const fetchroomprice = async () => {
-
-
-
 
       if (searchParams.roomDetails && searchParams.roomDetails[hotel.id]) {
         // If room details exist, use them and avoid fetching again
