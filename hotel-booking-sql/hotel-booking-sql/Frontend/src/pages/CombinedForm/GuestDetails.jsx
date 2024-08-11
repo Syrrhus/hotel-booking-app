@@ -10,13 +10,10 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
     const newErrors = {};
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  
-    if (!emailPattern.test(guestInfo.email)) {
-      newErrors.email = 'Please enter a valid email '
-      alert('Please enter a valid email address.');
-    }else if (validNoneEmpty(guestInfo.firstName)) {
+
+     if (validNoneEmpty(guestInfo.firstName)) {
       newErrors.firstName = `Please enter your first name `;
-      alert( `Please fill in your first name ${guestInfo.firstName}`);
+      alert(`Please fill in your first name ${guestInfo.firstName}`);
     } else if (validNoneEmpty(guestInfo.lastName)) {
       newErrors.lastName = `Please enter your last name`;
       alert("Please fill in your last name");
@@ -26,7 +23,7 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
     } else if (!validatePhoneNumber(guestInfo.phoneNumber)) {
       newErrors.phoneNumber = 'Phone number must be a valid Singapore number';
       alert(`Invalid phone number keyed! ${guestInfo.phoneNumber.slice(2)}`);
-    }else {
+    } else {
       nextStep();
     }
   };
@@ -41,8 +38,9 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
       {/* <h2>Guest Details</h2> */}
       <form>
         <div>
-          <label>Salutation</label>
+          <label htmlFor="salutation">Salutation</label>
           <select
+            id="salutation"
             name="salutation"
             value={guestInfo.salutation}
             onChange={handleChange}
@@ -55,8 +53,9 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
           </select>
         </div>
         <div>
-          <label>First Name</label>
+          <label htmlFor="firstName">First Name</label>
           <input
+            id="firstName"
             type="text"
             name="firstName"
             value={guestInfo.firstName}
@@ -65,8 +64,9 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
           />
         </div>
         <div>
-          <label>Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input
+            id="lastName"
             type="text"
             name="lastName"
             value={guestInfo.lastName}
@@ -75,8 +75,9 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
           />
         </div>
         <div>
-          <label>Phone Number</label>
+          <label htmlFor="phoneNumber">Phone Number</label>
           <PhoneInput
+            id="phoneNumber"
             defaultCountry="SG"
             value={guestInfo.phoneNumber}
             onChange={handlePhoneChange}
@@ -84,8 +85,9 @@ const GuestDetails = ({ guestInfo, handleChange, nextStep, prevStep }) => {
           />
         </div>
         <div>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
+            id="email"
             type="email"
             name="email"
             value={guestInfo.email}

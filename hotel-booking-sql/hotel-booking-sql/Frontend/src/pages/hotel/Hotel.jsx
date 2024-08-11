@@ -372,4 +372,24 @@ const Hotel = () => {
   );
 };
 
+export const getRatingText = (rating) => {
+  if (rating >= 4) {
+    return "Excellent";
+  } else if (rating >= 3.5) {
+    return "Very Good";
+  } else if (rating >= 3) {
+    return "Good";
+  } else if (rating >= 2.5) {
+    return "Average";
+  } else if (rating >= 1.5) {
+    return "Below Average";
+  } else {
+    return "Poor";
+  }
+};
+
+export const isValidDate = (date) => {
+  return date instanceof Date && !isNaN(date);
+};
+
 export default Hotel;

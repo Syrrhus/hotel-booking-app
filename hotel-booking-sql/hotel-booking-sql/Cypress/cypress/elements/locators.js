@@ -1,0 +1,37 @@
+const locators = {
+    destinationNameInput: 'input[role="combobox"]',
+    checkInOutDateInput: 'input[placeholder="DD/MM/YYYY"]',
+    guestAdultInput: 'input[value="1 room, 2 adults, 0 children"]',
+    searchButton: '//button[text()="Search"]',
+    errorMessage: 'div[class="error-message"]',
+    searchedResults: 'div[class="listResult"]',
+    seeAvailabilityButton: 'button[class="siCheckButton"]',
+    reserveOrBookNowButton: 'button[class="roomButton"]',
+    finalizeBookingForm: 'div[class="paymentcontainer"]',
+    numberOfNightInput: 'input[name="numberOfNights"]',
+    startDate: 'input[name="startDate"]',
+    endDate: 'input[name="endDate"]',
+    adultsInput: 'input[name="adults"]',
+    childernInput: 'input[name="children"]',
+    specialRequestTextBox: 'textarea[name="messageToHotel"]',
+    nextButton: '//button[text()="Next"]',
+    saluationDropDown: 'select[name="salutation"]',
+    firstNameInput: 'input[name="firstName"]',
+    lastNameInput: 'input[name="lastName"]',
+    phoneNumberInput: 'input[class="PhoneInput"]',
+    emailInput: 'input[name="email"]',
+    confirmAndPayButton: '//button[text()="Confirm and Pay"]',
+    billingAddressInput: 'input[name="billingAddress"]',
+    cardNumberInput: 'input[aria-label="Credit or debit card number"]',
+    cardExpiryInput: 'input[aria-label="Credit or debit card expiration date"]',
+    cvcInput: 'input[aria-label="Credit or debit card CVC/CVV"]',
+    confirmBookingButton: '//button[text()="Confirm Booking"]',
+    addGuestIcon: 'svg[data-testid="AddIcon"]',
+    listOfDestinations: 'ul[role="listbox"]',
+    destinationOption: (hotelName) => `//li[contains(text(), "${hotelName}")]`,
+    availablePricing: '[class="siPrice"]',
+    progressSpinner: '[role="progressbar"]'
+
+}
+
+export default locators

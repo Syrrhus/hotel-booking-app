@@ -6,7 +6,7 @@ const fetchHotels = async (req, res) => {
 
     try {
         const response = await axios.get(apiUrl);
-        res.json(response.data);
+        res.status(200).res.json(response.data);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Failed to fetch data' });
